@@ -1,3 +1,27 @@
+# Visual Studio
+.vs/
+x64/
+Debug/
+Release/
+*.user
+*.slnx
+*.vcxproj
+*.vcxproj.filters
+
+# VS Code
 .vscode/
 superIrmasMaria
+
+# Arquivos de build
+*.exe
+*.obj
+*.pdb
+
+# Makefile
 Makefile
+
+# SFML
+SFML-3.1.0/
+*.dll
+*.lib
+*.a
