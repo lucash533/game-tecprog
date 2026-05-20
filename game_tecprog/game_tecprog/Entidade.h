@@ -6,6 +6,7 @@ namespace Jogo
 	class Entidade : public Ente
 	{
 	protected:
+
 		int x;
 		int y;
 		// std::ostream buffer;
@@ -20,3 +21,4 @@ namespace Jogo
 
 	};
 }
+

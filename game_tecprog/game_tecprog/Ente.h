@@ -8,6 +8,7 @@ namespace Jogo
 		int id;
 		static Gerenciador_Grafico* pGG;
 
+
 public:
 	Ente();
 	virtual ~Ente();

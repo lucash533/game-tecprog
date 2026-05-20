@@ -3,6 +3,7 @@ namespace Jogo
 {
 	namespace Personagens
 	{
+		//funçoes serão implementadas futuramente
 		Personagem::Personagem() : num_vidas(3)
 		{
 		}
@@ -11,8 +12,6 @@ namespace Jogo
 		}
 		void Personagem::salvarDataBuffer()
 		{
-			salvar();
-			salvarDataBuffer();
 		}
 	}
 }
