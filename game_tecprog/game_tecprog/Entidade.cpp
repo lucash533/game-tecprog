@@ -1,5 +1,5 @@
 #include "Entidade.h"
-namespace Jogo
+namespace Jogo::Entidades
 {
 	//funções serão implementadas futuramente
 	Entidade::Entidade() : x(0), y(0)

@@ -1,9 +1,9 @@
 #pragma once
 #include "Ente.h"
 
-namespace Jogo
+namespace Jogo::Entidades
 {
-	class Entidade : public Ente
+	class Entidade : public Jogo::Ente
 	{
 	protected:
 

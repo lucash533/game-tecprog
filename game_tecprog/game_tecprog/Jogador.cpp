@@ -1,11 +1,8 @@
 #include "Jogador.h"
-namespace Jogo
+namespace Jogo::Entidades::Personagens
 {
-	namespace Personagens
-	{
-		//funçoes serão implementadas futuramente
-		Jogador::Jogador() : pontos(0)
-		{
+	//funçoes serão implementadas futuramente
+	Jogador::Jogador() : pontos(0){
 			corpo.setSize(sf::Vector2f(50, 50));
 			corpo.setFillColor(sf::Color::Green);
 			corpo.setPosition({ 0.f, 0.f });
@@ -40,4 +37,3 @@ namespace Jogo
 
 		}
 	}
-}
