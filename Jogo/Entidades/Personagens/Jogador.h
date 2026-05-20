@@ -1,14 +1,17 @@
 #pragma once
 #include "Personagem.h"
+//using namespace Personagens;
 #include <SFML/Graphics.hpp>
+
+/*
 namespace Jogo::Entidades::Personagens
-	{
-	class Jogador : public Personagem
-	{
+{
+	class Jogador : public Personagem {
 	protected:		
 		int pontos;
 		sf::Vector2i vel;
 		sf::RectangleShape corpo;
+
 	public:
 		Jogador();
 		~Jogador();
@@ -19,3 +22,5 @@ namespace Jogo::Entidades::Personagens
 		void desenhar(sf::RenderWindow& window);
 	};
 }
+
+*/

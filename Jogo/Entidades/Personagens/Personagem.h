@@ -1,11 +1,13 @@
 #pragma once
 #include "Entidade.h"
 
-namespace Jogo::Entidades::Personagens{
-
+/*
+namespace Jogo::Entidades::Personagens
+{
     class Personagem : public Jogo::Entidades::Entidade {
     protected:
         int num_vidas;
+
     public:
         Personagem();
         ~Personagem();
@@ -14,5 +16,6 @@ namespace Jogo::Entidades::Personagens{
         virtual void salvar() = 0;
         virtual void mover() = 0;
     };
-
 }
+
+*/
