@@ -1,6 +1,7 @@
+/*
 #include "Personagem.h"
 
-/*
+
 namespace Jogo::Entidades::Personagens
 {
 	//funçoes serão implementadas futuramente

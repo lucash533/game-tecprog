@@ -1,6 +1,7 @@
+/*
 #include "Entidade.h"
 
-/*
+
 namespace Jogo::Entidades
 {
 	//funções serão implementadas futuramente

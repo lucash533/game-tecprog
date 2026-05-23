@@ -3,10 +3,8 @@
 //using namespace Personagens;
 #include <SFML/Graphics.hpp>
 
-/*
-namespace Jogo::Entidades::Personagens
-{
-	class Jogador : public Personagem {
+//namespace Jogo::Entidades::Personagens{
+	class Jogador {
 	protected:		
 		int pontos;
 		sf::Vector2i vel;
@@ -21,6 +19,4 @@ namespace Jogo::Entidades::Personagens
 		void executar();
 		void desenhar(sf::RenderWindow& window);
 	};
-}
 
-*/

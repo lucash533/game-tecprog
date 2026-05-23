@@ -1,7 +1,8 @@
+/*
 #pragma once
 #include "Entidade.h"
 
-/*
+
 namespace Jogo::Entidades::Personagens
 {
     class Personagem : public Jogo::Entidades::Entidade {

@@ -1,6 +1,7 @@
+/*
 #include "Ente.h"
 
-/*
+
 namespace Jogo
 {
 	//inicialização do ponteiro para o gerenciador gráfico
