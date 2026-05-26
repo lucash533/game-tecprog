@@ -9,7 +9,7 @@ Fase::~Fase() {
 }
 
 // Cria inimigos fáceis
-void Fase::criarGhouls() {
+void Fase::criarAlmasPenadas() {
     //...
 }
 

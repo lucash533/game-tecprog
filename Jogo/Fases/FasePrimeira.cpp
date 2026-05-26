@@ -9,7 +9,7 @@ FasePrimeira::~FasePrimeira() {
 }
 
 // Cria inimigos médios
-void FasePrimeira::criarAlmasPenadas() {
+void FasePrimeira::criarBanshees() {
     // do something...
 }
 

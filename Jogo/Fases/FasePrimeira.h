@@ -6,7 +6,7 @@ private:
     const int maxAlmaPenada;
 
 protected:
-    void criarAlmasPenadas();
+    void criarBanshees();
     void criarObstMedios(); // Atualizar nome
 
 public:

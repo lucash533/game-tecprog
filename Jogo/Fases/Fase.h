@@ -7,7 +7,7 @@ protected:
     //ListaEntidades lista_ents;
     //GerenciadorColisoes GC;
 
-    void criarGhouls(); 
+    void criarAlmasPenadas(); 
     void criarPlataformas();
     void criarCenario();
 
