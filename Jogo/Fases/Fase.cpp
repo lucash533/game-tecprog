@@ -1,0 +1,24 @@
+#include "Fase.h"
+
+Fase::Fase() {
+    //...
+}
+
+Fase::~Fase() {
+    //...
+}
+
+// Cria inimigos fáceis
+void Fase::criarGhouls() {
+    //...
+}
+
+// Cria obstáculo 1 (plataformas)
+void Fase::criarPlataformas() {
+    //...
+}
+
+// ???
+void Fase::criarCenario() {
+    //...
+}
