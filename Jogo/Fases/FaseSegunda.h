@@ -7,7 +7,7 @@ private:
 
 protected:
     void criarPisadeiras();
-    void criarObstMedios();
+    void criarObstDificeis();
     //void criarProjeteis();
 
 public:

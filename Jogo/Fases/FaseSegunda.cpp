@@ -14,6 +14,6 @@ void FaseSegunda::criarPisadeiras() {
 }
 
 // Cria obstaculos medios (ainda sem identidade)
-void FaseSegunda::criarObstMedios() {
+void FaseSegunda::criarObstDificeis() {
     // do something...
 }
