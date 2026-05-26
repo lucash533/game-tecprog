@@ -21,7 +21,7 @@ superIrmasMaria
 Makefile
 
 # SFML
-SFML-3.1.0/
+SFML-2.9.2/
 *.dll
 *.lib
 *.a
