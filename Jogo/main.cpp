@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "Jogador.h"
-#include "Inimigo.h"
+#include "Entidades/Personagens/Jogador.h"
+#include "Entidades/Personagens/Inimigo.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(900, 700), "Jogo - Testando Jogador e Inimigo");

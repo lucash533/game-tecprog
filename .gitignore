@@ -16,6 +16,7 @@ superIrmasMaria
 *.exe
 *.obj
 *.pdb
+*.o
 
 # Makefile
 Makefile
