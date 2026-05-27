@@ -17,3 +17,8 @@ void FaseSegunda::criarPisadeiras() {
 void FaseSegunda::criarObstDificeis() {
     // do something...
 }
+
+// Cria projéteis da fase
+void FaseSegunda::criarProjeteis() {
+    //do something...
+}

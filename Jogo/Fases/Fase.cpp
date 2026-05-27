@@ -22,3 +22,7 @@ void Fase::criarPlataformas() {
 void Fase::criarCenario() {
     //...
 }
+
+void Fase::executar() {
+    //do something...
+}
