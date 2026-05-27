@@ -8,7 +8,7 @@ private:
 protected:
     void criarPisadeiras();
     void criarObstDificeis();
-    //void criarProjeteis();
+    void criarProjeteis();
 
 public:
     FaseSegunda();
