@@ -6,19 +6,19 @@ namespace Jogo {
     class Lista {
     private:
     // Classe aninhada Elemento de objetos da lista
-        template <class TE> // trocar por TL
-        class Elemento<TE> {
+        class Elemento { // 
         private:
-            Elemento<TE>* pProx;
-            TE* pInfo;
+            Elemento* pProx; 
+            TL* pInfo; 
+            bool dinamico;
 
         public:
-            Elemento();
+            Elemento(bool d);
             ~Elemento();
 
-            void incluir(TE* p); //const
-            void setProx (Elemento<TE>* pE); //const
-            Elemento<TE>* const getProx();
+            void incluir(TL* p); //const 
+            void setProx (Elemento* pE); //const 
+            Elemento* getProx() const;
         };
     
     // Demais atributos privados
@@ -32,5 +32,31 @@ namespace Jogo {
 
         void incluir(TL* p);
         void limpar();
+        //void executar();
     };
+
+    // ============================================= //
+    // =============== IMPLEMENTAÇÃO =============== //
+    // ============================================= //
+
+    // Implementação das funções do Elemento
+    template<class TL>
+    Lista<TL>::Elemento::Elemento(bool d)
+     : pProx(NULL), pInfo(NULL), dinamico(d) {
+        // do something...
+    }
+
+    template<class TL>
+    Lista<TL>::Elemento::~Elemento() {
+        if (d) // ATENTAR-SE A D !!!
+            delete pInfo;
+        pProx = NULL;
+        pInfo = NULL;
+    }
+
+    template<class TL>
+    typename Lista<TL>::Elemento* Lista<TL>::Elemento::getProx() const {
+
+    }
+    
 }
