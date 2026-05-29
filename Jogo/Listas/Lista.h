@@ -10,10 +10,10 @@ namespace Jogo {
         private:
             Elemento* pProx; 
             TL* pInfo; 
-            //bool dinamico;
+            bool dinamico;
 
         public:
-            Elemento(/*bool d*/);
+            Elemento(bool d);
             ~Elemento();
 
             void incluir(TL* p); //const 
@@ -30,7 +30,7 @@ namespace Jogo {
         Lista();
         virtual ~Lista();  
 
-        void incluir(TL* p);
+        void incluir(TL* p, bool d);
         void limpar();
         //void executar();
     };
@@ -41,17 +41,19 @@ namespace Jogo {
 
     // Implementação das funções do Elemento
     template<class TL>
-    Lista<TL>::Elemento::Elemento(/*bool d*/)
-     : pProx(NULL), pInfo(NULL)/*, dinamico(d)*/ {
+    Lista<TL>::Elemento::Elemento(bool d)
+     : pProx(NULL), pInfo(NULL), dinamico(d) {
         // do something...
     }
 
     template<class TL>
     Lista<TL>::Elemento::~Elemento() {
-        //if (d) // ATENTAR-SE A D !!! (pode ser que cause problemas mais tarde)
+        if (pInfo) {
+            if (d) // ATENTAR-SE A D !!! (pode ser que cause problemas mais tarde)
+                delete pInfo;
+        }
+        //if (pInfo)
         //    delete pInfo;
-        if (pInfo)
-            delete pInfo;
         pProx = NULL;
         pInfo = NULL;
     }
@@ -89,8 +91,8 @@ namespace Jogo {
 
     // Inclui info na lista
     template<class TL>
-    void Lista<TL>::incluir(TL* p) {
-        Elemento* pE = new Elemento();
+    void Lista<TL>::incluir(TL* p, bool d) {
+        Elemento* pE = new Elemento(d);
         if (!pE)
             return; // !!!
         pE->incluir(p);
@@ -115,14 +117,17 @@ namespace Jogo {
     }
 
     // Esvazia lista e desaloca elementos
-    /*
     template<class TL>
     void Lista<TL>::limpar() {
         Elemento* pAux = pPrimeiro;
 
         while (pAux != NULL) {
-            
+            Elemento* pPrev = pAux;
+            pAux = pAux->getProx();
+            delete pPrev; // elemento dinamico será desalocado na propria destrutoria de Elemento
         }
+
+        pPrimeiro = NULL;
+        pUltimo = NULL;
     }
-    */
 }
