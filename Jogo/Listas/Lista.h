@@ -10,10 +10,10 @@ namespace Jogo {
         private:
             Elemento* pProx; 
             TL* pInfo; 
-            bool dinamico;
+            //bool dinamico;
 
         public:
-            Elemento(bool d);
+            Elemento(/*bool d*/);
             ~Elemento();
 
             void incluir(TL* p); //const 
@@ -41,22 +41,88 @@ namespace Jogo {
 
     // Implementação das funções do Elemento
     template<class TL>
-    Lista<TL>::Elemento::Elemento(bool d)
-     : pProx(NULL), pInfo(NULL), dinamico(d) {
+    Lista<TL>::Elemento::Elemento(/*bool d*/)
+     : pProx(NULL), pInfo(NULL)/*, dinamico(d)*/ {
         // do something...
     }
 
     template<class TL>
     Lista<TL>::Elemento::~Elemento() {
-        if (d) // ATENTAR-SE A D !!!
+        //if (d) // ATENTAR-SE A D !!! (pode ser que cause problemas mais tarde)
+        //    delete pInfo;
+        if (pInfo)
             delete pInfo;
         pProx = NULL;
         pInfo = NULL;
     }
 
+    // Retorna prox
     template<class TL>
     typename Lista<TL>::Elemento* Lista<TL>::Elemento::getProx() const {
+        return pProx;
+    }
 
+    // Define prox
+    template<class TL>
+    void Lista<TL>::Elemento::setProx(Elemento* pE) {
+        pProx = pE;
+    }
+
+    // Define o elemento apontado por pInfo
+    template<class TL>
+    void Lista<TL>::Elemento::incluir(TL* p) {
+        pInfo = p;
     }
     
+
+    // Implementação das funções da Lista
+    template<class TL>
+    Lista<TL>::Lista() 
+     : pPrimeiro(NULL), pUltimo(NULL) {
+        limpar();
+    }
+
+    template<class TL>
+    Lista<TL>::~Lista() {
+        limpar();
+    }
+
+    // Inclui info na lista
+    template<class TL>
+    void Lista<TL>::incluir(TL* p) {
+        Elemento* pE = new Elemento();
+        if (!pE)
+            return; // !!!
+        pE->incluir(p);
+
+        // Confere se há algum elemento na lista
+        if (!(pPrimeiro && pUltimo)) {
+            pPrimeiro = pE;
+            pUltimo = pE;
+            //return;
+        }
+        else {
+            //Elemento* pAux = pPrimeiro;
+
+            // Navega até o final
+            //while (pAux != pUltimo) {
+            //    pAux = pAux->getProx;
+            //}
+            //pAux->setProx(pE);
+            pUltimo->setProx(pE); // Não foi sugerido, pode acarretar problemas
+            pUltimo = pE;
+        }
+    }
+
+    // Esvazia lista e desaloca elementos
+    /*
+    template<class TL>
+    void Lista<TL>::limpar() {
+        Elemento* pAux = pPrimeiro;
+
+        while (pAux != NULL) {
+            
+        }
+    }
+    */
 }
