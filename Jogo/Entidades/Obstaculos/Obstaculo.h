@@ -1,6 +1,8 @@
+
 #pragma once
-#include "Entidade.h"
-#include "Jogador.h"
+#include "../Entidade.h"
+#include "../Personagens/Jogador.h"
+
 class Obstaculo : public Entidade {
 protected:
     bool danoso;

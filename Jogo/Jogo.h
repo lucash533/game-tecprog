@@ -1,7 +1,7 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "../Jogador/Jogador.h"
-#include "../Inimigo/Ini_Facil.h"
+#include "Entidades/Personagens/Jogador.h"
+#include "Entidades/Personagens/Ini_Facil.h"
+
 
 class Jogo {
 private:

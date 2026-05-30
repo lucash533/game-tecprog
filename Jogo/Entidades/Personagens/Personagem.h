@@ -1,5 +1,6 @@
 #pragma once
-#include "Entidade.h"
+#include "../Entidade.h"
+
 
 class Personagem : public Entidade {
 public: // deixarei publico por enquanto para facilitar o acesso a esses atributos em jogo, depois veremos como podemos usar

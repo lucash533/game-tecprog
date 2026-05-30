@@ -1,6 +1,5 @@
 #pragma once
 #include "Inimigo.h"
-#define RAIO_DE_PERSEGUICAO 300.0f
 
 class Inim_Facil : public Inimigo
 {
