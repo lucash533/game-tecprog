@@ -1,22 +1,26 @@
 #pragma once
-#include <SFML/Graphics.hpp> // <-- Faltava isto!
+#include "Entidade.h"
 
-class Personagem {
-protected:
-    sf::RectangleShape corpo;
-    sf::Vector2f vel;
-    int num_vidas; // <-- Faltava declarar isto!
+class Personagem : public Entidade {
+public: // deixarei publico por enquanto para facilitar o acesso a esses atributos em jogo, depois veremos como podemos usar
+
+    sf::Vector2f vel; // velocidade horizontal (x) e vertical (y) base
+    int num_vidas;  // quantidade de vidas
+    float velY;  // velocidade vertical atual (afetada pela gravidade)
+    bool noChao; // controla se pode pular e se aplica gravidade
 
 public:
     Personagem();
-    ~Personagem();
+    virtual ~Personagem();
+
     void salvarDataBuffer();
     virtual void executar() = 0;
     virtual void salvar() = 0;
     virtual void mover() = 0;
 
-    // <-- Faltava declarar estas duas funções!
+    void aplicarGravidade(); // aumenta velY e move o corpo para baixo
+    void setPosition(sf::Vector2f pos); // reposiciona o corpo
     sf::Vector2f getPosicao();
-    sf::RectangleShape getCorpo();
 };
+
 

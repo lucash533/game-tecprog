@@ -1,17 +1,26 @@
 #pragma once
-namespace Jogo
-{
-	class Gerenciador_Grafico; // Remover depois de configurar o gerenciador gráfico
-	class Ente {
-	protected:
-		int id;
-		static Gerenciador_Grafico* pGG;
+#include <SFML/Graphics.hpp>
 
-	public:
-		Ente();
-		virtual ~Ente();
-		virtual void executar() = 0;
-		void desenhar();
-		static void setGG(Gerenciador_Grafico* pG);
-	};
-}
+class Gerenciador_Grafico; //Implementar Gerenciador_Grafico.h e .cpp depois
+class Figura;
+
+class Ente {
+protected:
+    int id; // identificador único do ente
+    static Gerenciador_Grafico* pGG;
+    static sf::RenderWindow* pJanela;
+    //Figura* pFig;  
+
+public:
+    Ente();
+    virtual ~Ente();
+
+    virtual void executar() = 0;
+    virtual void desenhar(sf::RenderWindow& window) = 0; // desenha na tela
+
+    static void setGG(Gerenciador_Grafico* pG);
+    static void setJanela(sf::RenderWindow* j);
+};
+
+
+
