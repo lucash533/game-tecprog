@@ -21,6 +21,10 @@ void Personagem::setPosition(sf::Vector2f pos) {
     x = pos.x;
     y = pos.y;
 }
+void Personagem::pousar() {
+	velY = 0.f;
+	noChao = true;
+}
 
 sf::Vector2f Personagem::getPosicao() {
     return corpo.getPosition();

@@ -15,7 +15,7 @@ public:
     void salvar();
     void mover(); // lê teclado e move o jogador
     void executar();
-    
+	
 };
 
 

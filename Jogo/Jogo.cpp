@@ -2,6 +2,7 @@
 
 static const float LARGURA = 900.f;
 static const float ALTURA = 700.f;
+// Estas funções devem ser excluidas depois, para dar espaço aos gerenciadores e as classes de criação de fases 
 
 Jogo::Jogo()
     : janela(sf::VideoMode((unsigned)LARGURA, (unsigned)ALTURA), "Jogo")
@@ -23,8 +24,7 @@ void Jogo::resolverColisao(Personagem& p) {
         float penetracao = (r.top + r.height) - o.top;
         if (penetracao > 0.f && penetracao < r.height) {
             p.setPosition(sf::Vector2f(r.left, r.top - penetracao));
-            p.velY = 0.f; 
-            p.noChao = true;
+			p.pousar(); 
         }
     }
 }

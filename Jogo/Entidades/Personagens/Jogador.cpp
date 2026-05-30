@@ -32,5 +32,6 @@ void Jogador::mover() {
     aplicarGravidade();
 }
 
+
 void Jogador::salvar() {}
 void Jogador::colidir(Inimigo* pIn) {}
