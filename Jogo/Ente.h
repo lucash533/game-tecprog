@@ -9,6 +9,7 @@ protected:
     int id; // identificador único do ente
     static Gerenciador_Grafico* pGG;
     static sf::RenderWindow* pJanela;
+	static int contador_id; // contador para gerar IDs únicos
     //Figura* pFig;  
 
 public:

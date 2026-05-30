@@ -3,8 +3,9 @@
 // Inicializa os ponteiros estáticos como nulos
 	Gerenciador_Grafico* Ente::pGG = nullptr;
 	sf::RenderWindow* Ente::pJanela = nullptr;
+	int Ente::contador_id = 0;
 
-	Ente::Ente() : id(0) /*pFig(nullptr)*/ {}
+	Ente::Ente() : id(contador_id++) /*pFig(nullptr)*/ {}
 	Ente::~Ente() {}
 
 	// Guarda o ponteiro do gerenciador gráfico 
