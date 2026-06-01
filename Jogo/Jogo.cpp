@@ -4,7 +4,8 @@
 // As implementações das funções dessa
 // classe foram feitas unicamente
 // para testar a estrutura do jogo,
-// e não tem a intenção de estar no jogo completo.
+// e não tem a intenção de estar no jogo completo
+// Serao excluidas ao decorrer do desenvolvimento ;)
 //---------------------------------//
 
 static const float LARGURA = 900.f;
