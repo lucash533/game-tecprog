@@ -8,7 +8,8 @@ private:
 	Jogador* alvo; // ponteiro para o jogador, usado para obter a posição do alvo
 
 public:
-    Inim_Facil();
+	Inim_Facil(); // construtor padrão, vai precisar ser excluido com a criação de fases (APENAS PARA TESTES)
+	Inim_Facil(float x, float y);// construtor para criar inimigo em posição específica
     ~Inim_Facil();
 
     void executar();

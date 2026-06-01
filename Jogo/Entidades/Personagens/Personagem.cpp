@@ -26,9 +26,7 @@ void Personagem::pousar() {
 	noChao = true;
 }
 
-sf::Vector2f Personagem::getPosicao() {
-    return corpo.getPosition();
-}
+
 
 
 

@@ -1,11 +1,18 @@
 #include "Jogo.h"
 
+// ---------------------------------//
+// As implementações das funções dessa
+// classe foram feitas unicamente
+// para testar a estrutura do jogo,
+// e não tem a intenção de estar no jogo completo.
+//---------------------------------//
+
 static const float LARGURA = 900.f;
 static const float ALTURA = 700.f;
-// Estas funções devem ser excluidas depois, para dar espaço aos gerenciadores e as classes de criação de fases 
 
 Jogo::Jogo()
-    : janela(sf::VideoMode((unsigned)LARGURA, (unsigned)ALTURA), "Jogo")
+    : janela(sf::VideoMode((unsigned)LARGURA, (unsigned)ALTURA), "Jogo"),
+    plataforma(300.f, ALTURA - 32.f - 20.f, 150.f)  // em cima do chão
 {
     janela.setFramerateLimit(60);
     inimigo.setAlvo(&jogador);
@@ -18,15 +25,17 @@ Jogo::Jogo()
 Jogo::~Jogo() {}
 
 void Jogo::resolverColisao(Personagem& p) {
+    // colisão com chão
     sf::FloatRect r = p.getCorpo().getGlobalBounds();
     sf::FloatRect o = chao.getGlobalBounds();
     if (r.intersects(o)) {
-        float penetracao = (r.top + r.height) - o.top;
-        if (penetracao > 0.f && penetracao < r.height) {
-            p.setPosition(sf::Vector2f(r.left, r.top - penetracao));
-			p.pousar(); 
+        float pen = (r.top + r.height) - o.top;
+        if (pen > 0.f && pen < r.height) {
+            p.setPosition(sf::Vector2f(r.left, r.top - pen));
+            p.pousar();
         }
     }
+    
 }
 
 void Jogo::executar() {
@@ -58,9 +67,11 @@ void Jogo::atualizar() {
 void Jogo::desenhar() {
     janela.clear(sf::Color(30, 30, 30));
     janela.draw(chao);
+    plataforma.desenhar(janela);
     jogador.desenhar(janela);
     inimigo.desenhar(janela);
     janela.display();
 }
+
 
 

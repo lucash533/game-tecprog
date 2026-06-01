@@ -10,7 +10,7 @@ protected:
 public:
     Obstaculo();
     virtual ~Obstaculo();
-	void SalvarDataBuffer();
+	void salvarDataBuffer();
     virtual void executar() = 0;
     virtual void salvar() = 0;
 	virtual void obstacularizar(Jogador* p) = 0;

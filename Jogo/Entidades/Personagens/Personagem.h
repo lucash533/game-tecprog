@@ -21,7 +21,6 @@ public:
 	void pousar(); // chamada quando o personagem colidir com o chão, para resetar o pulo
     void aplicarGravidade(); // aumenta velY e move o corpo para baixo
     void setPosition(sf::Vector2f pos); // reposiciona o corpo
-    sf::Vector2f getPosicao();
 };
 
 

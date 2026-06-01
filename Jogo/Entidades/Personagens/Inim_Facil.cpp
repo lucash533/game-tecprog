@@ -1,12 +1,20 @@
-#include "Ini_Facil.h"
+#include "Inim_Facil.h"
 #include <cmath>
 
 Inim_Facil::Inim_Facil() : raio(300.0f), alvo(nullptr)
 {
+	nivel_maldade = 1;
+	corpo.setSize(sf::Vector2f(40, 40));
+	corpo.setFillColor(sf::Color::Red);
+	corpo.setPosition(sf::Vector2f(100, 100)); // posição inicial padrão
+	vel = sf::Vector2f(3.0f, 0.0f); // velocidade horizontal base
+}
+Inim_Facil::Inim_Facil(float x, float y) : raio(300.0f), alvo(nullptr)
+{
     nivel_maldade = 1;
     corpo.setSize(sf::Vector2f(40, 40));
     corpo.setFillColor(sf::Color::Red);
-    corpo.setPosition(sf::Vector2f(400.f, 275.f));
+    corpo.setPosition(sf::Vector2f(x, y));
     vel = sf::Vector2f(3.0f, 0.0f);
 }
 

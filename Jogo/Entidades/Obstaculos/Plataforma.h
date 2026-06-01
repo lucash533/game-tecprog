@@ -3,11 +3,14 @@
 
 class Plataforma : public Obstaculo {
 public:
-    Plataforma();
+    // construtor para criar plataforma em posição específica, com largura e altura definidas (altura valor a definir)
+	Plataforma(float x, float y, float largura, float altura = 20.f); 
     ~Plataforma();
 
     void executar();
-    void obstaculizar(Personagem& p);
+    void obstacularizar(Jogador* p);
     void salvar();
+	void getPosicao();
 };
+
 
