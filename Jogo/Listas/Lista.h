@@ -5,11 +5,11 @@ namespace Jogo {
     template <class TL>
     class Lista {
     private:
-    // Classe aninhada Elemento de objetos da lista
+        // Classe aninhada Elemento de objetos da lista
         class Elemento { // 
         private:
-            Elemento* pProx; 
-            TL* pInfo; 
+            Elemento* pProx;
+            TL* pInfo;
             bool dinamico;
 
         public:
@@ -17,18 +17,19 @@ namespace Jogo {
             ~Elemento();
 
             void incluir(TL* p); //const 
-            void setProx (Elemento* pE); //const 
+            void setProx(Elemento* pE); //const 
             Elemento* getProx() const;
+            TL* getInfo() const { return pInfo; }
         };
-    
-    // Demais atributos privados
+
+        // Demais atributos privados
     private:
         Elemento<TL>* pPrimeiro;
         Elemento<TL>* pUltimo;
 
     public:
         Lista();
-        virtual ~Lista();  
+        virtual ~Lista();
 
         void incluir(TL* p, bool d);
         void limpar();
@@ -42,7 +43,7 @@ namespace Jogo {
     // Implementação das funções do Elemento
     template<class TL>
     Lista<TL>::Elemento::Elemento(bool d)
-     : pProx(NULL), pInfo(NULL), dinamico(d) {
+        : pProx(NULL), pInfo(NULL), dinamico(d) {
         // do something...
     }
 
@@ -75,12 +76,12 @@ namespace Jogo {
     void Lista<TL>::Elemento::incluir(TL* p) {
         pInfo = p;
     }
-    
+
 
     // Implementação das funções da Lista
     template<class TL>
-    Lista<TL>::Lista() 
-     : pPrimeiro(NULL), pUltimo(NULL) {
+    Lista<TL>::Lista()
+        : pPrimeiro(NULL), pUltimo(NULL) {
         limpar();
     }
 
