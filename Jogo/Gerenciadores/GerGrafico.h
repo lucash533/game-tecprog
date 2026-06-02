@@ -1,12 +1,22 @@
 #pragma once
 #include "../Ente.h"
+#include <SFML/Graphics.hpp>
 
-class GerGrafico {
-private:
+namespace Jogo {
+    
+    class GerGrafico {
+    private:
+        sf::RenderWindow* janela;
 
-public:
-    GerGrafico();
-    ~GerGrafico();
+    public:
+        GerGrafico();
+        ~GerGrafico();
 
-    void desenharEnte(Ente* pE);
-};
+        void desenharEnte(Ente* pE);
+        void limpaJanela();
+        void mostraJanela();
+
+        void fechaJanela();
+    };
+
+}
