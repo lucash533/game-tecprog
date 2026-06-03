@@ -1,10 +1,11 @@
 #include "Obstaculo.h"
 
-Obstaculo::Obstaculo() : danoso(false) {}
-Obstaculo::~Obstaculo() {}
-void Obstaculo::salvarDataBuffer() {}
+namespace Jogo {
+    Obstaculo::Obstaculo() : danoso(false) {}
+    Obstaculo::~Obstaculo() {}
+    void Obstaculo::salvarDataBuffer() {}
 
 
-//void Obstaculo::salvarDataBuffer() {}
-
+    //void Obstaculo::salvarDataBuffer() {}
+}
 
