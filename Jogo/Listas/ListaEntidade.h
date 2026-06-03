@@ -1,5 +1,5 @@
 #pragma once
-#include "../Listas/Lista.h"
+#include "Lista.h"
 #include "../Entidades/Entidade.h"
 
 

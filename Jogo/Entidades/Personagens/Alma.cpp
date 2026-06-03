@@ -1,7 +1,7 @@
-#include "Inim_Facil.h"
+#include "Alma.h"
 #include <cmath>
 
-Inim_Facil::Inim_Facil() : raio(300.0f), alvo(nullptr)
+Alma::Alma() : raio(300.0f), alvo(nullptr)
 {
 	nivel_maldade = 1;
 	corpo.setSize(sf::Vector2f(40, 40));
@@ -9,7 +9,7 @@ Inim_Facil::Inim_Facil() : raio(300.0f), alvo(nullptr)
 	corpo.setPosition(sf::Vector2f(100, 100)); // posição inicial padrão
 	vel = sf::Vector2f(3.0f, 0.0f); // velocidade horizontal base
 }
-Inim_Facil::Inim_Facil(float x, float y) : raio(300.0f), alvo(nullptr)
+Alma::Alma(float x, float y) : raio(300.0f), alvo(nullptr)
 {
     nivel_maldade = 1;
     corpo.setSize(sf::Vector2f(40, 40));
@@ -18,11 +18,11 @@ Inim_Facil::Inim_Facil(float x, float y) : raio(300.0f), alvo(nullptr)
     vel = sf::Vector2f(3.0f, 0.0f);
 }
 
-Inim_Facil::~Inim_Facil() {}
+Alma::~Alma() {}
 
-void Inim_Facil::executar() { mover(); }
+void Alma::executar() { mover(); }
 
-void Inim_Facil::mover()
+void Alma::mover()
 {
     if (alvo != nullptr)
     {
@@ -34,12 +34,12 @@ void Inim_Facil::mover()
             perseguir(pos_alvo, pos_inimigo);
         }
     }
-    aplicarGravidade();  // cai com gravidade igual ao jogador
+    // cai com gravidade igual ao jogador
 
 
 }
 // Move horizontalmente na direção do jogador
-void Inim_Facil::perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo) //Referencia: https://www.youtube.com/watch?v=HXFTzs7jzJ8&list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ&index=3
+void Alma::perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo) //Referencia: https://www.youtube.com/watch?v=HXFTzs7jzJ8&list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ&index=3
 { 
     if (pos_alvo.x - pos_inimigo.x > 0)
         corpo.move(vel.x, 0);  // jogador está à direita
@@ -47,7 +47,7 @@ void Inim_Facil::perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo) //Re
         corpo.move(-vel.x, 0); // jogador está à esquerda
 }
 
-void Inim_Facil::danificar(Jogador* p) {}
-void Inim_Facil::salvar() {}
+void Alma::danificar(Jogador* p) {}
+void Alma::salvar() {}
 
 

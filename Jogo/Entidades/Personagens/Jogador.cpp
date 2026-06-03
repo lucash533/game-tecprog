@@ -31,7 +31,14 @@ void Jogador::mover() {
     // Aplica a gravidade sempre 
     aplicarGravidade();
 }
-
+void Jogador::diminuirVelocidade() {
+	vel *= 0.5f; // Diminui a velocidade pela metade
+}
+void Jogador::atordoamento() {
+	
+    vel = sf::Vector2f(0.f, 0.f);
+    // Zera a velocidade para simular atordoamento, MASSS eu tenho q achar alguma forma para o jogador se recuperar, com algum tipo de temporizador
+}
 
 void Jogador::salvar() {}
 void Jogador::colidir(Inimigo* pIn) {}
