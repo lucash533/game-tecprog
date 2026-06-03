@@ -1,6 +1,6 @@
 #include "Obstaculo.h"
 
-namespace Jogo {
+namespace Principal {
     Obstaculo::Obstaculo() : danoso(false) {}
     Obstaculo::~Obstaculo() {}
     void Obstaculo::salvarDataBuffer() {}

@@ -2,7 +2,7 @@
 #include "Personagem.h"
 #include <SFML/Graphics.hpp>
 
-namespace Jogo {
+namespace Principal {
     class Inimigo; 
     class Jogador : public Personagem {
     public:

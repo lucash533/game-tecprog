@@ -1,7 +1,7 @@
 #pragma once
 #include "Obstaculo.h"
 
-namespace Jogo {
+namespace Principal {
 	class Armadilha :
 		public Obstaculo {
 	protected:

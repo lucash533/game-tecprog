@@ -1,7 +1,7 @@
 #include "Alma.h"
 #include <cmath>
 
-namespace Jogo {
+namespace Principal {
     Alma::Alma() : raio(500.0f), alvo(nullptr)
     {
         nivel_maldade = 1;

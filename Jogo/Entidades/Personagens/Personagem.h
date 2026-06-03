@@ -1,7 +1,7 @@
 #pragma once
 #include "../Entidade.h"
 
-namespace Jogo {
+namespace Principal {
     class Personagem : public Entidade {
     protected:
 

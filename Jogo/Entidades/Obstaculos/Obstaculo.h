@@ -2,7 +2,7 @@
 #include "../Entidade.h"
 #include "../Personagens/Jogador.h"
 
-namespace Jogo {
+namespace Principal {
     class Obstaculo : public Entidade {
     protected:
         bool danoso;

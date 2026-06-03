@@ -3,7 +3,7 @@
 //A DEFINIRR
 //
 
-namespace Jogo {
+namespace Principal {
 	Pisadeira::Pisadeira() : raio(300.0f), alvo(nullptr), tamanho(40.0f), forca(20)
 	{
 		corpo.setSize(sf::Vector2f(tamanho, tamanho));

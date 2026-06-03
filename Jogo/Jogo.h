@@ -10,25 +10,26 @@
 #include "Entidades/Personagens/Alma.h"
 #include "Entidades/Obstaculos/Plataforma.h"
 
-class Jogo {
-private:
-    sf::RenderWindow janela;
-    Jogador jogador;
-    Alma alma;
-    sf::RectangleShape chao;
-    Plataforma plataforma;
+namespace Principal {
+    class Jogo {
+    private:
+        sf::RenderWindow janela;
+        Jogador jogador;
+        Alma alma;
+        sf::RectangleShape chao;
+        Plataforma plataforma;
 
-    void processarEventos();
-    void atualizar();
-    void desenhar();
-    void resolverColisao(Personagem& p);
+        void processarEventos();
+        void atualizar();
+        void desenhar();
+        void resolverColisao(Personagem& p);
 
-public:
-    Jogo();
-    ~Jogo();
-    void executar();
-};
-
+    public:
+        Jogo();
+        ~Jogo();
+        void executar();
+    };
+}
 
 
 

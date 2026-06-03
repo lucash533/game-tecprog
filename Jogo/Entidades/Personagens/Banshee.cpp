@@ -2,7 +2,7 @@
 //
 //A DEFINIRR
 //
-namespace Jogo {
+namespace Principal {
 	Banshee::Banshee() : raio(300.0f), alvo(nullptr), tamanho(40.0f)
 	{
 		corpo.setSize(sf::Vector2f(tamanho, tamanho));

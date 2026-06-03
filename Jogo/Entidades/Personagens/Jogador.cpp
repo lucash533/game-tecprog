@@ -2,7 +2,7 @@
 #include "Inimigo.h"
 #include <SFML/Graphics.hpp>
 
-namespace Jogo {
+namespace Principal {
     Jogador::Jogador() : pontos(0) {
         corpo.setSize(sf::Vector2f(40, 40));
         corpo.setFillColor(sf::Color::Green);

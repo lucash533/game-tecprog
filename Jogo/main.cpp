@@ -1,4 +1,5 @@
 #include "Jogo.h"
+using namespace Principal;
 
 int main()
 {

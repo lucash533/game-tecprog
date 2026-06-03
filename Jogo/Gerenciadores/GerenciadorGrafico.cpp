@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
 
-namespace Jogo {
+namespace Principal {
     // Construtora para dimensões de tela customizadas
     GerenciadorGrafico::GerenciadorGrafico(unsigned altura, unsigned largura)
      : alturaJanela(altura), larguraJanela(largura) {

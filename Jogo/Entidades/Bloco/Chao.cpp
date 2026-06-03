@@ -1,6 +1,6 @@
 #include "Chao.h"
 
-namespace Jogo {
+namespace Principal {
     Chao::Chao(float x, float y, float largura)
     {
         corpo.setSize(sf::Vector2f(largura, 32.f));

@@ -1,6 +1,6 @@
 #include "Plataforma.h"
 
-namespace Jogo {
+namespace Principal {
     Plataforma::Plataforma(float x, float y, float largura, float altura) {
         // construtor para criar plataforma em posição específica, com largura e altura definidas (altura valor a definir)
         corpo.setSize(sf::Vector2f(largura, altura));

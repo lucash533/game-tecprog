@@ -1,6 +1,6 @@
 #include "Personagem.h"
 
-namespace Jogo {
+namespace Principal {
     Personagem::Personagem() : num_vidas(3), velY(0.f), noChao(false) {
     }
 

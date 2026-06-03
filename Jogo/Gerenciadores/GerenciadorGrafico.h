@@ -2,7 +2,7 @@
 #include "../Ente.h"
 #include <SFML/Graphics.hpp>
 
-namespace Jogo {
+namespace Principal {
     
     class GerenciadorGrafico {
     private:

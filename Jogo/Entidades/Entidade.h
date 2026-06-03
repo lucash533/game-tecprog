@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <sstream>
 
-namespace Jogo {
+namespace Principal {
     // Entidade adiciona forma visual e posição ao Ente
     class Entidade : public Ente {
     protected:

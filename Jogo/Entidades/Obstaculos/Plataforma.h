@@ -1,7 +1,7 @@
 #pragma once
 #include "Obstaculo.h"
 
-namespace Jogo {
+namespace Principal {
     class Plataforma : public Obstaculo {
     public:
         // construtor para criar plataforma em posição específica, com largura e altura definidas (altura valor a definir)

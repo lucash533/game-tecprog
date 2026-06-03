@@ -1,6 +1,6 @@
 #include "Inimigo.h"
 
-namespace Jogo {
+namespace Principal {
     Inimigo::Inimigo() : nivel_maldade(1) {}
     Inimigo::~Inimigo() {}
     void Inimigo::salvarDataBuffer() {}

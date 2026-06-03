@@ -2,7 +2,7 @@
 #include "Personagem.h"
 #include "Jogador.h"
 
-namespace Jogo {
+namespace Principal {
     class Inimigo : public Personagem
     {
     protected:

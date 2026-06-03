@@ -1,6 +1,6 @@
 #include "Armadilha.h"
 
-namespace Jogo {
+namespace Principal {
 	Armadilha::Armadilha(float x, float y, float largura, float altura):danosidade(1) {
 		corpo.setSize(sf::Vector2f(largura, altura));
 		corpo.setPosition(x, y);

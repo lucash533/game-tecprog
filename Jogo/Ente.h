@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace Jogo {
+namespace Principal {
     class GerenciadorGrafico; //Implementar GerenciadorGrafico.h e .cpp depois
     class Figura;
 

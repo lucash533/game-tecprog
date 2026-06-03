@@ -1,6 +1,6 @@
 #include "Lama.h"
 
-namespace Jogo {
+namespace Principal {
 	Lama::Lama(float x, float y, float largura) : largura(30.f) {
 		corpo.setSize(sf::Vector2f(largura, 20.f));
 		corpo.setPosition(x, y);

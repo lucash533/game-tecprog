@@ -4,7 +4,7 @@
 // A DEFINIRRR
 //
 
-namespace Jogo {
+namespace Principal {
 	class Banshee :
 		public Inimigo
 	{

@@ -1,6 +1,6 @@
 #include "Entidade.h"
 
-namespace Jogo {
+namespace Principal {
     Entidade::Entidade() : x(0.f), y(0.f) {
         corpo.setPosition(x, y); // posiciona o corpo na origem ao criar
     }

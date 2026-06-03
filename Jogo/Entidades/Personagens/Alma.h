@@ -1,7 +1,7 @@
 #pragma once
 #include "Inimigo.h"
 
-namespace Jogo {
+namespace Principal {
     class Alma : public Inimigo
     {
     private:

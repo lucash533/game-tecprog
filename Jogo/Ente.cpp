@@ -1,7 +1,7 @@
 #include "Ente.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
 
-namespace Jogo {
+namespace Principal {
 	// Inicializa os ponteiros estáticos como nulos
 	GerenciadorGrafico* Ente::pGG = nullptr;
 	sf::RenderWindow* Ente::pJanela = nullptr;
