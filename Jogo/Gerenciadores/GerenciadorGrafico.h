@@ -25,7 +25,6 @@ namespace Jogo {
         void mostraJanela();
 
         sf::RenderWindow* getJanela() const;
-        //const bool janelaAberta() const;
     };
 
 }

@@ -1,27 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Gerenciadores/GerenciadorGrafico.h"
 
-class Gerenciador_Grafico; //Implementar Gerenciador_Grafico.h e .cpp depois
-class Figura;
+namespace Jogo {
+    class GerenciadorGrafico; //Implementar GerenciadorGrafico.h e .cpp depois
+    class Figura;
 
-class Ente {
-protected:
-    int id; // identificador único do ente
-    static Gerenciador_Grafico* pGG;
-    static sf::RenderWindow* pJanela;
-	static int contador_id; // contador para gerar IDs únicos
-    //Figura* pFig;  
+    class Ente {
+    protected:
+        int id; // identificador único do ente
+        static GerenciadorGrafico* pGG; 
+        static sf::RenderWindow* pJanela;
+        static int contador_id; // contador para gerar IDs únicos
+        //Figura* pFig;  
 
-public:
-    Ente();
-    virtual ~Ente();
+    public:
+        Ente();
+        virtual ~Ente();
 
-    virtual void executar() = 0;
-    virtual void desenhar(sf::RenderWindow& window) = 0; // desenha na tela
+        virtual void executar() = 0;
+        virtual void desenhar(sf::RenderWindow& window) = 0; // desenha na tela
 
-    static void setGG(Gerenciador_Grafico* pG);
-    static void setJanela(sf::RenderWindow* j);
-};
-
+        static void setGG(GerenciadorGrafico* pG);
+        static void setJanela(sf::RenderWindow* j);
+    };
+}
 
 

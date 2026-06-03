@@ -3,7 +3,7 @@
 using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
 
 namespace Jogo {
-
+    // Construtora para dimensões de tela customizadas
     GerenciadorGrafico::GerenciadorGrafico(unsigned altura, unsigned largura)
      : alturaJanela(altura), larguraJanela(largura) {
         if(!janela) {
@@ -20,6 +20,7 @@ namespace Jogo {
         janela = NULL;
     }
 
+    // Função que garante o padrão de projeto singleton. Dimensões customizadas.
     GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico(unsigned altura, unsigned largura) {
         // Padrão de projeto singleton
 
@@ -32,6 +33,7 @@ namespace Jogo {
         return pGerenciador;
     }
 
+    // Função que garante o padrão de projeto singleton. Dimensões geréricas.
     GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico() {
         // Padrão de projeto singleton
 
@@ -43,18 +45,6 @@ namespace Jogo {
         }
         return pGerenciador;
     }
-
-    /*
-    void GerenciadorGrafico::criaJanela(int largura, int altura) {
-        if(!janela) {
-            janela = new sf::RenderWindow(sf::VideoMode(
-                (unsigned) largura, (unsigned) altura), 
-                "Super Irmãs Maria: Caçadoras de Fantasmas!");
-        }
-        else    
-            cerr << "ERRO! \n Tentativa de inicializar janela já existente" << endl;
-    }
-            */
 
     void GerenciadorGrafico::desenharEnte(Ente* pE) {
         pE->desenhar(*janela);
@@ -71,8 +61,6 @@ namespace Jogo {
     sf::RenderWindow* GerenciadorGrafico::getJanela() const {
         return janela;
     }
-
-    //const bool GerenciadorGrafico::janelaAberta()
 
     // FECHAR NA CLASSE JOGO
     /*

@@ -1,7 +1,9 @@
 #include "Ente.h"
+#include "Gerenciadores/GerenciadorGrafico.h"
 
-// Inicializa os ponteiros estáticos como nulos
-	Gerenciador_Grafico* Ente::pGG = nullptr;
+namespace Jogo {
+	// Inicializa os ponteiros estáticos como nulos
+	GerenciadorGrafico* Ente::pGG = nullptr;
 	sf::RenderWindow* Ente::pJanela = nullptr;
 	int Ente::contador_id = 0;
 
@@ -9,7 +11,7 @@
 	Ente::~Ente() {}
 
 	// Guarda o ponteiro do gerenciador gráfico 
-	void Ente::setGG(Gerenciador_Grafico* pG) {
+	void Ente::setGG(GerenciadorGrafico* pG) {
 		pGG = pG;
 	}
 
@@ -17,3 +19,4 @@
 	void Ente::setJanela(sf::RenderWindow* j) {
 		pJanela = j;
 	}
+}
