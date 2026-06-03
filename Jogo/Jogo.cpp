@@ -16,7 +16,7 @@ Jogo::Jogo()
     plataforma(300.f, ALTURA - 32.f - 20.f, 150.f)  // em cima do chão
 {
     janela.setFramerateLimit(60);
-    inimigo.setAlvo(&jogador);
+    alma.setAlvo(&jogador);
 
     chao.setSize(sf::Vector2f(LARGURA, 32.f));
     chao.setPosition(0.f, ALTURA - 32.f);
@@ -59,10 +59,10 @@ void Jogo::processarEventos() {
 
 void Jogo::atualizar() {
     jogador.executar();
-    inimigo.executar();
-    inimigo.danificar(&jogador);
+    alma.executar();
+    alma.danificar(&jogador);
     resolverColisao(jogador);
-    resolverColisao(inimigo);
+    resolverColisao(alma);
 }
 
 void Jogo::desenhar() {
@@ -70,7 +70,7 @@ void Jogo::desenhar() {
     janela.draw(chao);
     plataforma.desenhar(janela);
     jogador.desenhar(janela);
-    inimigo.desenhar(janela);
+    alma.desenhar(janela);
     janela.display();
 }
 

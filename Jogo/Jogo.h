@@ -7,14 +7,14 @@
 
 #pragma once
 #include "Entidades/Personagens/Jogador.h"
-#include "Entidades/Personagens/Inim_Facil.h"
+#include "Entidades/Personagens/Alma.h"
 #include "Entidades/Obstaculos/Plataforma.h"
 
 class Jogo {
 private:
     sf::RenderWindow janela;
     Jogador jogador;
-    Inim_Facil inimigo;
+    Alma alma;
     sf::RectangleShape chao;
     Plataforma plataforma;
 

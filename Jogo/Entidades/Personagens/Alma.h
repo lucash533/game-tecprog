@@ -1,16 +1,16 @@
 #pragma once
 #include "Inimigo.h"
 
-class Inim_Facil : public Inimigo
+class Alma : public Inimigo
 {
 private:
     float raio;  // distância máxima para detectar e perseguir o jogador
 	Jogador* alvo; // ponteiro para o jogador, usado para obter a posição do alvo
 
 public:
-	Inim_Facil(); // construtor padrão, vai precisar ser excluido com a criação de fases (APENAS PARA TESTES)
-	Inim_Facil(float x, float y);// construtor para criar inimigo em posição específica
-    ~Inim_Facil();
+	Alma(); // construtor padrão, vai precisar ser excluido com a criação de fases (APENAS PARA TESTES)
+	Alma(float x, float y);// construtor para criar inimigo em posição específica
+    ~Alma();
 
     void executar();
     void danificar(Jogador* p);
@@ -18,6 +18,7 @@ public:
     void mover();
 
     void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo); // move em direção ao jogador
+	void moverAletoriamente(); // movimento aleatório quando o jogador não estiver no raio de detecção
     void setAlvo(Jogador* jogador) { alvo = jogador; } // define quem perseguir
 };
 
