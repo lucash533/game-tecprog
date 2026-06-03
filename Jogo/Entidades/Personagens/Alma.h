@@ -18,6 +18,7 @@ public:
     void mover();
 
     void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo); // move em direção ao jogador
+	void moverAletoriamente(); // movimento aleatório quando o jogador não estiver no raio de detecção
     void setAlvo(Jogador* jogador) { alvo = jogador; } // define quem perseguir
 };
 
