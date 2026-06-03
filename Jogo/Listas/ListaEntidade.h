@@ -1,15 +1,16 @@
-/*#pragma once
+#pragma once
 #include "../Listas/Lista.h"
 #include "../Entidades/Entidade.h"
-class ListaEntidade
+
+class ListaEntidades
 {
 private:
-	Jogo::Lista<Entidade> LEs;
-public:
-	ListaEntidade();
-	~ListaEntidade();
-	void incluir(Entidade* pE, bool d);
-	void percorrer();
-};
-*/
+    Jogo::Lista<Entidade> LEs;
 
+public:
+    ListaEntidades();
+    ~ListaEntidades();
+
+    void incluir(Entidade* pE);
+    void percorrer(sf::RenderWindow& window);
+};
