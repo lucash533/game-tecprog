@@ -2,13 +2,10 @@
 #include <iostream>
 using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
 
-#define ALTURA 700u //float
-#define LARGURA 900u //float
-
 namespace Jogo {
 
-    GerenciadorGrafico::GerenciadorGrafico()
-     : altura(ALTURA), largura(LARGURA) {
+    GerenciadorGrafico::GerenciadorGrafico(unsigned altura, unsigned largura)
+     : alturaJanela(altura), larguraJanela(largura) {
         if(!janela) {
             janela = new sf::RenderWindow(sf::VideoMode(
                 largura, altura), 
@@ -23,13 +20,25 @@ namespace Jogo {
         janela = NULL;
     }
 
+    GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico(unsigned altura, unsigned largura) {
+        // Padrão de projeto singleton
+
+        // Garante que haja apenas um gerenciador gráfico por vez
+
+        if (pGerenciador == NULL) {
+            pGerenciador = new GerenciadorGrafico(altura, largura);
+            return pGerenciador;
+        }
+        return pGerenciador;
+    }
+
     GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico() {
         // Padrão de projeto singleton
 
         // Garante que haja apenas um gerenciador gráfico por vez
 
         if (pGerenciador == NULL) {
-            pGerenciador = new GerenciadorGrafico();
+            pGerenciador = new GerenciadorGrafico(700u, 900u);
             return pGerenciador;
         }
         return pGerenciador;

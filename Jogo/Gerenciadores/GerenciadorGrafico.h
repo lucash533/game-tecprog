@@ -9,14 +9,15 @@ namespace Jogo {
         sf::RenderWindow* janela;
 
         static GerenciadorGrafico* pGerenciador;
-        GerenciadorGrafico();
+        GerenciadorGrafico(unsigned altura, unsigned largura);
 
-        const unsigned int altura; //float
-        const unsigned int largura; //float
+        const unsigned int alturaJanela; //float
+        const unsigned int larguraJanela; //float
 
     public:
         ~GerenciadorGrafico();
 
+        static GerenciadorGrafico* getGerenciadorGrafico(unsigned altura, unsigned largura);
         static GerenciadorGrafico* getGerenciadorGrafico();
 
         void desenharEnte(Ente* pE);
