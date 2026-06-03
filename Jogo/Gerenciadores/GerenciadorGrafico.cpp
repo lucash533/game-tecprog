@@ -3,6 +3,8 @@
 using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
 
 namespace Principal {
+    Principal::GerenciadorGrafico* GerenciadorGrafico::pGerenciador = NULL;
+
     // Construtora para dimensões de tela customizadas
     GerenciadorGrafico::GerenciadorGrafico(unsigned altura, unsigned largura)
      : alturaJanela(altura), larguraJanela(largura) {
