@@ -2,17 +2,19 @@
 #include "Personagem.h"
 #include "Jogador.h"
 
-class Inimigo : public Personagem
-{
-protected:
-    int nivel_maldade;
+namespace Jogo {
+    class Inimigo : public Personagem
+    {
+    protected:
+        int nivel_maldade;
 
-public:
-    Inimigo();
-    virtual ~Inimigo();
+    public:
+        Inimigo();
+        virtual ~Inimigo();
 
-    void salvarDataBuffer();
-    virtual void executar() = 0;
-    virtual void danificar(Jogador* p) = 0;
-    virtual void salvar() = 0;
-};
+        void salvarDataBuffer();
+        virtual void executar() = 0;
+        virtual void danificar(Jogador* p) = 0;
+        virtual void salvar() = 0;
+    };
+}
