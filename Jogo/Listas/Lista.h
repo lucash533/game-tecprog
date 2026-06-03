@@ -1,10 +1,11 @@
+
 #pragma once
 
 namespace Jogo {
 
     template <class TL>
     class Lista {
-    private:
+    public:
         // Classe aninhada Elemento de objetos da lista
         class Elemento { // 
         private:
@@ -19,18 +20,20 @@ namespace Jogo {
             void incluir(TL* p); //const 
             void setProx(Elemento* pE); //const 
             Elemento* getProx() const;
+
             TL* getInfo() const { return pInfo; }
         };
 
         // Demais atributos privados
     private:
-        Elemento<TL>* pPrimeiro;
-        Elemento<TL>* pUltimo;
+        Elemento* pPrimeiro;
+        Elemento* pUltimo;
 
     public:
         Lista();
         virtual ~Lista();
-
+        Elemento* getPrimeiro() const { return pPrimeiro; }
+        Elemento* getUltimo() const { return pUltimo; }
         void incluir(TL* p, bool d);
         void limpar();
         //void executar();
@@ -43,20 +46,20 @@ namespace Jogo {
     // Implementação das funções do Elemento
     template<class TL>
     Lista<TL>::Elemento::Elemento(bool d)
-        : pProx(NULL), pInfo(NULL), dinamico(d) {
+        : pProx(nullptr), pInfo(nullptr), dinamico(d) {
         // do something...
     }
 
     template<class TL>
     Lista<TL>::Elemento::~Elemento() {
         if (pInfo) {
-            if (d) // ATENTAR-SE A D !!! (pode ser que cause problemas mais tarde)
+            if (dinamico) // ATENTAR-SE A D !!! (pode ser que cause problemas mais tarde)
                 delete pInfo;
         }
         //if (pInfo)
         //    delete pInfo;
-        pProx = NULL;
-        pInfo = NULL;
+        pProx = nullptr;
+        pInfo = nullptr;
     }
 
     // Retorna prox
@@ -81,7 +84,7 @@ namespace Jogo {
     // Implementação das funções da Lista
     template<class TL>
     Lista<TL>::Lista()
-        : pPrimeiro(NULL), pUltimo(NULL) {
+        : pPrimeiro(nullptr), pUltimo(nullptr) {
         limpar();
     }
 
@@ -122,13 +125,13 @@ namespace Jogo {
     void Lista<TL>::limpar() {
         Elemento* pAux = pPrimeiro;
 
-        while (pAux != NULL) {
+        while (pAux != nullptr) {
             Elemento* pPrev = pAux;
             pAux = pAux->getProx();
             delete pPrev; // elemento dinamico será desalocado na propria destrutoria de Elemento
         }
 
-        pPrimeiro = NULL;
-        pUltimo = NULL;
+        pPrimeiro = nullptr;
+        pUltimo = nullptr;
     }
 }

@@ -2,6 +2,8 @@
 #include "../Listas/Lista.h"
 #include "../Entidades/Entidade.h"
 
+
+
 class ListaEntidades
 {
 private:

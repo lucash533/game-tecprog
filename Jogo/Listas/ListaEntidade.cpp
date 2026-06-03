@@ -1,5 +1,4 @@
-#include "ListaEntidades.h"
-
+#include "ListaEntidade.h"
 ListaEntidades::ListaEntidades() {}
 ListaEntidades::~ListaEntidades() {}
 
@@ -19,7 +18,7 @@ void ListaEntidades::percorrer(sf::RenderWindow& window)
             pE->executar();
             pE->desenhar(window);
         }
-        pElem = pElem->getPRoximo();
+        pElem = pElem->getProx();
     }
 }
 
