@@ -13,6 +13,43 @@ namespace Principal {
     static const float ALTURA = 700.f;
 
     Jogo::Jogo()
+     : pGG(GerenciadorGrafico::getGerenciadorGrafico(ALTURA, LARGURA)) { // conferir se está funcionando
+        Ente::setGG(pGG);
+
+        executar();
+
+    }
+
+    Jogo::~Jogo() {
+        if (pGG) {
+            delete pGG;
+            pGG = NULL;
+        }
+    }
+
+    void Jogo::executar() {
+        while (pGG->getJanela()->isOpen()) {
+            sf::Event evento;
+            while (pGG->getJanela()->pollEvent(evento)) {
+                if (evento.type == sf::Event::Closed ||
+                    evento.type == sf::Event::KeyPressed && 
+                    evento.key.code == sf::Keyboard::Escape)
+                    // confere se a janela foi fechada
+                    pGG->getJanela()->close();
+
+                    pGG->limpaJanela();
+                    pGG->mostraJanela();
+            }
+        }
+    }
+}
+
+/*
+namespace Principal {
+    static const float LARGURA = 900.f;
+    static const float ALTURA = 700.f;
+
+    Jogo::Jogo()
         : janela(sf::VideoMode((unsigned)LARGURA, (unsigned)ALTURA), "Jogo"),
         plataforma(300.f, ALTURA - 32.f - 20.f, 150.f)  // em cima do chão
     {
@@ -76,4 +113,4 @@ namespace Principal {
     }
 }
 
-
+*/

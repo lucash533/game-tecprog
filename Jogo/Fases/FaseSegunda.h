@@ -1,6 +1,7 @@
 #pragma once
 #include "Fase.h"
 
+/*
 class FaseSegunda : public Fase {
 private:
     const int maxPisadeira;
@@ -15,3 +16,4 @@ public:
     ~FaseSegunda();
 
 };
+*/

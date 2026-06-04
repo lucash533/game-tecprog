@@ -1,3 +1,4 @@
+/*
 #include "FaseSegunda.h"
 
 FaseSegunda::FaseSegunda() : maxPisadeira(30) { //valor provisório para evitar erros
@@ -22,3 +23,4 @@ void FaseSegunda::criarObstDificeis() {
 void FaseSegunda::criarProjeteis() {
     //do something...
 }
+    */
