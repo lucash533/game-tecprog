@@ -1,25 +1,26 @@
-/*
 #include "Ente.h"
+#include "Gerenciadores/GerenciadorGrafico.h"
 
+namespace Principal {
+	// Inicializa os ponteiros estáticos como nulos
+	GerenciadorGrafico* Ente::pGG = nullptr;
+	sf::RenderWindow* Ente::pJanela = nullptr;
+	int Ente::contador_id = 0;
 
-namespace Jogo
-{
-	//inicialização do ponteiro para o gerenciador gráfico
-	Gerenciador_Grafico* Ente::pGG = nullptr;
+	Ente::Ente() : id(contador_id++) /*pFig(nullptr)*/ {}
+	Ente::~Ente() {}
 
-	//funções serão implementadas futuramente
-	Ente::Ente() {
-		id = 0;
-	}
-
-	Ente::~Ente() {
-	}
-
-	void Ente::desenhar() {
-	}
-	
-	void Ente::setGG(Gerenciador_Grafico* pG) {
+	// Guarda o ponteiro do gerenciador gráfico 
+	void Ente::setGG(GerenciadorGrafico* pG) {
 		pGG = pG;
 	}
+
+	// Guarda o ponteiro da janela 
+	void Ente::setJanela(sf::RenderWindow* j) {
+		pJanela = j;
+	}
+
+	GerenciadorGrafico* Ente::getGG() {
+		return pGG;
+	}
 }
-*/

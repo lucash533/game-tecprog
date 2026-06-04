@@ -1,24 +1,26 @@
 #pragma once
-/*
-#include "Ente.h"
+#include "../Ente.h"
+#include <SFML/Graphics.hpp>
+#include <sstream>
 
+namespace Principal {
+    // Entidade adiciona forma visual e posição ao Ente
+    class Entidade : public Ente {
+    protected:
+        float x, y;  // posição
+        sf::RectangleShape corpo;  // forma retangular que representa o objeto na tela
+        //std::ostream buffer; Implementar depos, não sei o que fazer com isso
 
-namespace Jogo::Entidades
-{
-	class Entidade : public Jogo::Ente {
-	protected:
-		int x;
-		int y;
-		// std::ostream buffer;
+    public:
+        Entidade();
+        virtual ~Entidade();
 
-	public:
-		Entidade();
-		virtual ~Entidade();
-		virtual void executar() = 0;
-		virtual void salvar() = 0;
+        virtual void executar() = 0;
+        virtual void desenhar(sf::RenderWindow& window); // desenha o corpo na janela
+        virtual void salvar() = 0;
 
-	protected:
-		void salvarDataBuffer();
-	};
+        void salvarDataBuffer();
+        sf::RectangleShape& getCorpo(); // retorna referência ao corpo 
+        sf::Vector2f getPosicao() const;  // retorna posição atual do corpo
+    };
 }
-*/
