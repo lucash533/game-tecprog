@@ -24,6 +24,9 @@ namespace Principal {
         void limpaJanela();
         void mostraJanela();
 
+        const unsigned int getAltura() const;
+        const unsigned int getLargura() const;
+
         sf::RenderWindow* getJanela() const;
     };
 

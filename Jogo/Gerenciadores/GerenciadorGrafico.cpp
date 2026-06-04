@@ -64,6 +64,14 @@ namespace Principal {
         return janela;
     }
 
+    const unsigned int GerenciadorGrafico::getAltura() const {
+        return alturaJanela;
+    }
+
+    const unsigned int GerenciadorGrafico::getLargura() const {
+        return larguraJanela;
+    }
+
     // FECHAR NA CLASSE JOGO
     /*
     void GerenciadorGrafico::fechaJanela() {

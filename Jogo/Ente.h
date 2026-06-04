@@ -22,6 +22,7 @@ namespace Principal {
 
         static void setGG(GerenciadorGrafico* pG);
         static void setJanela(sf::RenderWindow* j);
+        static GerenciadorGrafico* getGG(); //
     };
 }
 

@@ -8,7 +8,7 @@ namespace Principal {
     public:
         // Classe aninhada Elemento de objetos da lista
         class Elemento { // 
-        private:
+        public: // private
             Elemento* pProx;
             TL* pInfo;
             bool dinamico;
@@ -36,6 +36,7 @@ namespace Principal {
         Elemento* getUltimo() const { return pUltimo; }
         void incluir(TL* p, bool d);
         void limpar();
+        void remover(TL* elemento);
         //void executar();
     };
 
@@ -133,5 +134,23 @@ namespace Principal {
 
         pPrimeiro = nullptr;
         pUltimo = nullptr;
+    }
+
+    template<class TL>
+    void Lista<TL>::remover(TL* elemento) {
+        Elemento* pAtual = pPrimeiro;
+        Elemento* pAnterior = NULL;
+
+        while (pAtual->getInfo() != elemento &&
+               pAtual != NULL) {
+            pAnterior = pAtual;
+            pAtual = pAtual->getProx();
+           }
+        if (pAtual->getInfo() == elemento) {
+            pAnterior->setProx(pAtual->getProx());
+            if (pAtual->dinamico)
+                delete pAtual->getInfo();
+            delete pAtual;
+        }
     }
 }

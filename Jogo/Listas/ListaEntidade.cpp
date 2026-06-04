@@ -18,7 +18,7 @@ namespace Principal {
             if (pE)
             {
                 pE->executar();
-                pE->desenhar(window);
+                pE->desenhar(window); // mudar
             }
             pElem = pElem->getProx();
         }

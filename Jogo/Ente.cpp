@@ -19,4 +19,8 @@ namespace Principal {
 	void Ente::setJanela(sf::RenderWindow* j) {
 		pJanela = j;
 	}
+
+	GerenciadorGrafico* Ente::getGG() {
+		return pGG;
+	}
 }
