@@ -18,7 +18,8 @@ namespace Principal {
     }
 
     GerenciadorGrafico::~GerenciadorGrafico() {
-        janela->close();
+        if (janela->isOpen())
+            janela->close();
         janela = NULL;
     }
 

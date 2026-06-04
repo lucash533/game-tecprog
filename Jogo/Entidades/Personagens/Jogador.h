@@ -17,7 +17,7 @@ namespace Principal {
         void mover(); // lê teclado e move o jogador
         void executar();
         void diminuirVelocidade(); //a forma que eu vi de diminuir a velocidade do jogador caso haja o efeito da lama
-        void atordoamento(); //efeito de atordoamento quando o jogador é preso na armadilha
+        void adicionarPontos(int p);
         
     };
 }

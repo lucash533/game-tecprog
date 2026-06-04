@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-#pragma once
-#include "Entidades/Personagens/Jogador.h"
-
-
-class Jogo {
-private:
-    //GerenciadorGrafico GG;
-    Jogador pJog1; //Talvez seja um ponteiro, modelo UML está ambíguo
-
-protected:
-
-
-public:
-    Jogo();
-    ~Jogo();
-
-    void executar();
-};
-=======
 // ---------------------------------//
 // As implementações das funções dessa
 // classe foram feitas unicamente
@@ -27,9 +7,34 @@ public:
 
 #pragma once
 #include "Entidades/Personagens/Jogador.h"
-#include "Entidades/Personagens/Alma.h"
-#include "Entidades/Obstaculos/Plataforma.h"
+#include "Fases/FasePrimeira.h"
+#include "Ente.h"
+#include "Gerenciadores/GerenciadorGrafico.h"
+//#include "Entidades/Personagens/Alma.h"
+//#include "Entidades/Obstaculos/Plataforma.h"
 
+namespace Principal {
+    class Jogo {
+    private:
+        Jogador jogador1;
+        Jogador jogador2;
+
+        GerenciadorGrafico* pGG;
+
+        FasePrimeira fase1;
+
+        //menu
+
+    public:
+        Jogo();
+        ~Jogo();
+
+        void executar();
+    };
+}
+
+
+/*
 namespace Principal {
     class Jogo {
     private:
@@ -51,6 +56,5 @@ namespace Principal {
     };
 }
 
+*/
 
-
->>>>>>> origin/master

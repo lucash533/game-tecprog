@@ -14,5 +14,6 @@ namespace Principal {
         void incluir(Entidade* pE, bool d);
         void percorrer(sf::RenderWindow& window);
         void limpar();
+		void limparMortos(); // nova função para limpar entidades mortas
     };
 }

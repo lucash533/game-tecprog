@@ -1,18 +1,5 @@
 #include "Jogo.h"
 
-<<<<<<< HEAD
-Jogo::Jogo() {
-    //...
-}
-
-Jogo::~Jogo() {
-    //...
-}
-
-void Jogo::executar() {
-    //...
-}
-=======
 // ---------------------------------//
 // As implementações das funções dessa
 // classe foram feitas unicamente
@@ -21,6 +8,43 @@ void Jogo::executar() {
 // Serao excluidas ao decorrer do desenvolvimento ;)
 //---------------------------------//
 
+namespace Principal {
+    static const float LARGURA = 900.f;
+    static const float ALTURA = 700.f;
+
+    Jogo::Jogo()
+     : pGG(GerenciadorGrafico::getGerenciadorGrafico(ALTURA, LARGURA)) { // conferir se está funcionando
+        Ente::setGG(pGG);
+
+        executar();
+
+    }
+
+    Jogo::~Jogo() {
+        if (pGG) {
+            delete pGG;
+            pGG = NULL;
+        }
+    }
+
+    void Jogo::executar() {
+        while (pGG->getJanela()->isOpen()) {
+            sf::Event evento;
+            while (pGG->getJanela()->pollEvent(evento)) {
+                if (evento.type == sf::Event::Closed ||
+                    evento.type == sf::Event::KeyPressed && 
+                    evento.key.code == sf::Keyboard::Escape)
+                    // confere se a janela foi fechada
+                    pGG->getJanela()->close();
+
+                    pGG->limpaJanela();
+                    pGG->mostraJanela();
+            }
+        }
+    }
+}
+
+/*
 namespace Principal {
     static const float LARGURA = 900.f;
     static const float ALTURA = 700.f;
@@ -89,5 +113,4 @@ namespace Principal {
     }
 }
 
-
->>>>>>> origin/master
+*/
