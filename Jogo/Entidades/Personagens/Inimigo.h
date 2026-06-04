@@ -1,28 +1,20 @@
 #pragma once
 #include "Personagem.h"
 #include "Jogador.h"
-#include <SFML/Graphics.hpp>
-#define RAIO_DE_PERSEGUICAO 300.0f
 
-class Inimigo : public Personagem
-{
-private:
-	Jogador* alvo;
-	short movi_aleatorio;
+namespace Principal {
+    class Inimigo : public Personagem
+    {
+    protected:
+        int nivel_maldade;
 
-protected:
-	int nivel_maldade;
+    public:
+        Inimigo();
+        virtual ~Inimigo();
 
-public:
-	Inimigo();
-	~Inimigo();
-	void salvarDataBuffer();
-	virtual void executar();
-	void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo);
-	void moverAleatorio();
-	void mover();
-	void desenhar(sf::RenderWindow& window);
-	virtual void salvar();
-	void setAlvo(Jogador* jogador) { alvo = jogador; }
-};
-
+        void salvarDataBuffer();
+        virtual void executar() = 0;
+        virtual void danificar(Jogador* p) = 0;
+        virtual void salvar() = 0;
+    };
+}
