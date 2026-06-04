@@ -11,7 +11,8 @@ namespace Principal {
         ListaEntidades();
         ~ListaEntidades();
 
-        void incluir(Entidade* pE);
+        void incluir(Entidade* pE, bool d);
         void percorrer(sf::RenderWindow& window);
+        void limpar();
     };
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Listas/ListaEntidade.h"
+#include "../Entidades/Personagens/Jogador.h"
 
 namespace Principal {
     class Fase {
@@ -18,11 +19,18 @@ namespace Principal {
         virtual void criarInimigos() = 0;
         virtual void criarObstaculo() = 0;
 
+
         void sementear();
 
     public:
         Fase();
         virtual ~Fase();
+
+        virtual void inicializaFase() = 0;
+        void limpaFase();
+        // salvaFase() carregaFase()
+
+        void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL);
 
         virtual void executar();
 

@@ -4,9 +4,9 @@ namespace Principal {
     ListaEntidades::ListaEntidades() {}
     ListaEntidades::~ListaEntidades() {}
 
-    void ListaEntidades::incluir(Entidade* pE)
+    void ListaEntidades::incluir(Entidade* pE, bool d)
     {
-        LEs.incluir(pE, false);
+        LEs.incluir(pE, d);
     }
 
     void ListaEntidades::percorrer(sf::RenderWindow& window)
@@ -22,5 +22,9 @@ namespace Principal {
             }
             pElem = pElem->getProx();
         }
+    }
+
+    void ListaEntidades::limpar() {
+        LEs.limpar();
     }
 }

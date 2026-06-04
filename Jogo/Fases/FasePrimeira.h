@@ -1,18 +1,25 @@
 #pragma once
 #include "Fase.h"
 
-class FasePrimeira : public Fase {
-private:
-    const int maxAlmaPenada;
+namespace Principal {
+    class FasePrimeira : public Fase {
+    private:
+        const int maxBanshee;
+        //const int maxObstaculoMedio;
 
-protected:
-    void criarBanshees();
-    void criarObstMedios(); // Atualizar nome
+    protected:
+        void criarBanshees();
+        void criarObstMedios(); // Atualizar nome
+        void criarInimigos();
+        void criarObstaculo();
 
-public:
-    FasePrimeira();
-    ~FasePrimeira();
+    public:
+        FasePrimeira();
+        ~FasePrimeira();
 
+        
+        void inicializaFase();
+        //void limpaFase()
 
-
-};
+    };
+}
