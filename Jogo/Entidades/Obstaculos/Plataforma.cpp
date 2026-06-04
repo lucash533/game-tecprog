@@ -9,7 +9,7 @@ namespace Principal {
     }
     Plataforma::~Plataforma() {}
 
-    void Plataforma::executar() {}
+    void Plataforma::executar() { aplicarGravidade(); }
     //acredito que não tem nada a fazer aqui, tal função será mais complexa quando eu implementar os obstaculo medio e dificil
     void Plataforma::obstacularizar(Jogador* p) {}
     void Plataforma::salvar() {}

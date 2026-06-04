@@ -9,7 +9,12 @@ namespace Principal {
     protected:
         float x, y;  // posição
         sf::RectangleShape corpo;  // forma retangular que representa o objeto na tela
-        //std::ostream buffer; Implementar depos, não sei o que fazer com isso
+        std::ostream buffer; //Implementar depos, não sei o que fazer com isso
+        bool noChao; // controla se pode pular e se aplica gravidade
+        float velY;  // velocidade vertical atual (afetada pela gravidade)
+		bool vivo; // controla se a entidade está ativa no jogo (pode ser usada para remover inimigos mortos, por exemplo)
+
+
 
     public:
         Entidade();
@@ -20,7 +25,12 @@ namespace Principal {
         virtual void salvar() = 0;
 
         void salvarDataBuffer();
+        void setPosition(sf::Vector2f pos); 
         sf::RectangleShape& getCorpo(); // retorna referência ao corpo 
         sf::Vector2f getPosicao() const;  // retorna posição atual do corpo
+		virtual void aplicarGravidade(); // Agora com comportamento real aqui, para ser chamado no executar() dos personagens
+		void pousar(); // chamada quando o personagem colidir com o chão, para resetar o pulo
+		bool getVivo() const; // retorna se a entidade está viva
+		void setVivo(bool v); // define se a entidade está viva ou não
     };
 }

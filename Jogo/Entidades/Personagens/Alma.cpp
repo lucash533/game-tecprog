@@ -21,7 +21,8 @@ namespace Principal {
 
     Alma::~Alma() {}
 
-    void Alma::executar() { mover(); }
+
+    void Alma::executar() { mover(); aplicarGravidade(); }
 
     void Alma::mover()
     {

@@ -11,12 +11,14 @@ namespace Principal {
 	Armadilha::~Armadilha() {}
 	void Armadilha::executar() 
 	{
-
+		aplicarGravidade();
 	}
 	void Armadilha::obstacularizar(Jogador* p) {
 		
 		//alguma forma de diminuir a vida do jogador
-		p->atordoamento();
+		//será aqui que o jogador levara dano e colidirá
+		setVivo(false);// A armadilha se torna inativa após ser acionada
+
 	}
 	void Armadilha::salvar() {
 		// Implementação do método salvar

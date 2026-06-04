@@ -138,6 +138,8 @@ namespace Principal {
 
     template<class TL>
     void Lista<TL>::remover(TL* elemento) {
+
+
         Elemento* pAtual = pPrimeiro;
         Elemento* pAnterior = NULL;
 
