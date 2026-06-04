@@ -1,18 +1,5 @@
 #include "Jogo.h"
 
-<<<<<<< HEAD
-Jogo::Jogo() {
-    //...
-}
-
-Jogo::~Jogo() {
-    //...
-}
-
-void Jogo::executar() {
-    //...
-}
-=======
 // ---------------------------------//
 // As implementações das funções dessa
 // classe foram feitas unicamente
@@ -90,4 +77,3 @@ namespace Principal {
 }
 
 
->>>>>>> origin/master

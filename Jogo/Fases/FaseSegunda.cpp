@@ -18,13 +18,7 @@ void FaseSegunda::criarObstDificeis() {
     // do something...
 }
 
-<<<<<<< HEAD
-// Cria projeteis
-void FaseSegunda::criarProjeteis() {
-    // do something...
-=======
 // Cria projéteis da fase
 void FaseSegunda::criarProjeteis() {
     //do something...
->>>>>>> origin/Fases
 }
