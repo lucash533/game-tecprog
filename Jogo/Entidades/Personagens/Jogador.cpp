@@ -5,7 +5,7 @@
 namespace Principal {
     Jogador::Jogador() : pontos(0) {
         corpo.setSize(sf::Vector2f(40, 40));
-        corpo.setFillColor(sf::Color::Green);
+        corpo.setFillColor(sf::Color::White);
         corpo.setPosition(sf::Vector2f(100.f, 275.f));
 
         //velocidade horizontal 5.0f

@@ -12,6 +12,7 @@ namespace Principal {
             janela = new sf::RenderWindow(sf::VideoMode(
                 largura, altura), 
                 "Super Irmãs Maria: Caçadoras de Fantasmas!");
+            janela->setFramerateLimit(60); // MUITO IMPORTANTE, NÃO ESQUECER DE DEFINIR O LIMITE DE FRAMERATE
         }
         else    
             cerr << "ERRO! \n Tentativa de inicializar janela já existente" << endl;

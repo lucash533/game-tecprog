@@ -9,7 +9,7 @@ namespace Principal {
     protected:
         float x, y;  // posição
         sf::RectangleShape corpo;  // forma retangular que representa o objeto na tela
-        std::ostream buffer; //Implementar depos, não sei o que fazer com isso
+        //std::ostream buffer; //Implementar depos, não sei o que fazer com isso
         bool noChao; // controla se pode pular e se aplica gravidade
         float velY;  // velocidade vertical atual (afetada pela gravidade)
 		bool vivo; // controla se a entidade está ativa no jogo (pode ser usada para remover inimigos mortos, por exemplo)
