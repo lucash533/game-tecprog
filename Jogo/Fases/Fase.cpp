@@ -4,6 +4,7 @@
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Ente.h"
 #include "../Gerenciadores/GerenciadorGrafico.h"
+
 #include <cstdlib> //talvez errado .h //stdlib.h
 #include <time.h>
 
@@ -50,7 +51,8 @@ namespace Principal {
 
     // ???
     void Fase::criarCenario() {
-        //...
+        //Sala* pS = new Sala(700, 900);
+        
     }
 
     void Fase::executar() {
