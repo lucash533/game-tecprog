@@ -6,6 +6,7 @@
 namespace Principal {
 	Pisadeira::Pisadeira() : raio(300.0f), alvo(nullptr), tamanho(40.0f), forca(20)
 	{
+		//id = Principal::ID_PISADEIRA;
 		corpo.setSize(sf::Vector2f(tamanho, tamanho));
 		corpo.setFillColor(sf::Color::Yellow);
 		corpo.setPosition(sf::Vector2f(100, 100)); // posição inicial padrão

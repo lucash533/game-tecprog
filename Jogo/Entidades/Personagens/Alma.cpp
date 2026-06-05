@@ -4,6 +4,7 @@
 namespace Principal {
     Alma::Alma() : raio(500.0f), alvo(nullptr)
     {
+		//id = Principal::ID_ALMA;
         nivel_maldade = 1;
         corpo.setSize(sf::Vector2f(40, 40));
         corpo.setFillColor(sf::Color::Red);

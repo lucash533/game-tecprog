@@ -44,4 +44,6 @@ namespace Principal {
 	bool Entidade::getVivo() const {
 		return vivo;
 	}
+    sf::Vector2f Entidade::getTam() const 
+    { return corpo.getSize(); }
 }

@@ -4,6 +4,7 @@
 
 namespace Principal {
     Jogador::Jogador() : pontos(0) {
+		//id = Principal::ID_JOGADOR;
         corpo.setSize(sf::Vector2f(40, 40));
         corpo.setFillColor(sf::Color::Green);
         corpo.setPosition(sf::Vector2f(100.f, 275.f));
@@ -41,6 +42,9 @@ namespace Principal {
    }
 
     void Jogador::salvar() {}
-    void Jogador::colidir(Inimigo* pIn) {}
+    void Jogador::colidir(Inimigo* pIn)
+    {
+
+    }
 
 }

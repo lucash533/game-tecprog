@@ -2,6 +2,7 @@
 
 namespace Principal {
 	Armadilha::Armadilha(float x, float y, float largura, float altura):danosidade(1) {
+		//id = Principal::ID_PLATAFORMA;
 		corpo.setSize(sf::Vector2f(largura, altura));
 		corpo.setPosition(x, y);
 		corpo.setFillColor(sf::Color::Red);
