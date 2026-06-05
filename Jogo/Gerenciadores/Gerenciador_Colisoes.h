@@ -6,6 +6,7 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
+#include <cmath>
 
 namespace Principal {
     namespace Gerenciador {
