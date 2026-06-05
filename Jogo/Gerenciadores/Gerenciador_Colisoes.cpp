@@ -48,18 +48,18 @@ namespace Principal {
                     sf::FloatRect rJog = pJog1->getCorpo().getGlobalBounds();
                     sf::FloatRect rIni = ini->getCorpo().getGlobalBounds();
 
-                    // jogador veio de cima se o pé dele está perto do topo do inimigo
-                    float peJog = rJog.top + rJog.height;
-                    float topoIni = rIni.top;
+					float peJog = rJog.top + rJog.height; // posição do "pé" do jogador (parte inferior)
+					float topoIni = rIni.top; // posição do topo do inimigo (parte superior)
 
-                    if (peJog <= topoIni + 15.f)  // margem de 15px
+                    if (peJog <= topoIni + 5.f)
                     {
-                        ini->danificar(pJog1);  // inimigo morre
+                        // jogador pisou em cima
+                        ini->setVivo(false);
                         pJog1->adicionarPontos(100);
-                        pJog1->pousar();  // jogador quica em cima
+                        pJog1->pousar();
                     }
                     else
-                        ini->danificar(pJog1);  // jogador leva dano
+                        ini->danificar(pJog1);  // colisão de lado
                 }
             }
         }

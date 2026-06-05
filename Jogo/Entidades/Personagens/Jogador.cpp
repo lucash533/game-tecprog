@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
-    Jogador::Jogador() : pontos(0) {
+    Jogador::Jogador() : pontos(0)  {
 		//id = Principal::ID_JOGADOR;
+		num_vidas = 3;
         corpo.setSize(sf::Vector2f(40, 40));
         corpo.setFillColor(sf::Color::White);
         corpo.setPosition(sf::Vector2f(100.f, 275.f));
@@ -44,7 +45,7 @@ namespace Principal {
     void Jogador::salvar() {}
     void Jogador::colidir(Inimigo* pIn)
     {
-        --(*this);  // usa operator-- de Personagem, perde uma vida
+		operator--(); // perde uma vida        
     }
 
 

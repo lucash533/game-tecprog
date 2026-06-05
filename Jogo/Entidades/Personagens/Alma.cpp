@@ -57,7 +57,10 @@ namespace Principal {
         //a implementar
     }
 
-    void Alma::danificar(Jogador* p) {}
+    void Alma::danificar(Jogador* p) 
+    {
+        p->colidir(this);
+    }
     void Alma::salvar() {}
 }
 
