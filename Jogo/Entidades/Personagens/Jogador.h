@@ -7,8 +7,7 @@ namespace Principal {
     class Jogador : public Personagem {
     public:
         int pontos;
-        Inimigo* pIn; // ponteiro para inimigo (usado na colisão futuramente)
-
+        Inimigo* pIn; // ponteiro para inimigo (usado na colisão futuramente) 
     public:
         Jogador();
         ~Jogador();
@@ -18,6 +17,8 @@ namespace Principal {
         void executar();
         void diminuirVelocidade(); //a forma que eu vi de diminuir a velocidade do jogador caso haja o efeito da lama
         void adicionarPontos(int p);
+       
+		
         
     };
 }

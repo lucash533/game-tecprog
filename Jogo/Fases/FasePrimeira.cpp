@@ -41,7 +41,7 @@ namespace Principal {
 
     void FasePrimeira::criarInimigos() {
         criarAlmasPenadas();
-        criarBanshees();
+        //criarBanshees();
     }
 
     void FasePrimeira::criarObstaculo() {

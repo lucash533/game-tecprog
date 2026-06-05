@@ -1,6 +1,7 @@
 #pragma once
 #include "../Listas/ListaEntidade.h"
 #include "../Entidades/Personagens/Jogador.h"
+//#include "../Entidades/Bloco/Sala.h"
 
 namespace Principal {
     class Fase {
@@ -14,7 +15,7 @@ namespace Principal {
 
         void criarAlmasPenadas(); 
         void criarPlataformas();
-        void criarCenario();
+        void criarCenario(); // escolher imagem
 
         virtual void criarInimigos() = 0;
         virtual void criarObstaculo() = 0;

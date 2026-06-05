@@ -6,7 +6,7 @@ namespace Principal {
     Jogador::Jogador() : pontos(0) {
 		//id = Principal::ID_JOGADOR;
         corpo.setSize(sf::Vector2f(40, 40));
-        corpo.setFillColor(sf::Color::Green);
+        corpo.setFillColor(sf::Color::White);
         corpo.setPosition(sf::Vector2f(100.f, 275.f));
 
         //velocidade horizontal 5.0f
@@ -44,7 +44,8 @@ namespace Principal {
     void Jogador::salvar() {}
     void Jogador::colidir(Inimigo* pIn)
     {
-
+        --(*this);  // usa operator-- de Personagem, perde uma vida
     }
+
 
 }

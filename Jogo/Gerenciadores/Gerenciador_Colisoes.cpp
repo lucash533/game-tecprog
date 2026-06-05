@@ -38,11 +38,29 @@ namespace Principal {
             }
         }
  
-        void Gerenciador_Colisoes::tratarColisoesJogsInimgs() {
-            for (std::vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it) {
+        void Gerenciador_Colisoes::tratarColisoesJogsInimgs()
+        {
+            for (std::vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it)
+            {
                 Inimigo* ini = *it;
                 if (ini->getVivo() && verificarColisao(pJog1, ini))
-                    ini->danificar(pJog1); // inimigo decide o que fazer com o jogador
+                {
+                    sf::FloatRect rJog = pJog1->getCorpo().getGlobalBounds();
+                    sf::FloatRect rIni = ini->getCorpo().getGlobalBounds();
+
+                    // jogador veio de cima se o pé dele está perto do topo do inimigo
+                    float peJog = rJog.top + rJog.height;
+                    float topoIni = rIni.top;
+
+                    if (peJog <= topoIni + 15.f)  // margem de 15px
+                    {
+                        ini->danificar(pJog1);  // inimigo morre
+                        pJog1->adicionarPontos(100);
+                        pJog1->pousar();  // jogador quica em cima
+                    }
+                    else
+                        ini->danificar(pJog1);  // jogador leva dano
+                }
             }
         }
  

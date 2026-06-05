@@ -10,8 +10,12 @@
 #include "Fases/FasePrimeira.h"
 #include "Ente.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
-//#include "Entidades/Personagens/Alma.h"
+
 //#include "Entidades/Obstaculos/Plataforma.h"
+//#include "Entidades/Personagens/Alma.h"
+
+#include "Entidades/Bloco/Sala.h" // provisorio
+
 
 namespace Principal {
     class Jogo {
@@ -23,6 +27,8 @@ namespace Principal {
 
         FasePrimeira fase1;
 
+        Sala sala1;
+
         //menu
 
     public:
@@ -32,7 +38,7 @@ namespace Principal {
         void executar();
     };
 }
-
+//*/
 
 /*
 namespace Principal {
@@ -56,5 +62,5 @@ namespace Principal {
     };
 }
 
-*/
+//*/
 

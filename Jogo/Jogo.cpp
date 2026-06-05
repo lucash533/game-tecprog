@@ -8,13 +8,17 @@
 // Serao excluidas ao decorrer do desenvolvimento ;)
 //---------------------------------//
 
+
 namespace Principal {
     static const float LARGURA = 900.f;
     static const float ALTURA = 700.f;
 
     Jogo::Jogo()
-     : pGG(GerenciadorGrafico::getGerenciadorGrafico(ALTURA, LARGURA)) { // conferir se está funcionando
+     : pGG(GerenciadorGrafico::getGerenciadorGrafico(ALTURA, LARGURA)), // CONFERIR SE ESTÁ FUNCIONANDO
+       sala1(ALTURA, LARGURA) { // conferir se está funcionando
         Ente::setGG(pGG);
+
+        jogador1.setPosition(sf::Vector2f(100.f, 100.f));
 
         executar();
 
@@ -37,12 +41,19 @@ namespace Principal {
                     // confere se a janela foi fechada
                     pGG->getJanela()->close();
 
-                    pGG->limpaJanela();
-                    pGG->mostraJanela();
+
             }
+
+            pGG->limpaJanela();
+            jogador1.executar();
+            sala1.limitar(&jogador1);
+            pGG->desenharEnte(&sala1);
+            pGG->desenharEnte(&jogador1);
+            pGG->mostraJanela();
         }
     }
 }
+//*/
 
 /*
 namespace Principal {
@@ -51,7 +62,7 @@ namespace Principal {
 
     Jogo::Jogo()
         : janela(sf::VideoMode((unsigned)LARGURA, (unsigned)ALTURA), "Jogo"),
-        plataforma(300.f, ALTURA - 32.f - 20.f, 150.f)  // em cima do chão
+        plataforma{300.f, ALTURA - 32.f - 20.f, 150.f}  // em cima do chão
     {
         janela.setFramerateLimit(60);
         alma.setAlvo(&jogador);
@@ -113,4 +124,4 @@ namespace Principal {
     }
 }
 
-*/
+//*/
