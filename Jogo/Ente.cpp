@@ -8,7 +8,7 @@ namespace Principal {
 	GerenciadorGrafico* Ente::pGG = nullptr;
 	sf::RenderWindow* Ente::pJanela = nullptr;
 
-	Ente::Ente() : id(0) /*pFig(nullptr) ???*/ {}
+	Ente::Ente() : id(0) {}
 	Ente::~Ente() {}
 
 	// Guarda o ponteiro do gerenciador gráfico 
@@ -21,6 +21,7 @@ namespace Principal {
 		pJanela = j;
 	}
 
+	// Retorna gerenciador (talvez seja bom deixar const essas e mais outras funções get)
 	GerenciadorGrafico* Ente::getGG() {
 		return pGG;
 	}

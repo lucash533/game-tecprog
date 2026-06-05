@@ -1,7 +1,6 @@
 #include "FasePrimeira.h"
 #include "../Entidades/Personagens/Banshee.h"
-//#include "../Entidades/" // OBSTACULO MEDIO
-//#include <cstdlib>
+//#include "../Entidades/" // LAMA
 
 namespace Principal {
     FasePrimeira::FasePrimeira() : maxBanshee(5), minhaSala(alturaFase, larguraFase) {
@@ -13,6 +12,7 @@ namespace Principal {
     }
 
     // Cria inimigos médios
+    // VIDE criarAlmas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     void FasePrimeira::criarBanshees() {
         sementear();
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
@@ -25,7 +25,8 @@ namespace Principal {
         }
     }
 
-    // Cria obstáculos médios (ainda sem identidade)
+    // VIDE criarPlataformas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
+    // Cria lamas
     void FasePrimeira::criarLamas() {
         sementear();
         //int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
@@ -71,7 +72,7 @@ namespace Principal {
         listaE.percorrer();
         // resolver colisões entre as entidades
         GC.executar();
-        listaE.desenhaTodos(*janela);
+        listaE.desenhaTodos(*janela); // Nota: foi necessário separar a colisão e a renderização em duas funções diferentes
     }
 
 }

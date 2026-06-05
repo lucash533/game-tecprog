@@ -11,10 +11,10 @@ namespace Principal {
         ListaEntidades();
         ~ListaEntidades();
 
-        void incluir(Entidade* pE, bool d);
-        void percorrer();
-        void desenhaTodos(sf::RenderWindow& janela);
-        void limpar();
+        void incluir(Entidade* pE, bool d); // Inclui elemento na lista
+        void percorrer(); // Percorre e executa elementos
+        void desenhaTodos(sf::RenderWindow& janela); // Percorre e desenha elementos
+        void limpar(); // Esvazia lista
 		void limparMortos(); // nova função para limpar entidades mortas
     };
 }

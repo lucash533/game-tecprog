@@ -6,7 +6,7 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
-#include "../Entidades/Bloco/Sala.h" //
+#include "../Entidades/Bloco/Sala.h" 
 
 namespace Principal {
     class Gerenciador_Colisoes {
@@ -14,9 +14,9 @@ namespace Principal {
         std::vector<Inimigo*>   LIs;
         std::list<Obstaculo*>   LOs;
         //std::set<Projetil*>     LPs;
-        Sala* minhaSala; // FAZER COLISÃO SALA/ENTIDADES
-        Jogador* pJog1; // aterrar
-        Jogador* pJog2; // aterrar
+        Sala* minhaSala; 
+        Jogador* pJog1; 
+        Jogador* pJog2; 
 
         const bool verificarColisao(Entidade* pe1, Entidade* pe2) const;
         void tratarColisoesJogsObstacs();

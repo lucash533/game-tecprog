@@ -9,6 +9,7 @@ namespace Principal {
         LEs.incluir(pE, d);
     }
 
+    // Percorre e executa elementos
     void ListaEntidades::percorrer()
     {
         Lista<Entidade>::Elemento* pElem = LEs.getPrimeiro();
@@ -18,12 +19,12 @@ namespace Principal {
             if (pE)
             {
                 pE->executar();
-                //pE->desenhar(window); //
             }
             pElem = pElem->getProx();
         }
     }
 
+    // Percorre e desenha elementos
     void ListaEntidades::desenhaTodos(sf::RenderWindow& janela) {
         Lista<Entidade>::Elemento* pElem = LEs.getPrimeiro();
         while (pElem != nullptr)

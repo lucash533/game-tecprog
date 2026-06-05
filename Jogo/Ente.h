@@ -4,15 +4,12 @@
 namespace Principal {
     class GerenciadorGrafico;
 
-    //class Figura; ??
-
     class Ente {
     protected:
         int id; // identificador único do ente
         static GerenciadorGrafico* pGG; 
         static sf::RenderWindow* pJanela;
         static int contador_id; // contador para gerar IDs únicos
-        //Figura* pFig;  ??
 
     public:
         Ente();
