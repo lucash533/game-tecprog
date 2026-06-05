@@ -9,7 +9,7 @@ namespace Principal {
         LEs.incluir(pE, d);
     }
 
-    void ListaEntidades::percorrer(sf::RenderWindow& window)
+    void ListaEntidades::percorrer()
     {
         Lista<Entidade>::Elemento* pElem = LEs.getPrimeiro();
         while (pElem != nullptr)
@@ -18,7 +18,20 @@ namespace Principal {
             if (pE)
             {
                 pE->executar();
-                pE->desenhar(window); // mudar
+                //pE->desenhar(window); //
+            }
+            pElem = pElem->getProx();
+        }
+    }
+
+    void ListaEntidades::desenhaTodos(sf::RenderWindow& janela) {
+        Lista<Entidade>::Elemento* pElem = LEs.getPrimeiro();
+        while (pElem != nullptr)
+        {
+            Entidade* pE = pElem->getInfo();
+            if (pE)
+            {
+                pE->desenhar(janela); //
             }
             pElem = pElem->getProx();
         }

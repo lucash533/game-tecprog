@@ -4,8 +4,8 @@
 //#include <cstdlib>
 
 namespace Principal {
-    FasePrimeira::FasePrimeira() : maxBanshee(5) { //valor provisório para evitar erro
-        // do saomething...
+    FasePrimeira::FasePrimeira() : maxBanshee(5), minhaSala(alturaFase, larguraFase) {
+        GC.setSala(&minhaSala);
     }
 
     FasePrimeira::~FasePrimeira() {
@@ -26,7 +26,7 @@ namespace Principal {
     }
 
     // Cria obstáculos médios (ainda sem identidade)
-    void FasePrimeira::criarObstMedios() {
+    void FasePrimeira::criarLamas() {
         sementear();
         //int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         //float randX = rand() % (int)((Ente::getGG()->getLargura() - 200.0f) + 100.0f); //
@@ -49,9 +49,29 @@ namespace Principal {
         //criar obstaculo medio
     }
 
+    void FasePrimeira::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
+        listaE.incluir(pJog1, false);
+        GC.setJogador1(pJog1);
+        pJog1->setPosition(sf::Vector2f(larguraFase + 100.f, alturaFase + 100.f));
+
+        if (pJog2) {
+            listaE.incluir(pJog2, false);
+            GC.setJogador2(pJog2);        
+            // definir posição    
+        }
+    }
+
     void FasePrimeira::inicializaFase() {
         criarObstaculo();
         criarInimigos();
+    }
+
+    void FasePrimeira::executar(sf::RenderWindow* janela) {
+        minhaSala.desenhar(*janela);
+        listaE.percorrer();
+        // resolver colisões entre as entidades
+        GC.executar();
+        listaE.desenhaTodos(*janela);
     }
 
 }

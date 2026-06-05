@@ -10,7 +10,7 @@
 
 namespace Principal {
     Fase::Fase()
-    : maxAlmas(5), maxPlataformas(5) {
+    : maxAlmas(5), maxPlataformas(5) /*minhaSala(700, 900),*/  {
         //criarAlmasPenadas();
     }
 
@@ -55,14 +55,18 @@ namespace Principal {
         
     }
 
-    void Fase::executar() {
-        listaE.percorrer(*Ente::getGG()->getJanela());
-    }
+    //void Fase::executar(sf::RenderWindow* janela) {
+    //    listaE.percorrer();
+    //    listaE.desenhaTodos(*janela);
+    //}
 
     void Fase::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
         listaE.incluir(pJog1, false);
-        if (pJog2)
+        GC.setJogador1(pJog1);
+        if (pJog2) {
             listaE.incluir(pJog2, false);
+            GC.setJogador2(pJog2);            
+        }
     }
 
     // CÓDIGO INSPIRADO NA FUNÇÃO SEMENTAR FORNECIDA NAS PROVAS DE TECPROG

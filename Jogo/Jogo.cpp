@@ -10,15 +10,15 @@
 
 
 namespace Principal {
-    static const float LARGURA = 900.f;
-    static const float ALTURA = 700.f;
 
     Jogo::Jogo()
-     : pGG(GerenciadorGrafico::getGerenciadorGrafico(ALTURA, LARGURA)), // CONFERIR SE ESTÁ FUNCIONANDO
-       sala1(ALTURA, LARGURA) { // conferir se está funcionando
+     : pGG(GerenciadorGrafico::getGerenciadorGrafico(alturaJanela, larguraJanela)) // CONFERIR SE ESTÁ FUNCIONANDO
+       /*sala1(ALTURA, LARGURA)*/ { // conferir se está funcionando
         Ente::setGG(pGG);
 
-        jogador1.setPosition(sf::Vector2f(100.f, 100.f));
+        //jogador1.setPosition(sf::Vector2f(100.f, 100.f));
+
+        fase1.incluirJogadores(&jogador1);
 
         executar();
 
@@ -45,10 +45,11 @@ namespace Principal {
             }
 
             pGG->limpaJanela();
-            jogador1.executar();
-            sala1.limitar(&jogador1);
-            pGG->desenharEnte(&sala1);
-            pGG->desenharEnte(&jogador1);
+            fase1.executar(pGG->getJanela());
+            //jogador1.executar();
+            //sala1.limitar(&jogador1);
+            //pGG->desenharEnte(&sala1);
+            //pGG->desenharEnte(&jogador1);
             pGG->mostraJanela();
         }
     }

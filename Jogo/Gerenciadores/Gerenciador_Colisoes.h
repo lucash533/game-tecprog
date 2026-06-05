@@ -6,33 +6,36 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
+#include "../Entidades/Bloco/Sala.h" //
 
 namespace Principal {
-    namespace Gerenciador {
+    class Gerenciador_Colisoes {
+    private:
+        std::vector<Inimigo*>   LIs;
+        std::list<Obstaculo*>   LOs;
+        //std::set<Projetil*>     LPs;
+        Sala* minhaSala; // FAZER COLISÃO SALA/ENTIDADES
+        Jogador* pJog1; // aterrar
+        Jogador* pJog2; // aterrar
 
-        class Gerenciador_Colisoes {
-        private:
-            std::vector<Inimigo*>   LIs;
-            std::list<Obstaculo*>   LOs;
-            //std::set<Projetil*>     LPs;
-            Jogador* pJog1;
+        const bool verificarColisao(Entidade* pe1, Entidade* pe2) const;
+        void tratarColisoesJogsObstacs();
+        void tratarColisoesJogsInimgs();
+        void tratarColisoesJogsProjeteis();
+        void tratarColisoesEntsSala();
 
-            const bool verificarColisao(Entidade* pe1, Entidade* pe2) const;
-            void tratarColisoesJogsObstacs();
-            void tratarColisoesJogsInimgs();
-            void tratarColisoesJogsProjeteis();
+    public:
+        void setJogador1(Jogador* p);
+        void setJogador2(Jogador* p);
+        Gerenciador_Colisoes();
+        ~Gerenciador_Colisoes();
 
-        public:
-            void setJogador(Jogador* p);
-            Gerenciador_Colisoes();
-            ~Gerenciador_Colisoes();
+        void setSala(Sala* pS);
 
-            void incluirInimigo(Inimigo* pi);
-            void incluirObstcaulo(Obstaculo* po);
-            //void incluirProjetil(Projetil* pj);
-            void executar();
-        };
-
-    }
+        void incluirInimigo(Inimigo* pi);
+        void incluirObstcaulo(Obstaculo* po);
+        //void incluirProjetil(Projetil* pj);
+        void executar();
+    };
 }
 

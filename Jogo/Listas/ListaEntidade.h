@@ -12,7 +12,8 @@ namespace Principal {
         ~ListaEntidades();
 
         void incluir(Entidade* pE, bool d);
-        void percorrer(sf::RenderWindow& window);
+        void percorrer();
+        void desenhaTodos(sf::RenderWindow& janela);
         void limpar();
 		void limparMortos(); // nova função para limpar entidades mortas
     };

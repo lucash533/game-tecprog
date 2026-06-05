@@ -1,7 +1,9 @@
 #pragma once
 #include "../Listas/ListaEntidade.h"
 #include "../Entidades/Personagens/Jogador.h"
-//#include "../Entidades/Bloco/Sala.h"
+#include "../Gerenciadores/Gerenciador_Colisoes.h"
+//#include "../Entidades/Personagens/Jogador.h"
+#include "../Entidades/Bloco/Sala.h"
 
 namespace Principal {
     class Fase {
@@ -11,7 +13,7 @@ namespace Principal {
 
     protected:
         ListaEntidades listaE;
-        //GerenciadorColisoes GC;
+        Gerenciador_Colisoes GC;
 
         void criarAlmasPenadas(); 
         void criarPlataformas();
@@ -19,7 +21,6 @@ namespace Principal {
 
         virtual void criarInimigos() = 0;
         virtual void criarObstaculo() = 0;
-
 
         void sementear();
 
@@ -31,9 +32,8 @@ namespace Principal {
         void limpaFase();
         // salvaFase() carregaFase()
 
-        void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL);
+        virtual void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL);
 
-        virtual void executar();
-
+        virtual void executar(sf::RenderWindow* janela) = 0;
     };
 }

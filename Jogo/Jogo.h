@@ -20,6 +20,9 @@
 namespace Principal {
     class Jogo {
     private:
+        const float alturaJanela = 700.f;
+        const float larguraJanela = 900.f;
+
         Jogador jogador1;
         Jogador jogador2;
 
@@ -27,7 +30,7 @@ namespace Principal {
 
         FasePrimeira fase1;
 
-        Sala sala1;
+        //Sala sala1;
 
         //menu
 
