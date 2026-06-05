@@ -1,4 +1,5 @@
 #include "GerenciadorGrafico.h"
+#include "../Ente.h"
 #include <iostream>
 using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
 

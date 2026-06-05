@@ -1,5 +1,6 @@
 #include "Gerenciador_Colisoes.h"
 #include "../Ente.h"
+#include <cmath>
  
 namespace Principal {
     namespace Gerenciador {

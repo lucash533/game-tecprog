@@ -3,25 +3,17 @@
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
-    /*const int ID_JOGADOR = 1;
-    const int ID_ALMA = 2;
-    const int ID_BANSHEE = 3;
-	const int ID_PISADEIRA = 4;
-    const int ID_PLATAFORMA = 5;
-    const int ID_LAMA = 6;
-    const int ID_ARMADILHA = 7;*/
 
 
-
-    class Figura;
+    //class Figura; ??
 
     class Ente {
     protected:
         int id; // identificador único do ente
         static GerenciadorGrafico* pGG; 
         static sf::RenderWindow* pJanela;
-        //static int contador_id; // contador para gerar IDs únicos
-        //Figura* pFig;  
+        static int contador_id; // contador para gerar IDs únicos
+        //Figura* pFig;  ??
 
     public:
         Ente();
