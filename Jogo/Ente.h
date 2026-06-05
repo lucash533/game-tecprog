@@ -1,9 +1,8 @@
 #pragma once
-#include "Gerenciadores/GerenciadorGrafico.h"
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
-
+    class GerenciadorGrafico;
 
     //class Figura; ??
 

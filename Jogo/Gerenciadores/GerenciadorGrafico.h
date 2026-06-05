@@ -1,5 +1,5 @@
 #pragma once
-//#include "../Ente.h"
+#include "../Ente.h"
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
