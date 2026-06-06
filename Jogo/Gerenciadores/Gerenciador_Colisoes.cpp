@@ -1,8 +1,9 @@
 #include "Gerenciador_Colisoes.h"
 #include "../Ente.h"
- 
+
+
+
 namespace Principal {
-    namespace Gerenciador {
         Gerenciador_Colisoes::Gerenciador_Colisoes() : pJog1(nullptr) {}
         Gerenciador_Colisoes::~Gerenciador_Colisoes() {}
  
@@ -31,11 +32,31 @@ namespace Principal {
         }
  
         void Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
-            for (std::list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it) {
+            for (auto it = LOs.begin(); it != LOs.end(); ++it) {
                 Obstaculo* obs = *it;
-                if (obs->getVivo() && verificarColisao(pJog1, obs))
-                    obs->obstacularizar(pJog1); // obstáculo decide o que fazer com o jogador
+                if (!obs->getVivo()) continue;
+
+                // --- JOGADOR x OBSTACULO ---
+                // chama obstacularizar(Jogador*) - versao do jogador
+                if (verificarColisao(pJog1, obs))
+                    obs->obstacularizar(pJog1);
+
+                // --- INIMIGOS x PLATAFORMA ---
+                // tenta converter obs para Plataforma*
+                // se nao for plataforma, dynamic_cast retorna nullptr e o if nao entra
+                Plataforma* plat = dynamic_cast<Plataforma*>(obs);
+                if (plat) {
+                    for (auto* ini : LIs) {
+                        if (ini->getVivo() && verificarColisao(ini, plat)) {
+                            // chama obstacularizar(Entidade*) - versao do inimigo
+                            plat->obstacularizar((Entidade*)ini);
+                        }
+                    }
+                }
+                // Lama e Armadilha: dynamic_cast retorna nullptr, nao entra no if
+                // entao inimigos nao interagem com elas - so o jogador
             }
+           
         }
  
         void Gerenciador_Colisoes::tratarColisoesJogsInimgs()
@@ -65,6 +86,7 @@ namespace Principal {
         }
  
         void Gerenciador_Colisoes::setJogador(Jogador* p) { pJog1 = p; }
+
         void Gerenciador_Colisoes::tratarColisoesJogsProjeteis() { /* a implementar */ }
  
         void Gerenciador_Colisoes::executar() {
@@ -73,6 +95,6 @@ namespace Principal {
             tratarColisoesJogsProjeteis();
         }
     }
-}
+
 
 

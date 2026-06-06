@@ -6,10 +6,15 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
+#include "../Entidades/Obstaculos/Plataforma.h"
 #include <cmath>
 
 namespace Principal {
-    namespace Gerenciador {
+
+    class Entidade;
+    class Jogador;
+    class Inimigo;
+    class Obstaculo;
 
         class Gerenciador_Colisoes {
         private:
@@ -35,5 +40,4 @@ namespace Principal {
         };
 
     }
-}
 
