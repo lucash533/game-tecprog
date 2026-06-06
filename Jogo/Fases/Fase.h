@@ -1,7 +1,7 @@
 #pragma once
 #include "../Listas/ListaEntidade.h"
 #include "../Entidades/Personagens/Jogador.h"
-#include "../Gerenciadores/Gerenciador_Colisoes.h"
+#include "../Gerenciadores/GerenciadorColisao.h"
 
 namespace Principal {
     class Fase {
@@ -11,7 +11,7 @@ namespace Principal {
 
     protected:
         ListaEntidades listaE;
-        Gerenciador_Colisoes GC;
+        GerenciadorColisao GC;
 
         void criarAlmasPenadas(); // Cria almas aleatoriamente
         void criarPlataformas(); // Cria plataformas aleatoriamente

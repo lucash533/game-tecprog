@@ -9,7 +9,7 @@
 #include "../Entidades/Bloco/Sala.h" 
 
 namespace Principal {
-    class Gerenciador_Colisoes {
+    class GerenciadorColisao {
     private:
         std::vector<Inimigo*>   LIs;
         std::list<Obstaculo*>   LOs;
@@ -27,8 +27,8 @@ namespace Principal {
     public:
         void setJogador1(Jogador* p);
         void setJogador2(Jogador* p);
-        Gerenciador_Colisoes();
-        ~Gerenciador_Colisoes();
+        GerenciadorColisao();
+        ~GerenciadorColisao();
 
         void setSala(Sala* pS);
 

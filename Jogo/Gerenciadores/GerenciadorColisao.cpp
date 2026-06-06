@@ -1,18 +1,18 @@
-#include "Gerenciador_Colisoes.h"
+#include "GerenciadorColisao.h"
 #include "../Ente.h"
 #include <cmath>
  
 namespace Principal {
-    Gerenciador_Colisoes::Gerenciador_Colisoes() : pJog1(nullptr), pJog2(nullptr) {}
-    Gerenciador_Colisoes::~Gerenciador_Colisoes() {}
+    GerenciadorColisao::GerenciadorColisao() : pJog1(nullptr), pJog2(nullptr) {}
+    GerenciadorColisao::~GerenciadorColisao() {}
 
-    void Gerenciador_Colisoes::setSala(Sala* pS) {minhaSala = pS;}
+    void GerenciadorColisao::setSala(Sala* pS) {minhaSala = pS;}
 
-    void Gerenciador_Colisoes::incluirInimigo(Inimigo* pi) { LIs.push_back(pi); }
-    void Gerenciador_Colisoes::incluirObstcaulo(Obstaculo* po) { LOs.push_back(po); }
-    //void Gerenciador_Colisoes::incluirProjetil(Projetil* pj) { LPs.insert(pj); }
+    void GerenciadorColisao::incluirInimigo(Inimigo* pi) { LIs.push_back(pi); }
+    void GerenciadorColisao::incluirObstcaulo(Obstaculo* po) { LOs.push_back(po); }
+    //void GerenciadorColisao::incluirProjetil(Projetil* pj) { LPs.insert(pj); }
 
-    const bool Gerenciador_Colisoes::verificarColisao(Entidade* pe1, Entidade* pe2) const {
+    const bool GerenciadorColisao::verificarColisao(Entidade* pe1, Entidade* pe2) const {
         // ====================================================== //
         // Código tirado de video do monitor Giovane Limas Salvi //
         // ==================================================== //
@@ -32,7 +32,7 @@ namespace Principal {
         return (distX < somaX && distY < somaY);
     }
 
-    void Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
+    void GerenciadorColisao::tratarColisoesJogsObstacs() {
         for (std::list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it) {
             Obstaculo* obs = *it;
             if (obs->getVivo() && verificarColisao(pJog1, obs))
@@ -40,7 +40,7 @@ namespace Principal {
         }
     }
 
-    void Gerenciador_Colisoes::tratarColisoesJogsInimgs()
+    void GerenciadorColisao::tratarColisoesJogsInimgs()
     {
         for (std::vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it)
         {
@@ -66,17 +66,17 @@ namespace Principal {
         }
     }
 
-    void Gerenciador_Colisoes::setJogador1(Jogador* p) { pJog1 = p; }
-    void Gerenciador_Colisoes::setJogador2(Jogador* p) { pJog2 = p; }
-    void Gerenciador_Colisoes::tratarColisoesJogsProjeteis() { /* a implementar */ }
+    void GerenciadorColisao::setJogador1(Jogador* p) { pJog1 = p; }
+    void GerenciadorColisao::setJogador2(Jogador* p) { pJog2 = p; }
+    void GerenciadorColisao::tratarColisoesJogsProjeteis() { /* a implementar */ }
 
-    void Gerenciador_Colisoes::tratarColisoesEntsSala() {
+    void GerenciadorColisao::tratarColisoesEntsSala() {
         if (pJog1)
             minhaSala->limitar(pJog1);
         //if (pjog2)
     }
 
-    void Gerenciador_Colisoes::executar() {
+    void GerenciadorColisao::executar() {
         //tratarColisoesJogsObstacs();
         //tratarColisoesJogsInimgs();
         //tratarColisoesJogsProjeteis();
