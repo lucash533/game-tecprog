@@ -1,6 +1,11 @@
 #include <cstddef>
 #pragma once
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+// !!!!!!! PRECISA ATUALIZAR AS PERMISÕES DO ELEMENTO DA LISTA !!!!!!! //
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+// por causa do diagrama maldito (vou cagar nas calças)
+
 namespace Principal {
 
     template <class TL>
@@ -8,7 +13,7 @@ namespace Principal {
     public:
         // Classe aninhada Elemento de objetos da lista
         class Elemento { // 
-        public: // private
+        public: // PRECISA MUDAR PARA PRIVATE !!!
             Elemento* pProx;
             TL* pInfo;
             bool dinamico;
@@ -17,11 +22,11 @@ namespace Principal {
             Elemento(bool d);
             ~Elemento();
 
-            void incluir(TL* p); //const 
-            void setProx(Elemento* pE); //const 
-            Elemento* getProx() const;
+            void incluir(TL* p); // Inclui elemento na lista
+            void setProx(Elemento* pE); // Define elemento como próximo da lista
+            Elemento* getProx() const; // Retorna o próximo elemento
 
-            TL* getInfo() const { return pInfo; }
+            TL* getInfo() const { return pInfo; } // Retorna valor guardado no elemento
         };
 
         // Demais atributos privados
@@ -34,9 +39,9 @@ namespace Principal {
         virtual ~Lista();
         Elemento* getPrimeiro() const { return pPrimeiro; }
         Elemento* getUltimo() const { return pUltimo; }
-        void incluir(TL* p, bool d);
-        void limpar();
-        void remover(TL* elemento);
+        void incluir(TL* p, bool d); // Inclui elemento na lista
+        void limpar(); // Esvazia e desaloca lista
+        void remover(TL* elemento); 
         //void executar();
     };
 
@@ -106,17 +111,9 @@ namespace Principal {
         if (!(pPrimeiro && pUltimo)) {
             pPrimeiro = pE;
             pUltimo = pE;
-            //return;
         }
         else {
-            //Elemento* pAux = pPrimeiro;
-
-            // Navega até o final
-            //while (pAux != pUltimo) {
-            //    pAux = pAux->getProx;
-            //}
-            //pAux->setProx(pE);
-            pUltimo->setProx(pE); // Não foi sugerido, pode acarretar problemas
+            pUltimo->setProx(pE); // Não foi sugerido pelo auto-completar, pode acarretar problemas
             pUltimo = pE;
         }
     }
@@ -136,6 +133,11 @@ namespace Principal {
         pUltimo = nullptr;
     }
 
+
+    // Se eu me lembro corretamente, era uma função para auxiliar a remover objetos mortos.
+    // Porém, dando uma olhada por cima, talvez não seja necessária
+    // (pode remover os elementos na percorrer() da lista entidades com base no atributo 'morto')
+    // MAS, por via das dúvidas, manterei ela aqui por hora
     template<class TL>
     void Lista<TL>::remover(TL* elemento) {
 

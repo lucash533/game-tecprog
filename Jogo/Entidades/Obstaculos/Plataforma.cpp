@@ -19,5 +19,14 @@ namespace Principal {
         p->setPosition(sf::Vector2f(rJog.left, rJog.top - penetracao));
         p->pousar();
     }
+
+    void Plataforma::obstacularizar(Entidade* p) {
+        sf::FloatRect rEnt = p->getCorpo().getGlobalBounds();
+        sf::FloatRect rObs = corpo.getGlobalBounds();
+        float penetracao = (rEnt.top + rEnt.height) - rObs.top;
+        p->setPosition(sf::Vector2f(rEnt.left, rEnt.top - penetracao));
+        p->pousar();
+    }
+
     void Plataforma::salvar() {}
 }

@@ -1,6 +1,10 @@
 #pragma once
 #include "../Obstaculos/Obstaculo.h"
 
+// ============================= //
+// ===== CLASSE DESCARTADA ===== //
+// ============================= //
+
 namespace Principal {
     class Chao : public Obstaculo {
     public:

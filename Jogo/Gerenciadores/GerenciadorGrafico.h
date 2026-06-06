@@ -11,8 +11,8 @@ namespace Principal {
         static GerenciadorGrafico* pGerenciador;
         GerenciadorGrafico(unsigned altura, unsigned largura);
 
-        const unsigned int alturaJanela; //float
-        const unsigned int larguraJanela; //float
+        const unsigned int alturaJanela;
+        const unsigned int larguraJanela;
 
     public:
         ~GerenciadorGrafico();
@@ -20,6 +20,7 @@ namespace Principal {
         static GerenciadorGrafico* getGerenciadorGrafico(unsigned altura, unsigned largura);
         static GerenciadorGrafico* getGerenciadorGrafico();
 
+        // Desenha ente na janela
         void desenharEnte(Ente* pE);
         void limpaJanela();
         void mostraJanela();

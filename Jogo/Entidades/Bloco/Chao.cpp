@@ -1,5 +1,10 @@
 #include "Chao.h"
 
+// ============================= //
+// ===== CLASSE DESCARTADA ===== //
+// ============================= //
+
+
 namespace Principal {
     Chao::Chao(float x, float y, float largura)
     {
