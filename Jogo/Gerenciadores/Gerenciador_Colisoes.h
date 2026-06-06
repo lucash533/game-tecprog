@@ -33,7 +33,7 @@ namespace Principal {
             Gerenciador_Colisoes();
             ~Gerenciador_Colisoes();
 
-            void incluirInimigo(Inimigo* pi);
+            void incluirInimigo(Inimigo* pi); 
             void incluirObstcaulo(Obstaculo* po);
             //void incluirProjetil(Projetil* pj);
             void executar();
