@@ -1,4 +1,4 @@
-#include "Gerenciador_Colisoes.h"
+#include "GerenciadorColisao.h"
 #include "../Ente.h"
 
 
