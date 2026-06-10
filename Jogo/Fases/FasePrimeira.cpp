@@ -1,11 +1,10 @@
 #include "FasePrimeira.h"
 #include "../Entidades/Personagens/Banshee.h"
-//#include "../Entidades/" // OBSTACULO MEDIO
-//#include <cstdlib>
+//#include "../Entidades/" // LAMA
 
 namespace Principal {
-    FasePrimeira::FasePrimeira() : maxBanshee(5) { //valor provisório para evitar erro
-        // do saomething...
+    FasePrimeira::FasePrimeira() : maxBanshee(5), minhaSala(alturaFase, larguraFase) {
+        GC.setSala(&minhaSala);
     }
 
     FasePrimeira::~FasePrimeira() {
@@ -13,6 +12,7 @@ namespace Principal {
     }
 
     // Cria inimigos médios
+    // VIDE criarAlmas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     void FasePrimeira::criarBanshees() {
         sementear();
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
@@ -25,8 +25,9 @@ namespace Principal {
         }
     }
 
-    // Cria obstáculos médios (ainda sem identidade)
-    void FasePrimeira::criarObstMedios() {
+    // VIDE criarPlataformas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
+    // Cria lamas
+    void FasePrimeira::criarLamas() {
         sementear();
         //int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         //float randX = rand() % (int)((Ente::getGG()->getLargura() - 200.0f) + 100.0f); //
@@ -49,9 +50,29 @@ namespace Principal {
         //criar obstaculo medio
     }
 
+    void FasePrimeira::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
+        listaE.incluir(pJog1, false);
+        GC.setJogador1(pJog1);
+        pJog1->setPosition(sf::Vector2f(larguraFase + 100.f, alturaFase + 100.f));
+
+        if (pJog2) {
+            listaE.incluir(pJog2, false);
+            GC.setJogador2(pJog2);        
+            // definir posição    
+        }
+    }
+
     void FasePrimeira::inicializaFase() {
         criarObstaculo();
         criarInimigos();
+    }
+
+    void FasePrimeira::executar(sf::RenderWindow* janela) {
+        minhaSala.desenhar(*janela);
+        listaE.percorrer();
+        // resolver colisões entre as entidades
+        GC.executar();
+        listaE.desenhaTodos(*janela); // Nota: foi necessário separar a colisão e a renderização em duas funções diferentes
     }
 
 }

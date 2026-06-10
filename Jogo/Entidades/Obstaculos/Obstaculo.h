@@ -14,5 +14,6 @@ namespace Principal {
         virtual void executar() = 0;
         virtual void salvar() = 0;
         virtual void obstacularizar(Jogador* p) = 0;
+
     };
 }

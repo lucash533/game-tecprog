@@ -19,7 +19,8 @@ namespace Principal {
     }
     void Entidade::aplicarGravidade() {
         if (!noChao) {
-            velY += 0.5f; // acelera para baixo enquanto estiver fora do chão
+            if (velY < 10.f) // VELOCIDADE TERMINAL, TALVEZ REMOVA !!!
+                velY += 0.5f; // acelera para baixo enquanto estiver fora do chão
         }
         corpo.move(0.f, velY); // aplica a velocidade vertical no corpo
         noChao = false; // reseta noChao
@@ -44,4 +45,6 @@ namespace Principal {
 	bool Entidade::getVivo() const {
 		return vivo;
 	}
+    sf::Vector2f Entidade::getTam() const 
+    { return corpo.getSize(); }
 }

@@ -5,6 +5,7 @@
 namespace Principal {
 	Banshee::Banshee() : raio(300.0f), alvo(nullptr), tamanho(40.0f)
 	{
+		//id = Principal::ID_BANSHEE;
 		corpo.setSize(sf::Vector2f(tamanho, tamanho));
 		corpo.setFillColor(sf::Color::Green);
 		corpo.setPosition(sf::Vector2f(100, 100)); // posição inicial padrão

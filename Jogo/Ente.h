@@ -2,8 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
-    class GerenciadorGrafico; //Implementar GerenciadorGrafico.h e .cpp depois
-    class Figura;
+    class GerenciadorGrafico;
 
     class Ente {
     protected:
@@ -11,7 +10,6 @@ namespace Principal {
         static GerenciadorGrafico* pGG; 
         static sf::RenderWindow* pJanela;
         static int contador_id; // contador para gerar IDs únicos
-        //Figura* pFig;  
 
     public:
         Ente();
@@ -22,7 +20,8 @@ namespace Principal {
 
         static void setGG(GerenciadorGrafico* pG);
         static void setJanela(sf::RenderWindow* j);
-        static GerenciadorGrafico* getGG(); //
+        static GerenciadorGrafico* getGG();
+       
     };
 }
 

@@ -1,15 +1,23 @@
 #pragma once
 #include "Fase.h"
+#include "../Entidades/Bloco/Sala.h"
 
 namespace Principal {
     class FasePrimeira : public Fase {
     private:
         const int maxBanshee;
-        //const int maxObstaculoMedio;
+        //const int maxObstaculoLama;
+
+        // Dimensões da fase
+        const int alturaFase = 700;
+        const int larguraFase = 900;
+
+        Sala minhaSala;
 
     protected:
+        // Funções para criar entidades
         void criarBanshees();
-        void criarObstMedios(); // Atualizar nome
+        void criarLamas();
         void criarInimigos();
         void criarObstaculo();
 
@@ -17,9 +25,12 @@ namespace Principal {
         FasePrimeira();
         ~FasePrimeira();
 
-        
-        void inicializaFase();
-        //void limpaFase()
+        void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL); // Inclui 1 ou 2 jogadores na fase. Não deve ser chamada mais de uma vez !!!
+        void inicializaFase(); // Chama todas as funções "criar"
+        //void limpaFase() // não lembro o que era para ser isso
+
+        // Executa a fase (movimento, colisoes e renderização)
+        void executar(sf::RenderWindow* janela);
 
     };
 }

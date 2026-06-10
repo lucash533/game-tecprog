@@ -1,6 +1,7 @@
 #pragma once
 #include "../Listas/ListaEntidade.h"
 #include "../Entidades/Personagens/Jogador.h"
+#include "../Gerenciadores/GerenciadorColisao.h"
 
 namespace Principal {
     class Fase {
@@ -10,29 +11,27 @@ namespace Principal {
 
     protected:
         ListaEntidades listaE;
-        //GerenciadorColisoes GC;
+        GerenciadorColisao GC;
 
-        void criarAlmasPenadas(); 
-        void criarPlataformas();
-        void criarCenario();
+        void criarAlmasPenadas(); // Cria almas aleatoriamente
+        void criarPlataformas(); // Cria plataformas aleatoriamente
+        void criarCenario(); // vide Fase.cpp
 
         virtual void criarInimigos() = 0;
         virtual void criarObstaculo() = 0;
 
-
-        void sementear();
+        void sementear(); // Aleatoriza a semente de rng
 
     public:
         Fase();
         virtual ~Fase();
 
         virtual void inicializaFase() = 0;
-        void limpaFase();
+        void limpaFase(); // Limpa lista e desaloca entidades
         // salvaFase() carregaFase()
 
-        void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL);
+        virtual void incluirJogadores(Jogador* pJog1, Jogador* pJog2 = NULL); // Inclui jogadores na lista. Nao deve ser chamado mais do que uma vez!!!
 
-        virtual void executar();
-
+        virtual void executar(sf::RenderWindow* janela) = 0;
     };
 }

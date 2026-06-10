@@ -2,6 +2,7 @@
 
 namespace Principal {
 	Lama::Lama(float x, float y, float largura) : largura(30.f) {
+		//id = Principal::ID_LAMA;
 		corpo.setSize(sf::Vector2f(largura, 20.f));
 		corpo.setPosition(x, y);
 		corpo.setFillColor(sf::Color::Magenta);

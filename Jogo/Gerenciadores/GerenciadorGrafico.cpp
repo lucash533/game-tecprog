@@ -1,6 +1,7 @@
 #include "GerenciadorGrafico.h"
+#include "../Ente.h"
 #include <iostream>
-using namespace std; // TALVEZ DÊ CONFLITO COM O JOGO !!!
+using namespace std;
 
 namespace Principal {
     Principal::GerenciadorGrafico* GerenciadorGrafico::pGerenciador = NULL;
@@ -11,7 +12,8 @@ namespace Principal {
         if(!janela) {
             janela = new sf::RenderWindow(sf::VideoMode(
                 largura, altura), 
-                "Super Irmãs Maria: Caçadoras de Fantasmas!");
+                "Super Irmãs Maria: Cassadoras de Fantasmas!");
+            janela->setFramerateLimit(60); // MUITO IMPORTANTE, NÃO ESQUECER DE DEFINIR O LIMITE DE FRAMERATE
         }
         else    
             cerr << "ERRO! \n Tentativa de inicializar janela já existente" << endl;
@@ -48,7 +50,8 @@ namespace Principal {
         }
         return pGerenciador;
     }
-
+    
+    // Desenha ente na janela
     void GerenciadorGrafico::desenharEnte(Ente* pE) {
         pE->desenhar(*janela);
     }
