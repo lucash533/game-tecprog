@@ -10,7 +10,6 @@ namespace Principal {
 	{
 	private:
 		float raio; // distância máxima para perseguir o jogador
-		Personagem* alvo; // ponteiro para o jogador (alvo)
 		float tamanho;
 	public:
 		Banshee();

@@ -2,22 +2,14 @@
 #include <cmath>
 
 namespace Principal {
-    Alma::Alma() : raio(500.0f), alvo(nullptr)
+    Alma::Alma() : raio(50.0f * nivel_maldade) /*alvo(nullptr),*/
+    {    }
+    Alma::Alma(float x, float y) : raio(300.0f) /*alvo(nullptr)*/
     {
-		//id = Principal::ID_ALMA;
-        nivel_maldade = 1;
-        corpo.setSize(sf::Vector2f(40, 40));
-        corpo.setFillColor(sf::Color::Red);
-        corpo.setPosition(sf::Vector2f(100, 100)); // posição inicial padrão
-        vel = sf::Vector2f(3.0f, 3.0f); // velocidade horizontal base
-    }
-    Alma::Alma(float x, float y) : raio(300.0f), alvo(nullptr)
-    {
-        nivel_maldade = 1;
         corpo.setSize(sf::Vector2f(40, 40));
         corpo.setFillColor(sf::Color::Red);
         corpo.setPosition(sf::Vector2f(x, y));
-        vel = sf::Vector2f(3.0f, 0.0f);
+        vel = sf::Vector2f(2.0f * nivel_maldade, 0.0f * nivel_maldade);
     }
 
     Alma::~Alma() {}
@@ -47,14 +39,6 @@ namespace Principal {
             corpo.move(vel.x, 0);  // jogador está à direita
         else if (pos_alvo.x - pos_inimigo.x < 0)
             corpo.move(-vel.x, 0); // jogador está à esquerda
-        if (pos_alvo.y - pos_inimigo.y > 0)
-            corpo.move(0, vel.x);  // jogador está abaixo
-        else if (pos_alvo.y - pos_inimigo.y < 0)
-            corpo.move(0, -vel.x); // jogador está acima
-    }
-    void Alma::moverAletoriamente()
-    {
-        //a implementar
     }
 
     void Alma::danificar(Jogador* p) 

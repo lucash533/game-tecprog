@@ -11,6 +11,7 @@ namespace Principal {
     Plataforma::~Plataforma() {}
 
     void Plataforma::executar() { aplicarGravidade(); }
+    
     void Plataforma::obstacularizar(Jogador* p)
     {
         sf::FloatRect rJog = p->getCorpo().getGlobalBounds();
@@ -27,6 +28,7 @@ namespace Principal {
         p->setPosition(sf::Vector2f(rEnt.left, rEnt.top - penetracao));
         p->pousar();
     }
+
 
     void Plataforma::salvar() {}
 }

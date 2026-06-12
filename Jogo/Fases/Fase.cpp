@@ -4,13 +4,14 @@
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Ente.h"
 #include "../Gerenciadores/GerenciadorGrafico.h"
-
-#include <cstdlib> // usado para a função rand. talvez gere problemas e precise ser trocado por <stdlib.h>
-#include <time.h> // usado para a função rand com o tempo
-
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 namespace Principal {
     Fase::Fase()
-    : maxAlmas(5), maxPlataformas(5) {
+    : maxAlmas(5), maxPlataformas(5),
+        pJog1(nullptr), pJog2(nullptr) {
+        sementear();
 
     }
 
@@ -24,32 +25,43 @@ namespace Principal {
 
     // Cria inimigos fáceis
     void Fase::criarAlmasPenadas() {
-        sementear();
-        int qtd = rand() % (maxAlmas + 1 - 3) + 3; // Valor da direita é o mínimo
-        int i;
+        //sementear();
+        int qtd = rand() % (maxAlmas + 1 - 3) + 3;
 
-        for (i = 0; i < qtd; i++) {
-            Alma* inimigo = new Alma;
-            listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
-            // PRECISA DEFINIR POSIÇÃO ALEATÓRIA
+
+        for (int i = 0; i < qtd; i++) {
+            //();
+			float randX = (float)(rand() % 700) + 50.f; // posição aleatória dentro de uma área
+            float randY = (float)(alturaFase - 60.f);  // posição aleatória dentro de uma área 
+
+			Alma* inimigo = new Alma(randX, randY); // posição aleatória dentro de uma área 
+            inimigo->setAlvo(pJog1); // Define jogador como alvo
+			listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
+            GC.incluirInimigo(inimigo); // registra no GC para colisão
         }
     }
 
+
     // Cria obstáculo 1 (plataformas)
     void Fase::criarPlataformas() {
-        sementear();
+        //sementear();
         int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         int i;
+		float espaco = (larguraFase - 100) / qtd; // para distribuir as plataformas ao longo da fase, com uma margem de 50 em cada lado
 
         for (i = 0; i < qtd; i++) {
-            sementear();
+            //sementear();
 
             // Coordenadas aleatórias não testadas. formato: (... - (d)) + distancia minima, onde d = distancia maxima + distancia minima
-            float randX = rand() % (int)((Ente::getGG()->getLargura() - 200.0f) + 100.0f); //
-            float randY = rand() % (int)((Ente::getGG()->getAltura() - 500.0f) + 400.0f); // INT PARA FLOAT PODE DAR PROBLEMA
+			float randX = (int)(50.f + (i * espaco) + (rand() % 100)); // posição aleatória dentro de uma área, com espaçamento para distribuir as plataformas ao longo da fase
+            float randY = rand() % (int)(rand() % 300) + (alturaFase - 400.f); // INT PARA FLOAT PODE DAR PROBLEMA
 
-            Plataforma* plat = new Plataforma(randX, randY, 100.0f);
+            float largura = (float)(rand() % 100) + 150.f;
+            float altura = 40.f;
+
+            Plataforma* plat = new Plataforma(randX, randY, largura, altura);
             listaE.incluir(static_cast<Entidade*>(plat), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
+            GC.incluirObstcaulo(plat); // registra no GC para colisão        
         }
     }
 
@@ -62,11 +74,13 @@ namespace Principal {
 
     // Inclui jogadores na lista. Não deve ser chamada mais do que uma vez !!!
     void Fase::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
+        this->pJog1 = pJog1;
+        this->pJog2 = pJog2;
         listaE.incluir(pJog1, false);
         GC.setJogador1(pJog1);
         if (pJog2) {
             listaE.incluir(pJog2, false);
-            GC.setJogador2(pJog2);            
+            GC.setJogador2(pJog2);
         }
     }
 

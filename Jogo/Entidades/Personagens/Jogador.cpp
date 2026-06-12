@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 namespace Principal {
-    Jogador::Jogador() : pontos(0)  {
+    Jogador::Jogador() : pontos(0), naLama(false) {
 		//id = Principal::ID_JOGADOR;
 		num_vidas = 3;
         corpo.setSize(sf::Vector2f(40, 40));
@@ -12,16 +12,21 @@ namespace Principal {
 
         //velocidade horizontal 5.0f
         vel = sf::Vector2f(5.0f, 0.0f);
+        velOriginal = vel;
     }
 
     Jogador::~Jogador() {}
 
-    void Jogador::executar() { 
-        mover();  
-        // Aplica a gravidade sempre 
+    void Jogador::executar() {
+        if (!getVivo()) return;
+        mover();
         aplicarGravidade();
-    }
+        // CORRIGIDO: restaura velocidade automaticamente se não foi renovado pela lama
+        if (!naLama)
+            restaurarVelocidade();
+        naLama = false; // reseta todo frame — lama renova se ainda colidir
 
+    }
     void Jogador::mover() {
         // Movimentação horizontal
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //Referencia: https://www.youtube.com/watch?v=WrJpux-vpcI&list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ&index=2
@@ -35,18 +40,21 @@ namespace Principal {
             noChao = false; // saiu do chão
         }
     }
-    void Jogador::diminuirVelocidade() {
-        vel *= 0.5f; // Diminui a velocidade pela metade
-    }
     void Jogador::adicionarPontos(int p) {
 		pontos += p; // Adiciona os pontos ganhos ao total
    }
 
     void Jogador::salvar() {}
-    void Jogador::colidir(Inimigo* pIn)
-    {
-		operator--(); // perde uma vida        
+    void Jogador::colidir(Inimigo* pIn) {
+        if (clockDano.getElapsedTime().asSeconds() < 1.0f) return;
+        operator--();
+        clockDano.restart();
     }
-
-
-}
+    void Jogador::diminuirVelocidade() {
+        vel.x = velOriginal.x * 0.2f;
+        naLama = true;
+    }
+    void Jogador::restaurarVelocidade() {
+        vel = velOriginal;
+    }
+ }

@@ -1,18 +1,17 @@
 #include "Jogo.h"
 
-// Whatsapp
-
 namespace Principal {
 
     Jogo::Jogo()
-     : pGG(GerenciadorGrafico::getGerenciadorGrafico(alturaJanela, larguraJanela)) {
+        : pGG(GerenciadorGrafico::getGerenciadorGrafico(alturaJanela, larguraJanela)) {
         Ente::setGG(pGG);
 
-        // Provisoriamente, o jogo já começa direto na fase 1. Alterar após criar menu
+        // Provisoriamente, o jogo já começa direto na fase 1
         fase1.incluirJogadores(&jogador1);
+        fase1.inicializaFase();
 
-        executar();
-
+        // NOTA: executar() foi removido do construtor para evitar loop infinito
+        // antes de Jogo ser retornado para o main
     }
 
     Jogo::~Jogo() {
@@ -25,22 +24,36 @@ namespace Principal {
     void Jogo::executar() {
         while (pGG->getJanela()->isOpen()) {
             sf::Event evento;
-            
-            // Função para conferir quando fechar a janela
+
             while (pGG->getJanela()->pollEvent(evento)) {
                 if (evento.type == sf::Event::Closed ||
-                    evento.type == sf::Event::KeyPressed && 
-                    evento.key.code == sf::Keyboard::Escape)
-                    
+                    (evento.type == sf::Event::KeyPressed &&
+                        evento.key.code == sf::Keyboard::Escape))
                     pGG->getJanela()->close();
-
-
             }
+            atualizarCamera();
 
-            // Executa a primeira fase. Novamente, provisório até ter um menu
             pGG->limpaJanela();
             fase1.executar(pGG->getJanela());
             pGG->mostraJanela();
         }
+    }
+    void Jogo::atualizarCamera() {
+        if (!jogador1.getVivo()) return;
+
+        sf::RenderWindow* janela = pGG->getJanela();
+        sf::View camera = janela->getDefaultView();
+
+        float camX = jogador1.getPosicao().x + 20.f;
+        float metadeJanela = camera.getSize().x / 2.f;
+
+        // limita para não sair da fase
+        if (camX < metadeJanela)
+            camX = metadeJanela;
+        if (camX > larguraFase - metadeJanela) // usa largura da fase
+            camX = larguraFase - metadeJanela;
+
+        camera.setCenter(camX, camera.getSize().y / 2.f);
+        janela->setView(camera);
     }
 }

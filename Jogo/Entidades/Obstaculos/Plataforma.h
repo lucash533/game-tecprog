@@ -5,7 +5,7 @@ namespace Principal {
     class Plataforma : public Obstaculo {
     public:
         // construtor para criar plataforma em posição específica, com largura e altura definidas (altura valor a definir)
-        Plataforma(float x, float y, float largura, float altura = 20.f); 
+        Plataforma(float x, float y, float largura, float altura = 50.f); 
         ~Plataforma();
 
         void executar(); //não sei o que pode ser executado em uma plataforma

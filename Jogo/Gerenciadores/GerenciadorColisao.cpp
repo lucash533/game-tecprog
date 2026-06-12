@@ -3,7 +3,7 @@
 #include <cmath>
  
 namespace Principal {
-    GerenciadorColisao::GerenciadorColisao() : pJog1(nullptr), pJog2(nullptr) {}
+    GerenciadorColisao::GerenciadorColisao() : pJog1(nullptr), pJog2(nullptr), minhaSala(nullptr) {}
     GerenciadorColisao::~GerenciadorColisao() {}
 
     void GerenciadorColisao::setSala(Sala* pS) {minhaSala = pS;}
@@ -35,54 +35,73 @@ namespace Principal {
     void GerenciadorColisao::tratarColisoesJogsObstacs() {
         for (auto it = LOs.begin(); it != LOs.end(); ++it) {
             Obstaculo* obs = *it;
-            if (!obs->getVivo()) continue;
+            if (obs->getVivo()) {
 
-            // --- JOGADOR x OBSTACULO ---
-            // chama obstacularizar(Jogador*) - versao do jogador
-            if (verificarColisao(pJog1, obs))
-                obs->obstacularizar(pJog1);
+                // --- JOGADOR x OBSTACULO ---
+                // chama obstacularizar(Jogador*) - versao do jogador
+                if (pJog1 && pJog1->getVivo() && verificarColisao(pJog1, obs))
+                    obs->obstacularizar(pJog1);
+                if (pJog2 && pJog2->getVivo() && verificarColisao(pJog2, obs))
+                    obs->obstacularizar(pJog2);
 
-            // --- INIMIGOS x PLATAFORMA ---
-            // tenta converter obs para Plataforma*
-            // se nao for plataforma, dynamic_cast retorna nullptr e o if nao entra
-            Plataforma* plat = dynamic_cast<Plataforma*>(obs);
-            if (plat) {
+
+                // Lama e Armadilha: dynamic_cast retorna nullptr, nao entra no if
+                // entao inimigos nao interagem com elas - so o jogador
+            }
+        }
+
+    }
+    void GerenciadorColisao::tratarColisoesEntidadesObstacs() {
+        for (auto it = LOs.begin(); it != LOs.end(); ++it) {
+            Plataforma* plat = dynamic_cast<Plataforma*>(*it);
+            if (plat && plat->getVivo()) {
+
+                // inimigos x plataforma
                 for (auto* ini : LIs) {
-                    if (ini->getVivo() && verificarColisao(ini, plat)) {
-                        // chama obstacularizar(Entidade*) - versao do inimigo
+                    if (ini->getVivo() && verificarColisao(ini, plat))
                         plat->obstacularizar((Entidade*)ini);
+                }
+
+                // outros obstáculos x plataforma
+                for (auto it2 = LOs.begin(); it2 != LOs.end(); ++it2) {
+                    Obstaculo* obs2 = *it2;
+                    if (obs2 != plat && obs2->getVivo() && !dynamic_cast<Plataforma*>(obs2)) {  // não verifica plataforma x plataforma ou obstáculos mortos
+
+                        if (verificarColisao(plat, obs2))
+                            plat->obstacularizar((Entidade*)obs2);
                     }
                 }
             }
-            // Lama e Armadilha: dynamic_cast retorna nullptr, nao entra no if
-            // entao inimigos nao interagem com elas - so o jogador
         }
-
     }
 
 
     void GerenciadorColisao::tratarColisoesJogsInimgs()
     {
-        for (std::vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it)
+        for (auto it = LIs.begin(); it != LIs.end(); ++it)
         {
             Inimigo* ini = *it;
-            if (ini->getVivo() && verificarColisao(pJog1, ini))
-            {
-                sf::FloatRect rJog = pJog1->getCorpo().getGlobalBounds();
-                sf::FloatRect rIni = ini->getCorpo().getGlobalBounds();
+            if (ini->getVivo()) { // pula inimigos mortos 
 
-                float peJog = rJog.top + rJog.height; // posição do "pé" do jogador (parte inferior)
-                float topoIni = rIni.top; // posição do topo do inimigo (parte superior)
-
-                if (peJog <= topoIni + 5.f)
+                if (pJog1 && pJog1->getVivo() && ini->getVivo() && verificarColisao(pJog1, ini))
                 {
-                    // jogador pisou em cima
-                    ini->setVivo(false);
-                    pJog1->adicionarPontos(100);
-                    pJog1->pousar();
+                    sf::FloatRect rJog = pJog1->getCorpo().getGlobalBounds();
+                    sf::FloatRect rIni = ini->getCorpo().getGlobalBounds();
+
+                    float peJog = rJog.top + rJog.height; // posição do "pé" do jogador (parte inferior)
+                    float topoIni = rIni.top; // posição do topo do inimigo (parte superior)
+
+                    if (peJog >= topoIni && peJog <= topoIni + 10.f)
+                    {
+                        // jogador pisou em cima
+                        ini->setVivo(false);
+                        pJog1->adicionarPontos(100);
+                        pJog1->pousar();
+                    }
+                    else
+
+                        ini->danificar(pJog1);
                 }
-                else
-                    ini->danificar(pJog1);  // colisão de lado
             }
         }
     }
@@ -92,16 +111,36 @@ namespace Principal {
     void GerenciadorColisao::tratarColisoesJogsProjeteis() { /* a implementar */ }
 
     void GerenciadorColisao::tratarColisoesEntsSala() {
-        if (pJog1)
-            minhaSala->limitar(pJog1);
-        //if (pjog2)
+        if (minhaSala) {
+            if (pJog1 && pJog1->getVivo()) minhaSala->limitar(pJog1);
+            if (pJog2 && pJog2->getVivo()) minhaSala->limitar(pJog2);
+
+            for (auto* ini : LIs)
+                if (ini->getVivo()) minhaSala->limitar(ini);
+
+            for (auto it = LOs.begin(); it != LOs.end(); ++it)
+                if ((*it)->getVivo()) minhaSala->limitar(*it);
+        }
+    }
+    void GerenciadorColisao::limparMortos() {
+        std::vector<Inimigo*>::iterator it = LIs.begin();
+        while (it != LIs.end()) {
+            if (!(*it)->getVivo())
+                it = LIs.erase(it); // remove do vetor sem deletar (já foi deletado pela lista)
+            else
+                ++it;
+        }
     }
 
+
     void GerenciadorColisao::executar() {
-        //tratarColisoesJogsObstacs();
-        //tratarColisoesJogsInimgs();
+        limparMortos();
+        tratarColisoesJogsObstacs();
+        tratarColisoesJogsInimgs();
+        tratarColisoesEntidadesObstacs();
         //tratarColisoesJogsProjeteis();
         tratarColisoesEntsSala();
+
     }
 }
 

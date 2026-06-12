@@ -3,7 +3,7 @@
 //#include "../Entidades/" // LAMA
 
 namespace Principal {
-    FasePrimeira::FasePrimeira() : maxBanshee(5), minhaSala(alturaFase, larguraFase) {
+    FasePrimeira::FasePrimeira() : maxBanshee(8), minhaSala(alturaFase, larguraFase), maxObstaculoLama(5) {
         GC.setSala(&minhaSala);
     }
 
@@ -14,7 +14,7 @@ namespace Principal {
     // Cria inimigos médios
     // VIDE criarAlmas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     void FasePrimeira::criarBanshees() {
-        sementear();
+        //sementear();
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
         int i;
 
@@ -27,17 +27,20 @@ namespace Principal {
 
     // VIDE criarPlataformas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     // Cria lamas
-    void FasePrimeira::criarLamas() {
-        sementear();
-        //int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
-        //float randX = rand() % (int)((Ente::getGG()->getLargura() - 200.0f) + 100.0f); //
-        //float randY = rand() % (int)((Ente::getGG()->getAltura() - 400.0f) + 300.0f); // INT PARA FLOAT PODE DAR PROBLEMA
-        int i;
 
-        //for (i = 0; i < qtd; i++) {
-        //    Plataforma* plat = new Plataforma(randX, randY, 100.0f);
-        //    listaE.incluir(static_cast<Entidade*>(plat)); // talvez dê erro
-        //}
+    void FasePrimeira::criarLamas() {
+        //sementear();
+        int qtd = rand() % 3 + 2;
+
+        for (int i = 0; i < qtd; i++) {
+            //sementear();
+            float randX = (float)(rand() % (larguraFase - 150)) + 50.f;
+            float randY = (float)(alturaFase - 40.f); // no chão, igual às plataformas
+
+            Lama* lama = new Lama(randX, randY, 80.f);
+            listaE.incluir(static_cast<Entidade*>(lama), true);
+            GC.incluirObstcaulo(lama);
+        }
     }
 
     void FasePrimeira::criarInimigos() {
@@ -47,19 +50,14 @@ namespace Principal {
 
     void FasePrimeira::criarObstaculo() {
         criarPlataformas();
-        //criar obstaculo medio
+        criarLamas();
     }
 
     void FasePrimeira::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
-        listaE.incluir(pJog1, false);
-        GC.setJogador1(pJog1);
-        pJog1->setPosition(sf::Vector2f(larguraFase + 100.f, alturaFase + 100.f));
-
-        if (pJog2) {
-            listaE.incluir(pJog2, false);
-            GC.setJogador2(pJog2);        
-            // definir posição    
-        }
+        Fase::incluirJogadores(pJog1, pJog2);
+        pJog1->setPosition(sf::Vector2f(50.f, alturaFase - 80.f));
+        if (pJog2)
+            pJog2->setPosition(sf::Vector2f(100.f, alturaFase - 80.f));
     }
 
     void FasePrimeira::inicializaFase() {
@@ -73,6 +71,7 @@ namespace Principal {
         // resolver colisões entre as entidades
         GC.executar();
         listaE.desenhaTodos(*janela); // Nota: foi necessário separar a colisão e a renderização em duas funções diferentes
+        listaE.limparMortos();
     }
 
 }

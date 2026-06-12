@@ -6,7 +6,7 @@ namespace Principal {
     {
     private:
         float raio;  // distância máxima para detectar e perseguir o jogador
-        Jogador* alvo; // ponteiro para o jogador, usado para obter a posição do alvo
+        
 
     public:
         Alma(); // construtor padrão, vai precisar ser excluido com a criação de fases (APENAS PARA TESTES)
@@ -20,7 +20,6 @@ namespace Principal {
 
         void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo); // move em direção ao jogador
         void moverAletoriamente(); // movimento aleatório quando o jogador não estiver no raio de detecção
-        void setAlvo(Jogador* jogador) { alvo = jogador; } // define quem perseguir
 
     };
 }

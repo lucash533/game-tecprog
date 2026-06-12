@@ -12,6 +12,11 @@ namespace Principal {
     protected:
         ListaEntidades listaE;
         GerenciadorColisao GC;
+        Jogador* pJog1;
+        Jogador* pJog2;
+        // Dimensões da fase
+        const int alturaFase = 700;
+        const int larguraFase = 3600;
 
         void criarAlmasPenadas(); // Cria almas aleatoriamente
         void criarPlataformas(); // Cria plataformas aleatoriamente
@@ -21,6 +26,7 @@ namespace Principal {
         virtual void criarObstaculo() = 0;
 
         void sementear(); // Aleatoriza a semente de rng
+
 
     public:
         Fase();
