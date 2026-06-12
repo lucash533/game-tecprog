@@ -28,7 +28,6 @@ namespace Principal {
         //sementear();
         int qtd = rand() % (maxAlmas + 1 - 3) + 3;
 
-
         for (int i = 0; i < qtd; i++) {
             //();
 			float randX = (float)(rand() % 700) + 50.f; // posição aleatória dentro de uma área
@@ -47,13 +46,12 @@ namespace Principal {
         //sementear();
         int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         int i;
-		float espaco = (larguraFase - 100) / qtd; // para distribuir as plataformas ao longo da fase, com uma margem de 50 em cada lado
 
         for (i = 0; i < qtd; i++) {
             //sementear();
 
             // Coordenadas aleatórias não testadas. formato: (... - (d)) + distancia minima, onde d = distancia maxima + distancia minima
-			float randX = (int)(50.f + (i * espaco) + (rand() % 100)); // posição aleatória dentro de uma área, com espaçamento para distribuir as plataformas ao longo da fase
+            float randX = (int)(rand() % (larguraFase - 250)) + 50.f;
             float randY = rand() % (int)(rand() % 300) + (alturaFase - 400.f); // INT PARA FLOAT PODE DAR PROBLEMA
 
             float largura = (float)(rand() % 100) + 150.f;
