@@ -1,19 +1,20 @@
 #pragma once
 #include "Fase.h"
 
-/*
-class FaseSegunda : public Fase {
-private:
-    const int maxPisadeira;
+namespace Principal {
+    class FaseSegunda : public Fase {
+    private:
+        const int maxArmadilhas;
+        const int maxPisadeira;
 
-protected:
-    void criarPisadeiras();
-    void criarObstDificeis();
-    void criarProjeteis();
+    protected:
+        void criarPisadeiras();
+        void criarObstDificeis();
+        void criarProjeteis();
 
-public:
-    FaseSegunda();
-    ~FaseSegunda();
+    public:
+        FaseSegunda();
+        ~FaseSegunda();
 
-};
-*/
+    };
+}

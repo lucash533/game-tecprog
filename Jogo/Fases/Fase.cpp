@@ -4,13 +4,14 @@
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Ente.h"
 #include "../Gerenciadores/GerenciadorGrafico.h"
-
-#include <cstdlib> // usado para a função rand. talvez gere problemas e precise ser trocado por <stdlib.h>
-#include <time.h> // usado para a função rand com o tempo
-
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 namespace Principal {
     Fase::Fase()
-    : maxAlmas(5), maxPlataformas(5) {
+    : maxAlmas(5), maxPlataformas(5), minhaSala(alturaFase, larguraFase),
+        pJ1(nullptr), pJ2(nullptr) {
+        sementear(); // Irei colocar o sementear no construtor porque ao colocar nas outras funções de criação simplemente não geravam mais de uma entidade
 
     }
 
@@ -20,36 +21,45 @@ namespace Principal {
     // Esvazia a lista e desaloca entidades
     void Fase::limpaFase() {
         listaE.limpar();
+        GC.limpar();
     }
 
     // Cria inimigos fáceis
     void Fase::criarAlmasPenadas() {
-        sementear();
-        int qtd = rand() % (maxAlmas + 1 - 3) + 3; // Valor da direita é o mínimo
-        int i;
+        //sementear(); 
+        int qtd = rand() % (maxAlmas + 1 - 3) + 5;
 
-        for (i = 0; i < qtd; i++) {
-            Alma* inimigo = new Alma;
-            listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
-            // PRECISA DEFINIR POSIÇÃO ALEATÓRIA
+        for (int i = 0; i < qtd; i++) {
+            float randX = (int)(rand() % (int)(larguraFase - 200.f));
+            float randY = alturaFase - 60.f;
+
+			Alma* inimigo = new Alma(50.f + randX, randY); // posição aleatória dentro de uma área 
+            inimigo->setAlvo(pJ1); // Define jogador como alvo
+			listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
+            GC.incluirInimigo(inimigo); // registra no GC para colisão
         }
     }
 
+
     // Cria obstáculo 1 (plataformas)
     void Fase::criarPlataformas() {
-        sementear();
+        //sementear();
         int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         int i;
 
         for (i = 0; i < qtd; i++) {
-            sementear();
+            //sementear(); 
 
             // Coordenadas aleatórias não testadas. formato: (... - (d)) + distancia minima, onde d = distancia maxima + distancia minima
-            float randX = rand() % (int)((Ente::getGG()->getLargura() - 200.0f) + 100.0f); //
-            float randY = rand() % (int)((Ente::getGG()->getAltura() - 500.0f) + 400.0f); // INT PARA FLOAT PODE DAR PROBLEMA
+            float randX = (int)(rand() % (larguraFase - 250)) + 50.f;
+            float randY = alturaFase - 60.f; // INT PARA FLOAT PODE DAR PROBLEMA
 
-            Plataforma* plat = new Plataforma(randX, randY, 100.0f);
+            float largura = 300.f;
+            float altura = 40.f;
+
+            Plataforma* plat = new Plataforma(randX, randY, largura, altura);
             listaE.incluir(static_cast<Entidade*>(plat), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
+            GC.incluirObstcaulo(plat); // registra no GC para colisão        
         }
     }
 
@@ -62,13 +72,16 @@ namespace Principal {
 
     // Inclui jogadores na lista. Não deve ser chamada mais do que uma vez !!!
     void Fase::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
-        listaE.incluir(pJog1, false);
-        GC.setJogador1(pJog1);
-        if (pJog2) {
-            listaE.incluir(pJog2, false);
-            GC.setJogador2(pJog2);            
+        pJ1 = pJog1; //
+        pJ2 = pJog2;
+        listaE.incluir(pJ1, false);
+        GC.setJogador1(pJ1);
+        if (pJ2) {
+            listaE.incluir(pJ2, false);
+            GC.setJogador2(pJ2);
         }
     }
+
 
     // CÓDIGO INSPIRADO NA FUNÇÃO SEMENTAR FORNECIDA NAS PROVAS DE TECPROG
     // Nota: não foi testado se está funcionando. Na dúvida, pesquise no google ou pegue o código 100% dos exemplos do professor (com cŕeditos é claro ;D)

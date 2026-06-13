@@ -8,6 +8,7 @@
 #include "../Entidades/Obstaculos/Obstaculo.h"
 #include "../Entidades/Bloco/Sala.h" 
 #include "../Entidades/Obstaculos/Plataforma.h"
+#include "../Entidades/Obstaculos/Lama.h"
 
 namespace Principal {
     class GerenciadorColisao {
@@ -21,6 +22,7 @@ namespace Principal {
 
         const bool verificarColisao(Entidade* pe1, Entidade* pe2) const;
         void tratarColisoesJogsObstacs();
+        void tratarColisoesEntidadesObstacs();
         void tratarColisoesJogsInimgs();
         void tratarColisoesJogsProjeteis();
         void tratarColisoesEntsSala();
@@ -30,7 +32,8 @@ namespace Principal {
         void setJogador2(Jogador* p);
         GerenciadorColisao();
         ~GerenciadorColisao();
-
+        void limparMortos();
+        void limpar();
         void setSala(Sala* pS);
 
         void incluirInimigo(Inimigo* pi);

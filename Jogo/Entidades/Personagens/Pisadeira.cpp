@@ -4,7 +4,7 @@
 //
 
 namespace Principal {
-	Pisadeira::Pisadeira() : raio(300.0f), alvo(nullptr), tamanho(40.0f), forca(20)
+	Pisadeira::Pisadeira() : raio(300.0f), tamanho(40.0f), forca(20) /*alvo(nullptr),*/
 	{
 		//id = Principal::ID_PISADEIRA;
 		corpo.setSize(sf::Vector2f(tamanho, tamanho));
@@ -20,6 +20,7 @@ namespace Principal {
 	{
 		
 	}
+	
 
 	void Pisadeira::perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo)
 	{

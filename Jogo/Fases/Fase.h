@@ -9,9 +9,16 @@ namespace Principal {
         const int maxAlmas;
         const int maxPlataformas;
 
+
     protected:
         ListaEntidades listaE;
         GerenciadorColisao GC;
+        Jogador* pJ1;
+        Jogador* pJ2;
+        // Dimensões da fase
+        const int alturaFase = 700;
+        const int larguraFase = 3600;
+        Sala minhaSala;
 
         void criarAlmasPenadas(); // Cria almas aleatoriamente
         void criarPlataformas(); // Cria plataformas aleatoriamente

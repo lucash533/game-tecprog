@@ -41,7 +41,7 @@ namespace Principal {
         Elemento* getUltimo() const { return pUltimo; }
         void incluir(TL* p, bool d); // Inclui elemento na lista
         void limpar(); // Esvazia e desaloca lista
-        void remover(TL* elemento); 
+        void remover(TL* elemento);
         //void executar();
     };
 
@@ -91,7 +91,7 @@ namespace Principal {
     template<class TL>
     Lista<TL>::Lista()
         : pPrimeiro(nullptr), pUltimo(nullptr) {
-        limpar();
+       
     }
 
     template<class TL>
@@ -142,19 +142,46 @@ namespace Principal {
     void Lista<TL>::remover(TL* elemento) {
 
 
-        Elemento* pAtual = pPrimeiro;
-        Elemento* pAnterior = NULL;
+        
+        /*Elemento* pAtual = pPrimeiro;
+        Elemento* pAnterior = nullptr;
 
         while (pAtual->getInfo() != elemento &&
-               pAtual != NULL) {
+            pAtual != nullptr) {
             pAnterior = pAtual;
             pAtual = pAtual->getProx();
-           }
+        }
         if (pAtual->getInfo() == elemento) {
             pAnterior->setProx(pAtual->getProx());
             if (pAtual->dinamico)
                 delete pAtual->getInfo();
             delete pAtual;
+        }*/
+                Elemento* pAtual = pPrimeiro;
+        Elemento* pAnterior = nullptr;
+
+        while (pAtual != nullptr && pAtual->getInfo() != elemento) {
+            pAnterior = pAtual;
+            pAtual = pAtual->getProx();
         }
+
+        // CORRIGIDO: sai sem crash se não encontrou
+        if (pAtual == nullptr) return;
+
+        // CORRIGIDO: trata remoção do primeiro elemento
+        // versão antiga sempre chamava pAnterior->setProx sem checar nullptr
+        if (pAnterior == nullptr)
+            pPrimeiro = pAtual->getProx();
+        else
+            pAnterior->setProx(pAtual->getProx());
+
+        // CORRIGIDO: atualiza pUltimo se removeu o último elemento
+        if (pAtual == pUltimo)
+            pUltimo = pAnterior;
+
+        // CORRIGIDO: destrutor de Elemento já deleta pInfo se dinamico == true
+        // versão antiga deletava aqui E no destrutor — double free
+        delete pAtual;
+    
     }
 }

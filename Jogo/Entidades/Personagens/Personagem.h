@@ -5,7 +5,7 @@ namespace Principal {
     class Personagem : public Entidade {
     protected:
 
-        sf::Vector2f vel; // velocidade horizontal (x) e vertical (y) base
+        //sf::Vector2f vel; irei colocar em entidade
         int num_vidas;  // quantidade de vidas
 
     public:

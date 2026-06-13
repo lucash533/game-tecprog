@@ -1,18 +1,19 @@
 #pragma once
 #include "Fase.h"
 #include "../Entidades/Bloco/Sala.h"
+#include "../Entidades/Personagens/Banshee.h"
+#include "../Entidades/Personagens/Alma.h"
+#include "../Entidades/Obstaculos/Lama.h"
+#include "../Listas/ListaEntidade.h"
+#include "../Listas/Lista.h"
+
 
 namespace Principal {
     class FasePrimeira : public Fase {
     private:
         const int maxBanshee;
-        //const int maxObstaculoLama;
-
-        // Dimensões da fase
-        const int alturaFase = 700;
-        const int larguraFase = 900;
-
-        Sala minhaSala;
+        const int maxObstaculoLama;
+        
 
     protected:
         // Funções para criar entidades

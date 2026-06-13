@@ -7,7 +7,7 @@ namespace Principal {
     {
     protected:
         int nivel_maldade;
-
+        Jogador* alvo;
     public:
         Inimigo();
         virtual ~Inimigo();
@@ -16,5 +16,6 @@ namespace Principal {
         virtual void executar() = 0;
         virtual void danificar(Jogador* p) = 0;
         virtual void salvar() = 0;
+        void setAlvo(Jogador* jogador); // define quem perseguir
     };
 }
