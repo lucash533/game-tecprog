@@ -12,8 +12,8 @@ namespace Principal {
     protected:
         ListaEntidades listaE;
         GerenciadorColisao GC;
-        Jogador* pJog1;
-        Jogador* pJog2;
+        Jogador* pJ1;
+        Jogador* pJ2;
         // Dimensões da fase
         const int alturaFase = 700;
         const int larguraFase = 3600;
@@ -26,7 +26,6 @@ namespace Principal {
         virtual void criarObstaculo() = 0;
 
         void sementear(); // Aleatoriza a semente de rng
-
 
     public:
         Fase();

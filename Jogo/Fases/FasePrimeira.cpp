@@ -14,14 +14,16 @@ namespace Principal {
     // Cria inimigos médios
     // VIDE criarAlmas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     void FasePrimeira::criarBanshees() {
-        //sementear();
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
-        int i;
 
-        for (i = 0; i < qtd; i++) {
-            Banshee* inimigo = new Banshee;
-            listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro
-            // PRECISA DEFINIR POSIÇÃO ALEATÓRIA
+        for (int i = 0; i < qtd; i++) {
+            float randX = 100.f + (rand() % (int)(larguraFase - 200));
+            float randY = 100.f + (rand() % 300); // voa em alturas variadas
+
+            Banshee* inimigo = new Banshee(randX, randY);
+            inimigo->setAlvo(pJ1);
+            listaE.incluir(static_cast<Entidade*>(inimigo), true);
+            GC.incluirInimigo(inimigo);
         }
     }
 
@@ -30,7 +32,7 @@ namespace Principal {
 
     void FasePrimeira::criarLamas() {
         //sementear();
-        int qtd = rand() % 3 + 2;
+        int qtd = rand() % (maxObstaculoLama + 1 - 3) + 3;
 
         for (int i = 0; i < qtd; i++) {
             //sementear();
@@ -45,7 +47,7 @@ namespace Principal {
 
     void FasePrimeira::criarInimigos() {
         criarAlmasPenadas();
-        //criarBanshees();
+        criarBanshees();
     }
 
     void FasePrimeira::criarObstaculo() {

@@ -11,6 +11,8 @@ namespace Principal {
 	private:
 		float raio; // distância máxima para perseguir o jogador
 		float tamanho;
+		sf::Clock clockPulo; // para controlar o tempo entre pulos
+		int temp_pulo; // tempo mínimo entre pulos, em segundos
 	public:
 		Banshee();
 		Banshee(float x, float y);

@@ -46,7 +46,7 @@ namespace Principal {
 
     void Jogador::salvar() {}
     void Jogador::colidir(Inimigo* pIn) {
-        if (clockDano.getElapsedTime().asSeconds() < 1.0f) return;
+        if (clockDano.getElapsedTime().asSeconds() < 0.5f) return;
         operator--();
         clockDano.restart();
     }

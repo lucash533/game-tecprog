@@ -10,8 +10,8 @@ namespace Principal {
 
     Personagem& Personagem::operator--()
     {
-        --num_vidas;
-        if (num_vidas <= 0)
+        num_vidas--;
+        if (num_vidas < 0)
             setVivo(false);
         return *this;
     }

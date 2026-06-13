@@ -33,7 +33,7 @@ namespace Principal {
         GerenciadorColisao();
         ~GerenciadorColisao();
         void limparMortos();
-
+        void limpar();
         void setSala(Sala* pS);
 
         void incluirInimigo(Inimigo* pi);

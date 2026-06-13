@@ -4,7 +4,7 @@
  
 namespace Principal {
     GerenciadorColisao::GerenciadorColisao() : pJog1(nullptr), pJog2(nullptr), minhaSala(nullptr) {}
-    GerenciadorColisao::~GerenciadorColisao() {}
+    GerenciadorColisao::~GerenciadorColisao() { limpar(); }
 
     void GerenciadorColisao::setSala(Sala* pS) {minhaSala = pS;}
 
@@ -33,7 +33,7 @@ namespace Principal {
     }
 
     void GerenciadorColisao::tratarColisoesJogsObstacs() {
-        for (auto it = LOs.begin(); it != LOs.end(); ++it) {
+        for (std::list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it) {
             Obstaculo* obs = *it;
             if (obs->getVivo()) {
 
@@ -52,18 +52,19 @@ namespace Principal {
 
     }
     void GerenciadorColisao::tratarColisoesEntidadesObstacs() {
-        for (auto it = LOs.begin(); it != LOs.end(); ++it) {
+        for (std::list<Obstaculo*>::iterator it = LOs.begin(); it != LOs.end(); ++it) {
             Plataforma* plat = dynamic_cast<Plataforma*>(*it);
             if (plat && plat->getVivo()) {
 
                 // inimigos x plataforma
-                for (auto* ini : LIs) {
+                for (std::vector<Inimigo*>::iterator it_ini = LIs.begin(); it_ini != LIs.end(); ++it_ini) {
+                    Inimigo* ini = *it_ini;
                     if (ini->getVivo() && verificarColisao(ini, plat))
                         plat->obstacularizar((Entidade*)ini);
                 }
 
                 // outros obstáculos x plataforma
-                for (auto it2 = LOs.begin(); it2 != LOs.end(); ++it2) {
+                for (std::list<Obstaculo*>::iterator it2 = LOs.begin(); it2 != LOs.end(); ++it2) {
                     Obstaculo* obs2 = *it2;
                     if (obs2 != plat && obs2->getVivo() && !dynamic_cast<Plataforma*>(obs2)) {  // não verifica plataforma x plataforma ou obstáculos mortos
 
@@ -78,7 +79,7 @@ namespace Principal {
 
     void GerenciadorColisao::tratarColisoesJogsInimgs()
     {
-        for (auto it = LIs.begin(); it != LIs.end(); ++it)
+        for (std::vector<Inimigo*>::iterator it = LIs.begin(); it != LIs.end(); ++it)
         {
             Inimigo* ini = *it;
             if (ini->getVivo()) { // pula inimigos mortos 
@@ -131,6 +132,13 @@ namespace Principal {
                 ++it;
         }
     }
+	void GerenciadorColisao::limpar() {
+		LIs.clear();
+		LOs.clear();
+		//LPs.clear();
+		pJog1 = nullptr;
+		pJog2 = nullptr;
+	}
 
 
     void GerenciadorColisao::executar() {
@@ -138,7 +146,7 @@ namespace Principal {
         tratarColisoesJogsObstacs();
         tratarColisoesJogsInimgs();
         tratarColisoesEntidadesObstacs();
-        //tratarColisoesJogsProjeteis();
+        tratarColisoesJogsProjeteis();
         tratarColisoesEntsSala();
 
     }
