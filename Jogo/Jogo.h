@@ -3,6 +3,7 @@
 #include "Fases/FasePrimeira.h"
 #include "Ente.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
+#include "Menu/Menu.h"
 
 
 namespace Principal {
@@ -18,15 +19,25 @@ namespace Principal {
 
         GerenciadorGrafico* pGG;
 
+        // Identificador usado para definir qual parte do jogo executar
+        // 0: menu principal
+        // 1: fase 1
+        int modo;
+
         // Fases
         FasePrimeira fase1;
 
         //menu
+        Menu menuPrincipal;
+
+        //void executarMenu();
+        //void executarFase1();
 
     public:
         Jogo();
         ~Jogo();
 
         void executar();
+        
     };
 }

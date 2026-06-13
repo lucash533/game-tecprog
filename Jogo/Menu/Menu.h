@@ -1,13 +1,25 @@
 #pragma once
 #include "../Ente.h"
-#include "../Jogo.h"
+
 
 namespace Principal {
+
+    class Jogo;
+
     class Menu : public Ente {
-    private:
-        // Listas ou vetores separados de nodos para cada parte do menu
+    protected:
+        sf::Texture backgroundImage;
+        sf::Sprite background;
+        Jogo* pJogo;
+
     public:
-        //desenhar()
-        //executar()
+        Menu();
+        ~Menu();
+
+        void setJogo(Jogo* p);
+        void setBackground(const char* caminho); // talvez não funcione
+
+        virtual void executar();
+        virtual void desenhar(sf::RenderWindow& window);
     };
 }
