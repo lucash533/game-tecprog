@@ -3,7 +3,7 @@
 //#include "../Entidades/" // LAMA
 
 namespace Principal {
-    FasePrimeira::FasePrimeira() : maxBanshee(8), minhaSala(alturaFase, larguraFase), maxObstaculoLama(5) {
+    FasePrimeira::FasePrimeira() : maxBanshee(5), maxObstaculoLama(5) {
         GC.setSala(&minhaSala);
     }
 
@@ -17,10 +17,10 @@ namespace Principal {
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
 
         for (int i = 0; i < qtd; i++) {
-            float randX = 100.f + (rand() % (int)(larguraFase - 200));
-            float randY = 100.f + (rand() % 300); // voa em alturas variadas
+            float randX = (int)(rand() % (int)(larguraFase - 200.f));
+            float randY = alturaFase - 60.f; // voa em alturas variadas
 
-            Banshee* inimigo = new Banshee(randX, randY);
+            Banshee* inimigo = new Banshee( 50.f + randX, randY);
             inimigo->setAlvo(pJ1);
             listaE.incluir(static_cast<Entidade*>(inimigo), true);
             GC.incluirInimigo(inimigo);
@@ -59,7 +59,7 @@ namespace Principal {
         Fase::incluirJogadores(pJog1, pJog2);
         pJog1->setPosition(sf::Vector2f(50.f, alturaFase - 80.f));
         if (pJog2)
-            pJog2->setPosition(sf::Vector2f(100.f, alturaFase - 80.f));
+            pJog2->setPosition(sf::Vector2f(800.f, alturaFase - 80.f));
     }
 
     void FasePrimeira::inicializaFase() {

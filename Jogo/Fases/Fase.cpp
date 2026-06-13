@@ -9,7 +9,7 @@
 #include <cmath>
 namespace Principal {
     Fase::Fase()
-    : maxAlmas(5), maxPlataformas(5),
+    : maxAlmas(5), maxPlataformas(5), minhaSala(alturaFase, larguraFase),
         pJ1(nullptr), pJ2(nullptr) {
         sementear(); // Irei colocar o sementear no construtor porque ao colocar nas outras funções de criação simplemente não geravam mais de uma entidade
 
@@ -30,10 +30,10 @@ namespace Principal {
         int qtd = rand() % (maxAlmas + 1 - 3) + 5;
 
         for (int i = 0; i < qtd; i++) {
-            float randX = (float)(rand() % (int)(larguraFase - 200.f));
+            float randX = (int)(rand() % (int)(larguraFase - 200.f));
             float randY = alturaFase - 60.f;
 
-			Alma* inimigo = new Alma(randX, randY); // posição aleatória dentro de uma área 
+			Alma* inimigo = new Alma(50.f + randX, randY); // posição aleatória dentro de uma área 
             inimigo->setAlvo(pJ1); // Define jogador como alvo
 			listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
             GC.incluirInimigo(inimigo); // registra no GC para colisão
@@ -54,7 +54,7 @@ namespace Principal {
             float randX = (int)(rand() % (larguraFase - 250)) + 50.f;
             float randY = rand() % (int)(rand() % 300) + (alturaFase - 400.f); // INT PARA FLOAT PODE DAR PROBLEMA
 
-            float largura = (float)(rand() % 100) + 150.f;
+            float largura = 300.f;
             float altura = 40.f;
 
             Plataforma* plat = new Plataforma(randX, randY, largura, altura);

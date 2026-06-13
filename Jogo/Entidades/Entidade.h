@@ -13,7 +13,7 @@ namespace Principal {
         bool noChao; // controla se pode pular e se aplica gravidade
         float velY;  // velocidade vertical atual (afetada pela gravidade)
 		bool vivo; // controla se a entidade está ativa no jogo (pode ser usada para remover inimigos mortos, por exemplo)
-
+        sf::Vector2f vel; // fiz isso para ser herdada em projetil e personagens
 
 
     public:

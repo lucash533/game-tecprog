@@ -13,10 +13,7 @@ namespace Principal {
     private:
         const int maxBanshee;
         const int maxObstaculoLama;
-
         
-
-        Sala minhaSala;
 
     protected:
         // Funções para criar entidades
