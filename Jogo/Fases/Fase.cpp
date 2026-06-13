@@ -52,7 +52,7 @@ namespace Principal {
 
             // Coordenadas aleatórias não testadas. formato: (... - (d)) + distancia minima, onde d = distancia maxima + distancia minima
             float randX = (int)(rand() % (larguraFase - 250)) + 50.f;
-            float randY = rand() % (int)(rand() % 300) + (alturaFase - 400.f); // INT PARA FLOAT PODE DAR PROBLEMA
+            float randY = alturaFase - 60.f; // INT PARA FLOAT PODE DAR PROBLEMA
 
             float largura = 300.f;
             float altura = 40.f;

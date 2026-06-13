@@ -18,7 +18,7 @@ namespace Principal {
 
         for (int i = 0; i < qtd; i++) {
             float randX = (int)(rand() % (int)(larguraFase - 200.f));
-            float randY = alturaFase - 60.f; // voa em alturas variadas
+            float randY = alturaFase - 60.f;
 
             Banshee* inimigo = new Banshee( 50.f + randX, randY);
             inimigo->setAlvo(pJ1);
@@ -37,7 +37,7 @@ namespace Principal {
         for (int i = 0; i < qtd; i++) {
             //sementear();
             float randX = (float)(rand() % (larguraFase - 150)) + 50.f;
-            float randY = (float)(alturaFase - 40.f); // no chão, igual às plataformas
+            float randY = alturaFase - 60.f; // no chão, igual às plataformas
 
             Lama* lama = new Lama(randX, randY, 80.f);
             listaE.incluir(static_cast<Entidade*>(lama), true);
@@ -54,6 +54,7 @@ namespace Principal {
         criarPlataformas();
         criarLamas();
     }
+
 
     void FasePrimeira::incluirJogadores(Jogador* pJog1, Jogador* pJog2) {
         Fase::incluirJogadores(pJog1, pJog2);
