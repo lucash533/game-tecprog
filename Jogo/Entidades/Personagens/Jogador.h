@@ -14,7 +14,7 @@ namespace Principal {
     public:
         Jogador();
         ~Jogador();
-        void colidir(Inimigo* pIn); // reação ao colidir com inimigo
+        void colidir(Entidade* pIn); // reação ao colidir com inimigo
         void salvar();
         void mover(); // lê teclado e move o jogador
         void executar();

@@ -9,13 +9,14 @@
 #include "../Entidades/Bloco/Sala.h" 
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Entidades/Obstaculos/Lama.h"
+#include "../Entidades/Projetil.h"
 
 namespace Principal {
     class GerenciadorColisao {
     private:
         std::vector<Inimigo*>   LIs;
         std::list<Obstaculo*>   LOs;
-        //std::set<Projetil*>     LPs;
+        std::set<Projetil*>     LPs;
         Sala* minhaSala; 
         Jogador* pJog1; 
         Jogador* pJog2; 
@@ -33,12 +34,14 @@ namespace Principal {
         GerenciadorColisao();
         ~GerenciadorColisao();
         void limparMortos();
+        void limparProjeteis();
+        void removerProjetil(Projetil* pj);
         void limpar();
         void setSala(Sala* pS);
 
         void incluirInimigo(Inimigo* pi);
         void incluirObstcaulo(Obstaculo* po);
-        //void incluirProjetil(Projetil* pj);
+        void incluirProjetil(Projetil* pj);
         void executar();
     };
 }

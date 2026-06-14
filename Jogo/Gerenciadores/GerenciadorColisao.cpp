@@ -10,7 +10,7 @@ namespace Principal {
 
     void GerenciadorColisao::incluirInimigo(Inimigo* pi) { LIs.push_back(pi); }
     void GerenciadorColisao::incluirObstcaulo(Obstaculo* po) { LOs.push_back(po); }
-    //void GerenciadorColisao::incluirProjetil(Projetil* pj) { LPs.insert(pj); }
+    void GerenciadorColisao::incluirProjetil(Projetil* pj) { LPs.insert(pj); }
 
     const bool GerenciadorColisao::verificarColisao(Entidade* pe1, Entidade* pe2) const {
         // ====================================================== //
@@ -109,7 +109,26 @@ namespace Principal {
 
     void GerenciadorColisao::setJogador1(Jogador* p) { pJog1 = p; }
     void GerenciadorColisao::setJogador2(Jogador* p) { pJog2 = p; }
-    void GerenciadorColisao::tratarColisoesJogsProjeteis() { /* a implementar */ }
+
+    void GerenciadorColisao::tratarColisoesJogsProjeteis() {
+		for (std::set<Projetil*>::iterator it = LPs.begin(); it != LPs.end(); ++it) {
+			Projetil* pj = *it;
+			if (pj->getAtivo()) {
+				// --- PROJETIL x JOGADOR ---
+				if (pJog1 && pJog1->getVivo() && verificarColisao(pj, pJog1))
+					pj->colidir(pJog1);
+				if (pJog2 && pJog2->getVivo() && verificarColisao(pj, pJog2))
+					pj->colidir(pJog2);
+				// --- PROJETIL x OBSTÁCULO ---
+				for (std::list<Obstaculo*>::iterator it_obs = LOs.begin(); it_obs != LOs.end(); ++it_obs) {
+					Obstaculo* obs = *it_obs;
+					if (verificarColisao(pj, obs))
+						pj->colidir(obs);
+
+				}
+			}
+		}
+    }
 
     void GerenciadorColisao::tratarColisoesEntsSala() {
         if (minhaSala) {
@@ -121,6 +140,8 @@ namespace Principal {
 
             for (auto it = LOs.begin(); it != LOs.end(); ++it)
                 if ((*it)->getVivo()) minhaSala->limitar(*it);
+			for (auto* pj : LPs)
+                if (pj->getAtivo()) minhaSala->limitar(pj);
         }
     }
     void GerenciadorColisao::limparMortos() {
@@ -132,23 +153,40 @@ namespace Principal {
                 ++it;
         }
     }
+    void GerenciadorColisao::limparProjeteis() {
+        std::set<Projetil*>::iterator it = LPs.begin();
+        while (it != LPs.end()) {
+            Projetil* pj = *it;
+            if (!pj->getAtivo()) {
+                it = LPs.erase(it);
+                delete pj; 
+            }
+            else {
+                ++it;
+            }
+        }
+    }
+
+
 	void GerenciadorColisao::limpar() {
 		LIs.clear();
 		LOs.clear();
-		//LPs.clear();
-		pJog1 = nullptr;
-		pJog2 = nullptr;
+        for (std::set<Projetil*>::iterator it = LPs.begin(); it != LPs.end(); ++it)
+            delete* it;
+        LPs.clear();
+        pJog1 = nullptr;
+        pJog2 = nullptr;
 	}
 
 
     void GerenciadorColisao::executar() {
         limparMortos();
+        limparProjeteis();         
         tratarColisoesJogsObstacs();
         tratarColisoesJogsInimgs();
         tratarColisoesEntidadesObstacs();
         tratarColisoesJogsProjeteis();
         tratarColisoesEntsSala();
-
     }
 }
 

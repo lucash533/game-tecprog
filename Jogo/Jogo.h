@@ -3,6 +3,7 @@
 #include "Fases/FasePrimeira.h"
 #include "Ente.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
+#include "Fases/FaseSegunda.h"
 
 
 namespace Principal {
@@ -20,6 +21,7 @@ namespace Principal {
 
         // Fases
         FasePrimeira fase1;
+        FaseSegunda fase2;
 
         //menu
 

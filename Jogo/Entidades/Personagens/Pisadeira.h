@@ -1,23 +1,32 @@
 #pragma once
 #include "Inimigo.h"
+#include "../Projetil.h"
+#include <cmath>
 
 namespace Principal {
-	class Pisadeira :
-		public Inimigo
-	{
-	private:
-		float raio; // distância máxima para perseguir o jogador
-		float tamanho;
-		int short forca;
-	public:
-		Pisadeira();
-		Pisadeira(float x, float y);
-		~Pisadeira();
-		void executar();
-		void mover();
-		void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo);
-		void danificar(Jogador* p); // método para causar dano ao jogador
-		void salvar();
-	};
-}
+    class GerenciadorColisao;
 
+    class Pisadeira : public Inimigo {
+    private:
+        float raio;       
+        float raioTiro;    
+        float tamanho;
+        short int forca;
+        sf::Clock clock_Tiro;
+        float temp_Tiro;
+        Projetil* tiro;
+        GerenciadorColisao* pGC;
+
+    public:
+        Pisadeira(float x, float y);
+        ~Pisadeira();
+        void executar();
+        void mover();
+        void perseguir(sf::Vector2f pos_alvo);
+        void fazerProjetil();
+        void atualizarProjetil();
+        void danificar(Jogador* p);
+        void salvar();
+        void setGC(GerenciadorColisao* pG) { pGC = pG; }
+    };
+}

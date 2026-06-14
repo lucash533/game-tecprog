@@ -9,9 +9,11 @@ namespace Principal {
         // Provisoriamente, o jogo já começa direto na fase 1
         fase1.incluirJogadores(&jogador1);
         fase1.inicializaFase();
+       
 
-        // NOTA: executar() foi removido do construtor para evitar loop infinito
-        // antes de Jogo ser retornado para o main
+        fase2.incluirJogadores(&jogador1); 
+        fase2.inicializaFase();            
+        
     }
 
     Jogo::~Jogo() {
@@ -34,7 +36,7 @@ namespace Principal {
             atualizarCamera();
 
             pGG->limpaJanela();
-            fase1.executar(pGG->getJanela());
+            fase2.executar(pGG->getJanela());
             pGG->mostraJanela();
         }
     }
