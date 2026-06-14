@@ -4,6 +4,7 @@
 #include "Ente.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
 #include "Menu/Menu.h"
+#include "Menu/MenuFases.h"
 
 
 namespace Principal {
@@ -16,6 +17,7 @@ namespace Principal {
         // Jogadores
         Jogador jogador1;
         Jogador jogador2;
+        bool doisJogadores; // !!!
 
         GerenciadorGrafico* pGG;
 
@@ -29,13 +31,18 @@ namespace Principal {
 
         //menu
         Menu menuPrincipal;
+        MenuFases menuFases;       
 
-        //void executarMenu();
-        //void executarFase1();
+        void inicializaMenus();
+        
 
     public:
         Jogo();
         ~Jogo();
+
+        void alteraJogadores(bool jog2);
+        void alteraModo(const int input);
+        void avançaFase();
 
         void executar();
 		void atualizarCamera();
