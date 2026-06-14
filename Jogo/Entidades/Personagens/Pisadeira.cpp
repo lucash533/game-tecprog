@@ -18,7 +18,7 @@ namespace Principal {
 
     Pisadeira::~Pisadeira() {
         if (tiro) {
-            tiro->setAtivo(false); // CORRIGIDO: marca inativo para o GC limpar
+            tiro->setAtivo(false); 
             tiro = nullptr;
         }
     }
