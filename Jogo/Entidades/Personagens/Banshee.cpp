@@ -2,20 +2,14 @@
 #include <cmath>
 
 namespace Principal {
-    Banshee::Banshee() : raio(300.0f), tamanho(40.0f), temp_pulo(3 - nivel_maldade )
-    {
-        corpo.setSize(sf::Vector2f(tamanho, tamanho));
-        corpo.setFillColor(sf::Color::Yellow);
-        corpo.setPosition(sf::Vector2f(100, 100));
-        vel = sf::Vector2f(2.0f, 0.f);
-    }
 
-	Banshee::Banshee(float x, float y) : raio(300.0f), tamanho(40.0f), temp_pulo(3 - nivel_maldade)
+	Banshee::Banshee(float x, float y, float largura, float altura) : raio(300.0f), temp_pulo(3 - nivel_maldade)
     {
-        corpo.setSize(sf::Vector2f(tamanho, tamanho));
+        corpo.setSize(sf::Vector2f(largura, altura));
         corpo.setFillColor(sf::Color::Yellow);
         corpo.setPosition(sf::Vector2f(x, y));
         vel = sf::Vector2f(2.0f * nivel_maldade, 0.f);
+        tamanho = nivel_maldade;
     }
 
     Banshee::~Banshee() {}
@@ -49,7 +43,7 @@ namespace Principal {
 
         // pula periodicamente quando esta no chao
         if (noChao && clockPulo.getElapsedTime().asSeconds() > temp_pulo) {
-            velY = -10.0f; // impulso de pulo
+            velY = -5.0f * tamanho; // impulso de pulo
             noChao = false;
             clockPulo.restart();
         }

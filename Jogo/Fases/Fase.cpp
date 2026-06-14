@@ -28,12 +28,13 @@ namespace Principal {
     void Fase::criarAlmasPenadas() {
         //sementear(); 
         int qtd = rand() % (maxAlmas + 1 - 3) + 5;
+        float largura = 40.f;
+        float altura = 40.f;
 
         for (int i = 0; i < qtd; i++) {
             float randX = (int)(rand() % (int)(larguraFase - 200.f));
             float randY = alturaFase - 60.f;
-
-			Alma* inimigo = new Alma(50.f + randX, randY); // posição aleatória dentro de uma área 
+			Alma* inimigo = new Alma(50.f + randX, randY, largura, altura); // posição aleatória dentro de uma área 
             inimigo->setAlvo(pJ1); // Define jogador como alvo
 			listaE.incluir(static_cast<Entidade*>(inimigo), true); // talvez dê erro // não lembro por que pudesse dar erro, mas chuto que seja por causa do static_cast
             GC.incluirInimigo(inimigo); // registra no GC para colisão
@@ -46,6 +47,8 @@ namespace Principal {
         //sementear();
         int qtd = rand() % (maxPlataformas + 1 - 3) + 3;
         int i;
+        float largura = 300.f;
+        float altura = 40.f;
 
         for (i = 0; i < qtd; i++) {
             //sementear(); 

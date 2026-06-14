@@ -6,7 +6,7 @@ namespace Principal {
 	private:
 		float largura;
 	public:
-		Lama(float x, float y, float largura);
+		Lama(float x, float y, float largura, float altura);
 		~Lama();
 		void executar();
 		void salvar();

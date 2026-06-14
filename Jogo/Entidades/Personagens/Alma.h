@@ -9,8 +9,7 @@ namespace Principal {
         
 
     public:
-        Alma(); // construtor padrão, vai precisar ser excluido com a criação de fases (APENAS PARA TESTES)
-        Alma(float x, float y);// construtor para criar inimigo em posição específica
+        Alma(float x, float y, float largura, float altura);// construtor para criar inimigo em posição específica
         ~Alma();
 
         void executar();
@@ -19,8 +18,6 @@ namespace Principal {
         void mover();
 
         void perseguir(sf::Vector2f pos_alvo, sf::Vector2f pos_inimigo); // move em direção ao jogador
-        void moverAletoriamente(); // movimento aleatório quando o jogador não estiver no raio de detecção
-
     };
 }
 

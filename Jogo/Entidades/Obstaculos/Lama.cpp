@@ -1,9 +1,9 @@
 #include "Lama.h"
 
 namespace Principal {
-	Lama::Lama(float x, float y, float largura) : largura(30.f) {
+	Lama::Lama(float x, float y, float largura, float altura) {
 		//id = Principal::ID_LAMA;
-		corpo.setSize(sf::Vector2f(largura, 5.f));
+		corpo.setSize(sf::Vector2f(largura, altura));
 		corpo.setPosition(x, y);
 		corpo.setFillColor(sf::Color::Magenta);
 	}

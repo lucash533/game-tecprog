@@ -18,7 +18,7 @@ namespace Principal {
         GerenciadorColisao* pGC;
 
     public:
-        Pisadeira(float x, float y);
+        Pisadeira(float x, float y, float largura, float altura);
         ~Pisadeira();
         void executar();
         void mover();

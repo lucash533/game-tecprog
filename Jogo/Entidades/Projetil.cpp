@@ -20,6 +20,7 @@ namespace Principal {
         sf::Vector2f pos = corpo.getPosition();
         if (pos.x < -20.f || pos.x > 3600 + 20.f || pos.y < -20.f || pos.y > 700 + 20.f) 
             ativo = false;
+        aplicarGravidade();
     }
 
     void Projetil::salvar() {}

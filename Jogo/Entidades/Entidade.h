@@ -7,7 +7,7 @@ namespace Principal {
     // Entidade adiciona forma visual e posição ao Ente
     class Entidade : public Ente {
     protected:
-        int x, y;  // posição
+        float x, y;  // posição
         sf::RectangleShape corpo;  // forma retangular que representa o objeto na tela
         //std::ostream buffer; //Implementar depos, não sei o que fazer com isso
         bool noChao; // controla se pode pular e se aplica gravidade

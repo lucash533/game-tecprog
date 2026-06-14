@@ -47,9 +47,18 @@ namespace Principal {
     void Jogador::salvar() {}
     void Jogador::colidir(Entidade* pIn) {
         if (clockDano.getElapsedTime().asSeconds() < 0.5f) return;
+
+        if (pIn) {
+            float direcao = corpo.getPosition().x - pIn->getPosicao().x;
+            if (direcao > 0)
+                corpo.move(50.f, -5.f); 
+            else
+                corpo.move(-50.f, -5.f);
+        }
         operator--();
         clockDano.restart();
     }
+
     void Jogador::diminuirVelocidade() {
         vel.x = velOriginal.x * 0.2f;
         naLama = true;

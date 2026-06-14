@@ -5,11 +5,11 @@
 #include <cmath>
 
 namespace Principal {
-    Pisadeira::Pisadeira(float x, float y)
+    Pisadeira::Pisadeira(float x, float y, float largura, float altura)
         : raio(150.0f), raioTiro(300.0f), tamanho(50.0f), temp_Tiro(2.0f),
         tiro(nullptr), pGC(nullptr) {
         nivel_maldade = 3;
-        forca = nivel_maldade * 2;
+        forca = nivel_maldade * 5;
         corpo.setSize(sf::Vector2f(tamanho, tamanho));
         corpo.setFillColor(sf::Color::Yellow);
         corpo.setPosition(sf::Vector2f(x, y));
@@ -18,7 +18,7 @@ namespace Principal {
 
     Pisadeira::~Pisadeira() {
         if (tiro) {
-            tiro->setAtivo(false); 
+            tiro->setAtivo(false);
             tiro = nullptr;
         }
     }
@@ -58,22 +58,14 @@ namespace Principal {
         float dx = pos_alvo.x - pos_inimigo.x;
         float dy = pos_alvo.y - pos_inimigo.y;
 
-        
+
         float distancia = sqrt(dx * dx + dy * dy);
 
-        if (distancia <= raioTiro &&
-            clock_Tiro.getElapsedTime().asSeconds() > temp_Tiro) {
+        if (distancia <= raioTiro && clock_Tiro.getElapsedTime().asSeconds() > temp_Tiro) {
 
-            float forcaTiro = forca;
-            if (pos_alvo.x < pos_inimigo.x)
-                forcaTiro = -forca;
-
-            float dx = pos_alvo.x - pos_inimigo.x;
-            float dy = pos_alvo.y - pos_inimigo.y;
-            float distancia = sqrt(dx * dx + dy * dy);
 
             sf::Vector2f direcao(dx / distancia * forca, dy / distancia * forca);
-            
+
             tiro = new Projetil(pos_inimigo.x, pos_inimigo.y, direcao);
             if (pGC) pGC->incluirProjetil(tiro);
             clock_Tiro.restart();
@@ -89,15 +81,16 @@ namespace Principal {
                 tiro->desenhar(*Ente::getGG()->getJanela());
         }
         else {
-            tiro = nullptr; 
+            tiro = nullptr;
         }
     }
 
-    
+
+
     void Pisadeira::danificar(Jogador* p) {
-        if (p == nullptr) return;
         p->colidir(this);
     }
 
     void Pisadeira::salvar() {}
+
 }

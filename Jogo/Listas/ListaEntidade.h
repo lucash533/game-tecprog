@@ -1,8 +1,10 @@
 #pragma once
 #include "Lista.h"
 #include "../Entidades/Entidade.h"
-
+#include "../Entidades/Personagens/Inimigo.h"
+#include "../Gerenciadores/GerenciadorColisao.h"
 namespace Principal {
+    class GerenciadorColisao;
     class ListaEntidades {
     private:
         Lista<Entidade> LEs;
@@ -15,6 +17,6 @@ namespace Principal {
         void percorrer(); // Percorre e executa elementos
         void desenhaTodos(sf::RenderWindow& janela); // Percorre e desenha elementos
         void limpar(); // Esvazia lista
-		void limparMortos(); // nova função para limpar entidades mortas
+        void limparMortos(GerenciadorColisao* pGC = nullptr); 
     };
 }

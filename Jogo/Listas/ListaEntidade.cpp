@@ -1,4 +1,7 @@
 #include "ListaEntidade.h"
+#include "../Entidades/Personagens/Inimigo.h"
+#include "../Gerenciadores/GerenciadorColisao.h"
+
 
 namespace Principal {
     ListaEntidades::ListaEntidades() {}
@@ -42,14 +45,19 @@ namespace Principal {
         LEs.limpar();
     }
 
-    void ListaEntidades::limparMortos() {
+    void ListaEntidades::limparMortos(GerenciadorColisao* pGC) {
         Lista<Entidade>::Elemento* pElem = LEs.getPrimeiro();
-        Lista<Entidade>::Elemento* pProx = nullptr; // Para manter o controle do elemento anterior
+        Lista<Entidade>::Elemento* pProx = nullptr;
         while (pElem != nullptr) {
-            pProx = pElem->getProx(); // Armazena o próximo elemento antes de possivelmente remover o atual
+            pProx = pElem->getProx();
             Entidade* pE = pElem->getInfo();
-            if (pElem->dinamico && pElem->getInfo() && !pElem->getInfo()->getVivo()) {
-                LEs.remover(pE); // Remove a entidade morta da lista
+            if (pElem->dinamico && pE && !pE->getVivo()) {
+                // ADICIONADO: notifica GC antes de deletar
+                if (pGC) {
+                    Inimigo* ini = dynamic_cast<Inimigo*>(pE);
+                    if (ini) pGC->removerInimigo(ini);
+                }
+                LEs.remover(pE);
             }
             pElem = pProx;
         }

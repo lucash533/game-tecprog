@@ -14,8 +14,7 @@ namespace Principal {
 		sf::Clock clockPulo; // para controlar o tempo entre pulos
 		int temp_pulo; // tempo mínimo entre pulos, em segundos
 	public:
-		Banshee();
-		Banshee(float x, float y);
+		Banshee(float x, float y, float  largura, float altura);
 		~Banshee();
 		void executar();
 		void mover();

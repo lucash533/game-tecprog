@@ -2,11 +2,10 @@
 #include <cmath>
 
 namespace Principal {
-    Alma::Alma() : raio(50.0f * nivel_maldade) /*alvo(nullptr),*/
-    {    }
-    Alma::Alma(float x, float y) : raio(300.0f) /*alvo(nullptr)*/
+    
+    Alma::Alma(float x, float y, float altura, float largura) : raio(300.0f) /*alvo(nullptr)*/
     {
-        corpo.setSize(sf::Vector2f(40, 40));
+        corpo.setSize(sf::Vector2f(altura, largura));
         corpo.setFillColor(sf::Color::Red);
         corpo.setPosition(sf::Vector2f(x, y));
         vel = sf::Vector2f(2.0f * nivel_maldade, 0.0f * nivel_maldade);

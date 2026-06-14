@@ -153,6 +153,16 @@ namespace Principal {
                 ++it;
         }
     }
+    void GerenciadorColisao::removerInimigo(Inimigo* pi) {
+        std::vector<Inimigo*>::iterator it = LIs.begin();
+        while (it != LIs.end()) {
+            if (*it == pi) {
+                it = LIs.erase(it);
+                return;
+            }
+            ++it;
+        }
+    }
     void GerenciadorColisao::limparProjeteis() {
         std::set<Projetil*>::iterator it = LPs.begin();
         while (it != LPs.end()) {

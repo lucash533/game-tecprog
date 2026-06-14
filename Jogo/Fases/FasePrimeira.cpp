@@ -15,12 +15,14 @@ namespace Principal {
     // VIDE criarAlmas() DA CLASSE FASE PARA PEGAR INSPIRAÇÕES !!!
     void FasePrimeira::criarBanshees() {
         int qtd = rand() % (maxBanshee + 1 - 3) + 3;
+        float altura = 40.f;
+        float largura = 40.f;
 
         for (int i = 0; i < qtd; i++) {
             float randX = (int)(rand() % (int)(larguraFase - 200.f));
             float randY = alturaFase - 60.f;
 
-            Banshee* inimigo = new Banshee( 50.f + randX, randY);
+            Banshee* inimigo = new Banshee( 50.f + randX, randY, largura, altura);
             inimigo->setAlvo(pJ1);
             listaE.incluir(static_cast<Entidade*>(inimigo), true);
             GC.incluirInimigo(inimigo);
@@ -33,13 +35,15 @@ namespace Principal {
     void FasePrimeira::criarLamas() {
         //sementear();
         int qtd = rand() % (maxObstaculoLama + 1 - 3) + 3;
+        float altura = 5.f;
+        float largura = 80.f;
 
         for (int i = 0; i < qtd; i++) {
             //sementear();
             float randX = (float)(rand() % (larguraFase - 150)) + 50.f;
             float randY = alturaFase - 60.f; // no chão, igual às plataformas
 
-            Lama* lama = new Lama(randX, randY, 80.f);
+            Lama* lama = new Lama(randX, randY, largura, altura);
             listaE.incluir(static_cast<Entidade*>(lama), true);
             GC.incluirObstcaulo(lama);
         }
@@ -71,9 +75,8 @@ namespace Principal {
     void FasePrimeira::executar(sf::RenderWindow* janela) {
         minhaSala.desenhar(*janela);
         listaE.percorrer();
-        // resolver colisões entre as entidades
         GC.executar();
-        listaE.desenhaTodos(*janela); // Nota: foi necessário separar a colisão e a renderização em duas funções diferentes
+        listaE.desenhaTodos(*janela); 
         listaE.limparMortos();
     }
 

@@ -11,10 +11,12 @@ namespace Principal {
 
     void FaseSegunda::criarPisadeiras() {
         int qtd = rand() % maxPisadeira + 1;
+        float largura = 50.f;
+        float altura = 50.f;
         for (int i = 0; i < qtd; i++) {
             float randX = (int)(rand() % (larguraFase - 200)) + 100.f;
             float randY = alturaFase - 60.f;
-            Pisadeira* chefao = new Pisadeira(randX, randY);
+            Pisadeira* chefao = new Pisadeira(randX, randY, largura, altura);
             chefao->setAlvo(pJ1);
             chefao->setGC(&GC);
             listaE.incluir(static_cast<Entidade*>(chefao), true);
@@ -24,12 +26,14 @@ namespace Principal {
 
     void FaseSegunda::criarArmadilhas() {
         int qtd = rand() % (maxArmadilha + 1 - 3) + 3;
+        float largura = 20.f;
+        float altura = 20.f;
 
         for (int i = 0; i < qtd; i++) {
             float randX = (int)(rand() % (larguraFase - 150)) + 50.f;
             float randY = alturaFase - 60.f;
 
-            Armadilha* arm = new Armadilha(randX, randY, 20.f,20);
+            Armadilha* arm = new Armadilha(randX, randY, largura, altura);
             listaE.incluir(static_cast<Entidade*>(arm), true);
             GC.incluirObstcaulo(arm);
         }
@@ -59,9 +63,16 @@ namespace Principal {
 
     void FaseSegunda::executar(sf::RenderWindow* janela) {
         minhaSala.desenhar(*janela);
-        listaE.percorrer();          
-        GC.executar();            
+        listaE.percorrer();
+
+        // Remover entidades mortas notificando o Gerenciador de Colisao
+        // antes de executar o próprio Gerenciador para evitar uso de
+        // ponteiros já liberados (use-after-free).
+        listaE.limparMortos(&GC);
+
+        GC.executar();
+
         listaE.desenhaTodos(*janela);
-        listaE.limparMortos();
+        // chamada de limparMortos removida daqui para evitar dupla remoção
     }
 }

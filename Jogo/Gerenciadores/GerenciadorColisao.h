@@ -34,8 +34,8 @@ namespace Principal {
         GerenciadorColisao();
         ~GerenciadorColisao();
         void limparMortos();
+        void removerInimigo(Inimigo* pi);
         void limparProjeteis();
-        void removerProjetil(Projetil* pj);
         void limpar();
         void setSala(Sala* pS);
 
