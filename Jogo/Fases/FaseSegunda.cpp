@@ -14,7 +14,7 @@ namespace Principal {
         float largura = 50.f;
         float altura = 50.f;
         for (int i = 0; i < qtd; i++) {
-            float randX = (int)(rand() % (larguraFase - 200)) + 100.f;
+            float randX = (larguraFase / 2) + (rand() % (int)(larguraFase / 2 - 200)) + 100.f;
             float randY = alturaFase - 60.f;
             Pisadeira* chefao = new Pisadeira(randX, randY, largura, altura);
             chefao->setAlvo(pJ1);
