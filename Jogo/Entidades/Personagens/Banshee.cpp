@@ -43,7 +43,7 @@ namespace Principal {
 
         // pula periodicamente quando esta no chao
         if (noChao && clockPulo.getElapsedTime().asSeconds() > temp_pulo) {
-            velY = -5.0f * tamanho; // impulso de pulo
+            velY = -10.f; // impulso de pulo
             noChao = false;
             clockPulo.restart();
         }
